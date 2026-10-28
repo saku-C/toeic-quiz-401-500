@@ -106,7 +106,7 @@ words_data = [
     {"no": 500, "word": "maximum", "pos": "形容詞", "meaning": "最大の", "example_en": "The factory is operating at maximum capacity.", "example_ja": "その工場は稼働能力限界で操業している。", "notes": "反: minimum「最小の」、動: maximize「最大にする」、反: minimize「最小限にする」、名: maximum「最大限」(反: minimum「最小限」)"}
 ]
 
-CHOICE_LABELS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+CHOICE_LABELS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 quiz_en_ja = []
 quiz_ja_en = []

@@ -129,7 +129,7 @@ words_data = [
     {"no": 500, "word": "maximum", "pos": "形容詞", "meaning": "最大の", "example_en": "The factory is operating at maximum capacity.", "example_ja": "その工場は稼働能力限界で操業している。", "notes": "反: minimum「最小の」、動: maximize「最大にする」、反: minimize「最小限にする」、名: maximum「最大限」(反: minimum「最小限」)"}
 ]
 
-CHOICE_LABELS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
+CHOICE_LABELS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"]
 
 quiz_en_ja = []
 quiz_ja_en = []
@@ -343,17 +343,17 @@ def build_quiz_sheet(sheet_title, main_title, quiz_data, is_en_to_ja=True):
         ("単語No.", "1E3A8A"),
         ("出題 (" + ("英単語" if is_en_to_ja else "日本語の意味") + ")", "1E3A8A"),
         ("品詞", "1E3A8A"),
-        ("選択肢 A", "0369A1"),
-        ("選択肢 B", "0369A1"),
-        ("選択肢 C", "0369A1"),
-        ("選択肢 D", "0369A1"),
-        ("選択肢 E", "0369A1"),
-        ("選択肢 F", "0369A1"),
-        ("選択肢 G", "0369A1"),
-        ("選択肢 H", "0369A1"),
-        ("選択肢 I", "0369A1"),
-        ("選択肢 J", "0369A1"),
-        ("あなたの回答 (A〜J)", "C2410C"),
+        ("選択肢 1", "0369A1"),
+        ("選択肢 2", "0369A1"),
+        ("選択肢 3", "0369A1"),
+        ("選択肢 4", "0369A1"),
+        ("選択肢 5", "0369A1"),
+        ("選択肢 6", "0369A1"),
+        ("選択肢 7", "0369A1"),
+        ("選択肢 8", "0369A1"),
+        ("選択肢 9", "0369A1"),
+        ("選択肢 0", "0369A1"),
+        ("あなたの回答 (1〜0)", "C2410C"),
         ("判定", "475569"),
         ("正解記号", "334155"),
         ("正解の意味" if is_en_to_ja else "正解の単語", "334155"),
@@ -416,10 +416,10 @@ def build_quiz_sheet(sheet_title, main_title, quiz_data, is_en_to_ja=True):
             if col_idx not in [15]:
                 cell.fill = row_fill
     
-    dv = DataValidation(type="list", formula1='"A,B,C,D,E,F,G,H,I,J"', allow_blank=True)
-    dv.error ='AからJの英字を選択してください。'
+    dv = DataValidation(type="list", formula1='"1,2,3,4,5,6,7,8,9,0"', allow_blank=True)
+    dv.error ='1から0の数字を選択してください。'
     dv.errorTitle = '入力エラー'
-    dv.prompt = '選択肢(A〜J)を選んでください'
+    dv.prompt = '選択肢(1〜0)を選んでください'
     dv.promptTitle = '回答の選択'
     ws.add_data_validation(dv)
     dv.add("O6:O105")
@@ -490,9 +490,9 @@ with open(csv_quiz_en_file, mode="w", encoding="utf-8-sig", newline="") as f:
     writer = csv.writer(f)
     writer.writerow([
         "問題番号", "単語No.", "出題(英単語)", "品詞",
-        "選択肢A", "選択肢B", "選択肢C", "選択肢D", "選択肢E",
-        "選択肢F", "選択肢G", "選択肢H", "選択肢I", "選択肢J",
-        "正解記号", "正解の意味", "例文", "例文和訳", "補足"
+        "選択肢1", "選択肢2", "選択肢3", "選択肢4", "選択肢5",
+        "選択肢6", "選択肢7", "選択肢8", "選択肢9", "選択肢0",
+        "正解番号", "正解の意味", "例文", "例文和訳", "補足"
     ])
     for q in quiz_en_ja:
         writer.writerow([
@@ -507,9 +507,9 @@ with open(csv_quiz_ja_file, mode="w", encoding="utf-8-sig", newline="") as f:
     writer = csv.writer(f)
     writer.writerow([
         "問題番号", "単語No.", "出題(日本語の意味)", "品詞",
-        "選択肢A", "選択肢B", "選択肢C", "選択肢D", "選択肢E",
-        "選択肢F", "選択肢G", "選択肢H", "選択肢I", "選択肢J",
-        "正解記号", "正解の単語", "例文", "例文和訳", "補足"
+        "選択肢1", "選択肢2", "選択肢3", "選択肢4", "選択肢5",
+        "選択肢6", "選択肢7", "選択肢8", "選択肢9", "選択肢0",
+        "正解番号", "正解の単語", "例文", "例文和訳", "補足"
     ])
     for q in quiz_ja_en:
         writer.writerow([
@@ -1031,7 +1031,7 @@ html_content = f'''<!DOCTYPE html>
 
   <script>
     const QUIZ_SOURCE = {quiz_data_json};
-    const CHOICE_KEYS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+    const CHOICE_KEYS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
     let currentMode = "en_ja";
     let questionsList = [];
@@ -1208,18 +1208,13 @@ html_content = f'''<!DOCTYPE html>
 
     window.addEventListener("keydown", (e) => {{
       if (!isAnswered) {{
-        const key = e.key.toUpperCase();
-        const index = CHOICE_KEYS.indexOf(key);
+        const fullToHalf = {{'１':'1','２':'2','３':'3','４':'4','５':'5','６':'6','７':'7','８':'8','９':'9','０':'0'}};
+        const normalizedKey = fullToHalf[e.key] || e.key;
+        const index = CHOICE_KEYS.indexOf(normalizedKey);
         if (index !== -1) {{
           const btns = document.querySelectorAll(".choice-btn");
           if (btns[index]) {{
             btns[index].click();
-          }}
-        }} else if (e.key >= '0' && e.key <= '9') {{
-          let numIndex = e.key === '0' ? 9 : parseInt(e.key) - 1;
-          const btns = document.querySelectorAll(".choice-btn");
-          if (btns[numIndex]) {{
-            btns[numIndex].click();
           }}
         }}
       }} else {{

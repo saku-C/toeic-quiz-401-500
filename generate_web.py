@@ -681,7 +681,7 @@ html_content = f'''<!DOCTYPE html>
 
   <script>
     const ALL_WORDS = {all_words_json};
-    const CHOICE_KEYS = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+    const CHOICE_KEYS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
     let currentMode = "en_ja";
     let questionsList = [];
@@ -981,15 +981,12 @@ html_content = f'''<!DOCTYPE html>
     window.addEventListener("keydown", (e) => {{
       if (document.getElementById("wordbookArea").style.display === "block") return;
       if (!isAnswered) {{
-        const key = e.key.toUpperCase();
-        const index = CHOICE_KEYS.indexOf(key);
+        const fullToHalf = {{'１':'1','２':'2','３':'3','４':'4','５':'5','６':'6','７':'7','８':'8','９':'9','０':'0'}};
+        const normalizedKey = fullToHalf[e.key] || e.key;
+        const index = CHOICE_KEYS.indexOf(normalizedKey);
         if (index !== -1) {{
           const btns = document.querySelectorAll(".choice-btn");
           if (btns[index]) btns[index].click();
-        }} else if (e.key >= '0' && e.key <= '9') {{
-          let numIndex = e.key === '0' ? 9 : parseInt(e.key) - 1;
-          const btns = document.querySelectorAll(".choice-btn");
-          if (btns[numIndex]) btns[numIndex].click();
         }}
       }} else {{
         if (e.key === "Enter" || e.key === " ") {{
