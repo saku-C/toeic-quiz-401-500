@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>TOEIC 100問10択クイズ (No.401-500)</title>
-  <meta name="description" content="TOEIC出る単特急 金のフレーズ No.401〜500。出題は番号順、選択肢は毎回ランダム10択！素の単語帳閲覧機能、ネイティブ音声・解説付き。">
+  <meta name="description" content="TOEIC出る単特急 金のフレーズ No.401〜500。出題は番号順。単語帳閲覧機能、ネイティブ音声・解説付き。">
   <meta name="theme-color" content="#1e3a8a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -552,13 +552,14 @@
   <div class="container">
     <header>
       <div class="title-group">
-        <h1>TOEIC 100問10択クイズ <span class="top-badge">毎回ランダム10択</span></h1>
+        <h1>TOEIC 100問10択クイズ</h1>
         <p>No. 401 〜 500 (出題順: 番号順)</p>
       </div>
       <div class="controls">
         <button class="control-btn btn-tab-active" id="btnQuizTab" onclick="showQuizTab()">クイズ</button>
         <button class="control-btn" id="btnWordbookTab" onclick="showWordbookTab()">単語帳一覧</button>
         <button class="control-btn" onclick="openJumpModal()">進捗一覧</button>
+        <a class="control-btn" href="https://docs.google.com/spreadsheets/d/1BaAIXt7jKJIoEdopA-uozzmqyQw_e2ePdSPwFk4MSac/edit?usp=sharing" target="_blank" rel="noopener">単語帳(スプレットシート)</a>
       </div>
     </header>
 
@@ -635,7 +636,8 @@
       <div style="background: #ffffff; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--border); margin-bottom: 1rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
           <h2 style="font-size: 1.15rem; font-weight: 800; color: #1e3a8a;">単語帳一覧 (No.401 〜 500 全100語)</h2>
-          <div style="display: flex; gap: 0.4rem;">
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+            <a class="control-btn" href="https://docs.google.com/spreadsheets/d/1BaAIXt7jKJIoEdopA-uozzmqyQw_e2ePdSPwFk4MSac/edit?usp=sharing" target="_blank" rel="noopener">単語帳(スプレットシート)</a>
             <a class="control-btn" href="TOEIC_Words_401-500_List.csv" download>CSV保存</a>
             <a class="control-btn" href="TOEIC_Words_401-500_100Quiz.xlsx" download>Excel保存</a>
           </div>
