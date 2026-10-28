@@ -2,13 +2,11 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TOEIC 100問10択クイズ (No.401-500)</title>
-  <meta name="description" content="TOEIC出る単特急 金のフレーズ No.401〜500。出題は番号順。単語帳閲覧機能、ネイティブ音声・解説付き。">
-  <meta name="theme-color" content="#1e3a8a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #2563eb;
@@ -23,7 +21,6 @@
       --text-main: #0f172a;
       --text-muted: #64748b;
       --border: #e2e8f0;
-      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
       --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
       --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     }
@@ -33,7 +30,6 @@
       margin: 0;
       padding: 0;
       font-family: 'Plus Jakarta Sans', 'Noto Sans JP', sans-serif;
-      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -42,7 +38,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding: 1rem 0.75rem 3rem 0.75rem;
+      padding: 1.5rem 1rem;
     }
 
     .container {
@@ -53,111 +49,85 @@
 
     header {
       background: var(--card-bg);
-      padding: 1.1rem 1.25rem;
+      padding: 1.25rem 1.5rem;
       border-radius: 1rem;
-      box-shadow: var(--shadow-sm);
-      margin-bottom: 1rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 1.25rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
+      gap: 1rem;
       border: 1px solid var(--border);
     }
 
     .title-group h1 {
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       font-weight: 800;
-      color: #1e3a8a;
+      color: var(--primary);
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      letter-spacing: -0.01em;
     }
 
     .title-group p {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: var(--text-muted);
-      margin-top: 0.15rem;
-    }
-
-    .top-badge {
-      display: inline-block;
-      font-size: 0.7rem;
-      background: #e0f2fe;
-      color: #0369a1;
-      padding: 0.15rem 0.5rem;
-      border-radius: 9999px;
-      font-weight: 700;
-      margin-left: 0.25rem;
+      margin-top: 0.2rem;
     }
 
     .controls {
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
-      align-items: center;
     }
 
-    select, button.control-btn, a.control-btn {
-      padding: 0.45rem 0.8rem;
+    select, button.control-btn {
+      padding: 0.5rem 0.85rem;
       border-radius: 0.5rem;
       border: 1px solid var(--border);
       background: var(--card-bg);
       color: var(--text-main);
-      font-size: 0.825rem;
+      font-size: 0.875rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.15s ease;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      user-select: none;
+      transition: all 0.2s;
     }
 
     select:focus, button.control-btn:focus {
       outline: 2px solid var(--primary);
     }
 
-    button.control-btn:hover, a.control-btn:hover {
+    button.control-btn:hover {
       background: var(--primary-light);
       border-color: var(--primary);
-      color: var(--primary-dark);
     }
 
-    .btn-tab-active {
-      background: #1e3a8a !important;
-      color: #ffffff !important;
-      border-color: #1e3a8a !important;
-    }
-
-    /* ダッシュボード */
     .dashboard {
       background: var(--card-bg);
       border-radius: 1rem;
-      padding: 0.9rem 1.25rem;
-      margin-bottom: 1rem;
-      box-shadow: var(--shadow-sm);
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.25rem;
+      box-shadow: var(--shadow);
       border: 1px solid var(--border);
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.75rem;
     }
 
     .stats-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       font-weight: 600;
     }
 
     .stat-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      padding: 0.2rem 0.6rem;
+      gap: 0.4rem;
+      padding: 0.25rem 0.6rem;
       border-radius: 9999px;
       font-size: 0.8rem;
     }
@@ -175,17 +145,16 @@
 
     .progress-bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, #2563eb, #3b82f6);
+      background: linear-gradient(90deg, var(--primary), #3b82f6);
       width: 1%;
       transition: width 0.3s ease;
     }
 
-    /* クイズカード */
     .quiz-card {
       background: var(--card-bg);
       border-radius: 1.25rem;
-      padding: 1.75rem 1.5rem;
-      box-shadow: var(--shadow);
+      padding: 2rem 1.75rem;
+      box-shadow: var(--shadow-lg);
       border: 1px solid var(--border);
       position: relative;
     }
@@ -194,21 +163,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .q-number {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--primary);
       background: var(--primary-light);
-      padding: 0.3rem 0.75rem;
+      padding: 0.35rem 0.8rem;
       border-radius: 0.5rem;
-      cursor: pointer;
-      transition: background 0.15s;
-    }
-    .q-number:hover {
-      background: #dbeafe;
     }
 
     .pos-tag {
@@ -216,7 +180,7 @@
       font-weight: 700;
       color: #475569;
       background: #f1f5f9;
-      padding: 0.3rem 0.7rem;
+      padding: 0.35rem 0.75rem;
       border-radius: 0.5rem;
     }
 
@@ -225,11 +189,11 @@
       align-items: center;
       justify-content: center;
       gap: 0.75rem;
-      margin: 1rem 0 1.5rem 0;
+      margin: 1.25rem 0 1.75rem 0;
     }
 
     .target-word {
-      font-size: 2.25rem;
+      font-size: 2.2rem;
       font-weight: 800;
       color: var(--text-main);
       text-align: center;
@@ -250,7 +214,6 @@
       font-weight: 600;
       color: var(--primary);
       transition: all 0.2s;
-      flex-shrink: 0;
     }
 
     .btn-audio:hover {
@@ -258,27 +221,19 @@
       border-color: var(--primary);
     }
 
-    /* 10択グリッド */
     .choices-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.65rem;
-      margin-bottom: 1.25rem;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
     }
 
     @media (max-width: 640px) {
-      body {
-        padding: 0.5rem 0.5rem 2rem 0.5rem;
-      }
-      .quiz-card {
-        padding: 1.25rem 1rem;
-      }
       .choices-grid {
         grid-template-columns: 1fr;
-        gap: 0.5rem;
       }
       .target-word {
-        font-size: 1.85rem;
+        font-size: 1.75rem;
       }
     }
 
@@ -340,27 +295,26 @@
       color: #fff;
     }
 
-    /* 解説エリア */
     .explanation-card {
       background: #f8fafc;
       border-left: 4px solid var(--primary);
-      padding: 1.1rem;
+      padding: 1.25rem;
       border-radius: 0.5rem;
       margin-top: 1rem;
       display: none;
-      animation: fadeIn 0.2s ease;
+      animation: fadeIn 0.25s ease;
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
+      from { opacity: 0; transform: translateY(6px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .explanation-title {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--primary);
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
       gap: 0.4rem;
@@ -374,7 +328,7 @@
     }
 
     .example-en {
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
       color: #1e293b;
     }
@@ -400,15 +354,15 @@
     }
 
     .example-ja {
-      font-size: 0.875rem;
+      font-size: 0.9rem;
       color: #64748b;
       margin-bottom: 0.5rem;
     }
 
     .notes-text {
-      font-size: 0.825rem;
+      font-size: 0.85rem;
       background: #f1f5f9;
-      padding: 0.45rem 0.7rem;
+      padding: 0.5rem 0.75rem;
       border-radius: 0.4rem;
       color: #334155;
     }
@@ -417,7 +371,7 @@
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      margin-top: 1.25rem;
+      margin-top: 1.5rem;
       gap: 0.75rem;
     }
 
@@ -432,20 +386,12 @@
       cursor: pointer;
       display: none;
       transition: background 0.2s;
-      width: 100%;
-    }
-
-    @media (min-width: 641px) {
-      .btn-next {
-        width: auto;
-      }
     }
 
     .btn-next:hover {
       background: var(--primary-dark);
     }
 
-    /* リザルト画面 */
     .result-view {
       display: none;
       text-align: center;
@@ -462,89 +408,9 @@
     .result-actions {
       display: flex;
       justify-content: center;
-      gap: 0.75rem;
+      gap: 1rem;
       margin-top: 2rem;
-      flex-wrap: wrap;
     }
-
-    /* 単語帳一覧ビュー */
-    .wordbook-view {
-      display: none;
-    }
-    .search-box {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: 0.75rem;
-      border: 1px solid var(--border);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-      outline: none;
-    }
-    .search-box:focus {
-      border-color: var(--primary);
-    }
-    .word-card {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin-bottom: 0.75rem;
-      transition: transform 0.15s;
-    }
-    .word-card:hover {
-      box-shadow: var(--shadow-sm);
-    }
-    .word-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.4rem;
-    }
-
-    /* モーダル */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(15, 23, 42, 0.6);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 1rem;
-    }
-    .modal-content {
-      background: #ffffff;
-      border-radius: 1rem;
-      max-width: 620px;
-      width: 100%;
-      max-height: 80vh;
-      overflow-y: auto;
-      padding: 1.5rem;
-      box-shadow: var(--shadow-lg);
-    }
-    .modal-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-    .grid-num-btn {
-      height: 40px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      background: #f8fafc;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.15s;
-    }
-    .grid-num-btn:hover {
-      border-color: var(--primary);
-      background: var(--primary-light);
-    }
-    .grid-num-btn.answered-correct { background: var(--success-light); color: var(--success); border-color: var(--success); }
-    .grid-num-btn.answered-wrong { background: var(--danger-light); color: var(--danger); border-color: var(--danger); }
-    .grid-num-btn.current { outline: 2px solid var(--primary); border-color: var(--primary); }
   </style>
 </head>
 <body>
@@ -556,112 +422,5582 @@
         <p>No. 401 〜 500 (出題順: 番号順)</p>
       </div>
       <div class="controls">
-        <button class="control-btn btn-tab-active" id="btnQuizTab" onclick="showQuizTab()">クイズ</button>
-        <button class="control-btn" id="btnWordbookTab" onclick="showWordbookTab()">単語帳一覧</button>
-        <button class="control-btn" onclick="openJumpModal()">進捗一覧</button>
-        <a class="control-btn" href="https://docs.google.com/spreadsheets/d/1BaAIXt7jKJIoEdopA-uozzmqyQw_e2ePdSPwFk4MSac/edit?usp=sharing" target="_blank" rel="noopener">単語帳(スプレットシート)</a>
+        <select id="modeSelect" onchange="changeMode()">
+          <option value="en_ja">英単語 → 日本語の意味 (10択)</option>
+          <option value="ja_en">日本語の意味 → 英単語 (10択)</option>
+        </select>
+        <button class="control-btn" onclick="resetQuiz()">最初から解く</button>
       </div>
     </header>
 
-    <!-- クイズ画面エリア -->
-    <div id="quizArea">
-      <div class="dashboard" id="dashboard">
-        <div class="stats-row">
-          <div>
-            <span>進捗: </span>
-            <span id="progressText" style="font-weight: 700;">1 / 100</span>
-            <span style="font-size: 0.75rem; color: var(--text-muted); margin-left: 0.3rem;">(番号順に出題)</span>
-          </div>
-          <div style="display: flex; gap: 0.4rem;">
-            <span class="stat-badge badge-correct">○ <span id="correctCount">0</span></span>
-            <span class="stat-badge badge-wrong">× <span id="wrongCount">0</span></span>
-            <span class="stat-badge badge-accuracy">正答率: <span id="accuracyText">0.0%</span></span>
-          </div>
+    <div class="dashboard" id="dashboard">
+      <div class="stats-row">
+        <div>
+          <span>進捗: </span>
+          <span id="progressText" style="font-weight: 700;">1 / 100</span>
         </div>
-        <div class="progress-bar-bg">
-          <div class="progress-bar-fill" id="progressBar"></div>
+        <div style="display: flex; gap: 0.5rem;">
+          <span class="stat-badge badge-correct">○ <span id="correctCount">0</span></span>
+          <span class="stat-badge badge-wrong">× <span id="wrongCount">0</span></span>
+          <span class="stat-badge badge-accuracy">正答率: <span id="accuracyText">0.0%</span></span>
         </div>
       </div>
-
-      <div class="quiz-card" id="quizCard">
-        <div class="question-header">
-          <span class="q-number" id="qNumberBadge" onclick="openJumpModal()" title="クリックして問題一覧を開く">Q1 / 100 [No. 401]</span>
-          <div style="display: flex; gap: 0.4rem; align-items: center;">
-            <select id="modeSelect" onchange="changeMode()" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
-              <option value="en_ja">英 → 日 (10択)</option>
-              <option value="ja_en">日 → 英 (10択)</option>
-            </select>
-            <span class="pos-tag" id="posTag">動詞</span>
-          </div>
-        </div>
-
-        <div class="target-wrapper">
-          <div class="target-word" id="targetWord">cause</div>
-          <button class="btn-audio" id="btnSpeakWord" title="単語の発音を聞く" onclick="speakTargetWord()">発音</button>
-        </div>
-
-        <div class="choices-grid" id="choicesGrid"></div>
-
-        <div class="explanation-card" id="explanationCard">
-          <div class="explanation-title">単語解説・例文</div>
-          <div class="example-en-row">
-            <div class="example-en" id="expEn">Heavy traffic is causing delays on Highway 18.</div>
-            <button class="btn-audio-sm" id="btnSpeakSentence" title="例文の発音を聞く" onclick="speakSentence()">例文音声</button>
-          </div>
-          <div class="example-ja" id="expJa">18号線では交通渋滞により遅れが生じています。</div>
-          <div class="notes-text" id="expNotes">名: cause「原因、理由、大義」</div>
-        </div>
-
-        <div class="action-row">
-          <button class="btn-next" id="btnNext" onclick="nextQuestion()">次の問題へ (Enter)</button>
-        </div>
-      </div>
-
-      <div class="quiz-card result-view" id="resultView">
-        <h2>お疲れ様でした！クイズ終了</h2>
-        <p style="color: var(--text-muted); margin-top: 0.5rem;">全100問の挑戦が完了しました！</p>
-        
-        <div class="result-score" id="finalScore">95 / 100</div>
-        <p id="finalAccuracy" style="font-size: 1.25rem; font-weight: 600; color: #334155;">正答率: 95.0%</p>
-
-        <div class="result-actions">
-          <button class="btn-next" style="display: inline-block; width: auto;" onclick="retryWrongOnly()" id="btnRetryWrong">間違えた問題のみ復習</button>
-          <button class="control-btn" style="padding: 0.75rem 1.5rem;" onclick="resetQuiz()">もう一度最初から</button>
-        </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBar"></div>
       </div>
     </div>
 
-    <!-- 素の単語帳一覧エリア -->
-    <div id="wordbookArea" class="wordbook-view">
-      <div style="background: #ffffff; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--border); margin-bottom: 1rem;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="font-size: 1.15rem; font-weight: 800; color: #1e3a8a;">単語帳一覧 (No.401 〜 500 全100語)</h2>
-          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-            <a class="control-btn" href="https://docs.google.com/spreadsheets/d/1BaAIXt7jKJIoEdopA-uozzmqyQw_e2ePdSPwFk4MSac/edit?usp=sharing" target="_blank" rel="noopener">単語帳(スプレットシート)</a>
-            <a class="control-btn" href="TOEIC_Words_401-500_List.csv" download>CSV保存</a>
-            <a class="control-btn" href="TOEIC_Words_401-500_100Quiz.xlsx" download>Excel保存</a>
-          </div>
+    <div class="quiz-card" id="quizCard">
+      <div class="question-header">
+        <span class="q-number" id="qNumberBadge">Q1 / 100 [No. 401]</span>
+        <span class="pos-tag" id="posTag">動詞</span>
+      </div>
+
+      <div class="target-wrapper">
+        <div class="target-word" id="targetWord">cause</div>
+        <button class="btn-audio" id="btnSpeakWord" title="単語の発音を聞く" onclick="speakTargetWord()">発音</button>
+      </div>
+
+      <div class="choices-grid" id="choicesGrid"></div>
+
+      <div class="explanation-card" id="explanationCard">
+        <div class="explanation-title">単語解説・例文</div>
+        <div class="example-en-row">
+          <div class="example-en" id="expEn">Heavy traffic is causing delays on Highway 18.</div>
+          <button class="btn-audio-sm" id="btnSpeakSentence" title="例文の発音を聞く" onclick="speakSentence()">例文音声</button>
         </div>
-        <input type="text" id="searchInput" class="search-box" placeholder="単語・意味・例文を検索..." oninput="filterWordList()">
-        <div id="wordListContainer"></div>
+        <div class="example-ja" id="expJa">18号線では交通渋滞により遅れが生じています。</div>
+        <div class="notes-text" id="expNotes">名: cause「原因、理由、大義」</div>
+      </div>
+
+      <div class="action-row">
+        <button class="btn-next" id="btnNext" onclick="nextQuestion()">次の問題へ (Enter)</button>
       </div>
     </div>
-  </div>
 
-  <!-- 問題一覧ジャンプモーダル -->
-  <div class="modal-overlay" id="jumpModal" onclick="closeJumpModal(event)">
-    <div class="modal-content" onclick="event.stopPropagation()">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="font-size: 1.1rem; font-weight: 700;">問題一覧 (No.401 〜 500)</h3>
-        <button class="control-btn" onclick="document.getElementById('jumpModal').style.display='none'">閉じる</button>
+    <div class="quiz-card result-view" id="resultView">
+      <h2>お疲れ様でした！クイズ終了</h2>
+      <p style="color: var(--text-muted); margin-top: 0.5rem;">100問の挑戦が完了しました！</p>
+      
+      <div class="result-score" id="finalScore">95 / 100</div>
+      <p id="finalAccuracy" style="font-size: 1.25rem; font-weight: 600; color: #334155;">正答率: 95.0%</p>
+
+      <div class="result-actions">
+        <button class="btn-next" style="display: inline-block;" onclick="retryWrongOnly()" id="btnRetryWrong">間違えた問題のみ復習</button>
+        <button class="control-btn" style="padding: 0.75rem 1.5rem;" onclick="resetQuiz()">もう一度最初から</button>
       </div>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">番号をクリックするとその問題に直接ジャンプします。（出題順: 番号順）</p>
-      <div class="modal-grid" id="jumpGrid"></div>
     </div>
   </div>
 
   <script>
-    const ALL_WORDS = [{"no": 401, "word": "cause", "pos": "動詞", "meaning": "引き起こす", "example_en": "Heavy traffic is causing delays on Highway 18.", "example_ja": "18号線では交通渋滞により遅れが生じています。", "notes": "名: cause「原因、理由、大義」"}, {"no": 402, "word": "decade", "pos": "名詞", "meaning": "10年", "example_en": "The city has changed over the last decade.", "example_ja": "その市はこの10年で変わった。", "notes": "ten yearsに言い換えることができる"}, {"no": 403, "word": "expire", "pos": "動詞", "meaning": "期限が切れる", "example_en": "My passport has expired.", "example_ja": "私のパスポートは期限が切れた。", "notes": "名: expiration〈加米〉、expiry〈英〉「満了、終結」、expiration date「有効期限、使用期限」(=expiry date)"}, {"no": 404, "word": "income", "pos": "名詞", "meaning": "収入", "example_en": "Tourism is the main source of income in the region.", "example_ja": "観光業はこの地域の主な収入源です。", "notes": "個人の「所得」という意味にもなる。同: revenue「収入」、反: expenditure「支出」"}, {"no": 405, "word": "immediate", "pos": "形容詞", "meaning": "早急な", "example_en": "We need to take immediate action.", "example_ja": "私たちは早急な対応を取る必要があります。", "notes": "副: immediately「早急に」"}, {"no": 406, "word": "questionnaire", "pos": "名詞", "meaning": "アンケート", "example_en": "Please complete the questionnaire after the seminar.", "example_ja": "セミナーのあと、アンケートにご記入ください。", "notes": "名: question「質問」、動: question「質問する、疑問に思う」"}, {"no": 407, "word": "routine", "pos": "名詞", "meaning": "習慣的に繰り返されること", "example_en": "Exercise is part of my daily routine.", "example_ja": "運動は私の日課の一部です。", "notes": "「定められた手順」という意味もある。形: routine「決まった、いつもの」、副: routinely「いつものように」"}, {"no": 408, "word": "transfer", "pos": "動詞", "meaning": "転勤する", "example_en": "Mr. Chen transferred from Taipei to Bangkok.", "example_ja": "チェンさんは台北からバンコクへ転勤した。", "notes": "「転勤させる、乗り換える、移す」などの意味もある。名: transfer「転勤、移動、乗り換え」"}, {"no": 409, "word": "complicated", "pos": "形容詞", "meaning": "複雑な", "example_en": "Our evaluation system is very complicated.", "example_ja": "当社の評価システムはとても複雑です。", "notes": "同: complex「複雑な」、動: complicate「複雑にする」、名: complication「複雑にするもの」"}, {"no": 410, "word": "education", "pos": "名詞", "meaning": "教育", "example_en": "The government has increased spending on education.", "example_ja": "政府は教育の支出を増やした。", "notes": "動: educate「教育する」、形: educational「教育的な」"}, {"no": 411, "word": "greet", "pos": "動詞", "meaning": "出迎える", "example_en": "The manager greeted us with a smile.", "example_ja": "マネージャーは私たちを笑顔で出迎えてくれた。", "notes": "「あいさつする」という意味もある。名: greeting「あいさつ」"}, {"no": 412, "word": "influence", "pos": "名詞", "meaning": "影響力", "example_en": "The former president still has influence over the company.", "example_ja": "元社長はまだ、会社に影響力を持っている。", "notes": "動: influence「影響を与える」(=affect)"}, {"no": 413, "word": "lack", "pos": "名詞", "meaning": "不足", "example_en": "The project was canceled due to a lack of funds.", "example_ja": "資金不足のため、そのプロジェクトは中止になった。", "notes": "lack of ~「〜の不足」、同: shortage「不足」、動: lack「〜が足りない」"}, {"no": 414, "word": "mild", "pos": "形容詞", "meaning": "温暖な", "example_en": "We had a mild winter this year.", "example_ja": "今年は暖冬だった。", "notes": "「軽い、マイルドな」などの意味もある。副: mildly「少し」(=slightly)"}, {"no": 415, "word": "normally", "pos": "副詞", "meaning": "普通は", "example_en": "I normally work forty hours a week.", "example_ja": "私は普段、週に40時間働いています。", "notes": "同: usually「普通は」、形: normal「通常の」"}, {"no": 416, "word": "physical", "pos": "形容詞", "meaning": "身体の", "example_en": "I need to do physical exercise regularly.", "example_ja": "私は定期的に身体的な運動をする必要がある。", "notes": "副: physically「身体的に」、名: physician「医師、内科医」"}, {"no": 417, "word": "polite", "pos": "形容詞", "meaning": "礼儀正しい", "example_en": "The hotel clerk was polite and helpful.", "example_ja": "そのホテル従業員は礼儀正しく、親切だった。", "notes": "「丁寧な」という意味もある。副: politely「丁寧に、礼儀正しく」"}, {"no": 418, "word": "population", "pos": "名詞", "meaning": "人口", "example_en": "What is the population of India?", "example_ja": "インドの人口はどのくらいですか。", "notes": "working population「労働人口」"}, {"no": 419, "word": "pour", "pos": "動詞", "meaning": "注ぐ", "example_en": "She's pouring coffee into a cup.", "example_ja": "彼女はコーヒーをカップに注いでいる。", "notes": "「雨が激しく降る、殺到する、光が出る」などの意味もある。pour A into B「AをBに注ぐ」"}, {"no": 420, "word": "instant", "pos": "形容詞", "meaning": "すぐの", "example_en": "The book was an instant success in California.", "example_ja": "その本はカリフォルニアで即座の成功を収めた。", "notes": "「（食品等が）インスタントの」という意味もある。同: immediate「すぐの」、名: instant「瞬間」、名: instance「事例」、for instance「例えば」(=for example)、副: instantly「すぐに」"}, {"no": 421, "word": "venue", "pos": "名詞", "meaning": "会場", "example_en": "Be sure to arrive at the venue on time.", "example_ja": "必ず時間どおりに会場に到着するようにしてください。", "notes": "後ろに続く前置詞はfor。例: the venue for the event「イベント会場」"}, {"no": 422, "word": "resign", "pos": "動詞", "meaning": "辞任する", "example_en": "The president resigned yesterday.", "example_ja": "社長は昨日、辞任した。", "notes": "名: resignation「辞任」、同: retire「退職する」、leave「辞める」、quit「辞める」"}, {"no": 423, "word": "attach", "pos": "動詞", "meaning": "添付する", "example_en": "I attached the conference schedule for your information.", "example_ja": "ご参考までに会議スケジュールを添付いたしました。", "notes": "手紙、メールともに使う。「取り付ける、愛着を持たせる」などの意味もある。Attached is/are ~「〜が添付されています」、名: attachment「添付ファイル、付属品、愛着」"}, {"no": 424, "word": "cancel", "pos": "動詞", "meaning": "取り消す", "example_en": "I'd like to cancel my reservation.", "example_ja": "予約の取り消しをお願いします。", "notes": "名: cancellation「取り消し、キャンセル」、同: call off「中止する」"}, {"no": 425, "word": "common", "pos": "形容詞", "meaning": "よくある", "example_en": "It's a common spelling mistake.", "example_ja": "それはよくあるスペルミスです。", "notes": "「共通の」という意味もある。in common「共通して」、副: commonly「一般に、広く」"}, {"no": 426, "word": "conversation", "pos": "名詞", "meaning": "会話", "example_en": "They're having a conversation.", "example_ja": "彼らは会話をしている。", "notes": "類: chat「（カジュアルな）会話」、動: converse「会話する」"}, {"no": 427, "word": "economical", "pos": "形容詞", "meaning": "経済的な", "example_en": "It's more economical to buy in bulk.", "example_ja": "まとめて買うほうが経済的です。", "notes": "お金や時間などを節約できるという意味。同: economic「経済に関する」、名: economy「経済、節約」、副: economically「経済的に」"}, {"no": 428, "word": "exchange", "pos": "動詞", "meaning": "交換する", "example_en": "Can I exchange this jacket for a black one?", "example_ja": "このジャケットを黒のものと交換することはできますか。", "notes": "「交わす」という意味もある。名: exchange「交換、交換品、取引所」、foreign exchange「外国為替」、stock exchange「証券取引所」"}, {"no": 429, "word": "expert", "pos": "名詞", "meaning": "専門家", "example_en": "Peter is a computer expert.", "example_ja": "ピーターはコンピュータの専門家です。", "notes": "an expert in/on/at「〜の専門家」、名: expertise「専門技術・知識」（後ろに続く前置詞はin）"}, {"no": 430, "word": "extension", "pos": "名詞", "meaning": "内線", "example_en": "What's your extension number?", "example_ja": "あなたの内線番号は何番ですか。", "notes": "「拡張、延長」などの意味もある。動: extend「伸ばす、広げる」"}, {"no": 431, "word": "familiar", "pos": "形容詞", "meaning": "よく知っている", "example_en": "Are you familiar with this software?", "example_ja": "あなたはこのソフトウェアのことをよく知っていますか。", "notes": "familiar with ~「〜のことをよく知っている」、familiar to ~「〜にとってなじみがある」、名: familiarity「よく知っていること」"}, {"no": 432, "word": "host", "pos": "動詞", "meaning": "主催する", "example_en": "The city hosts a music festival every year.", "example_ja": "その市は毎年、音楽祭を主催する。", "notes": "「番組の司会を務める」という意味もある。名: host「主催者、司会者」"}, {"no": 433, "word": "ride", "pos": "名詞", "meaning": "車に乗せること", "example_en": "Can you give me a ride to the station?", "example_ja": "駅まで車に乗せていってもらえますか。", "notes": "give (人) a ride、動: ride「（乗り物に）乗る」"}, {"no": 434, "word": "seek", "pos": "動詞", "meaning": "求める", "example_en": "We are seeking an accountant.", "example_ja": "当社は経理担当者を求めています。", "notes": "同: look for「探す」、seek to ~「〜しようとする」"}, {"no": 435, "word": "step down", "pos": "動詞", "meaning": "辞任する(身を引く)", "example_en": "Ms. Garcia will step down from her post in December.", "example_ja": "ガルシアさんは今の職を12月に辞める。", "notes": "同: resign「辞任する」"}, {"no": 436, "word": "technique", "pos": "名詞", "meaning": "手法", "example_en": "The agency uses various advertising techniques.", "example_ja": "その代理店はさまざまな広告手法を使う。", "notes": "「技術、技能」という意味もある。形: technical「技術上の、専門的な」、副: technically「技術的に、厳密にいえば」、名: technician「技術者」(=engineer「技術者」)"}, {"no": 437, "word": "temporary", "pos": "形容詞", "meaning": "臨時の", "example_en": "I found a temporary job at a department store.", "example_ja": "私はデパートでの臨時の仕事を見つけた。", "notes": "「一時的な」という意味もある。反: permanent「恒久的な」、副: temporarily「一時的に」"}, {"no": 438, "word": "factor", "pos": "名詞", "meaning": "要因", "example_en": "What's the most important factor in choosing a job?", "example_ja": "仕事を選ぶ際、最も重要な要因は何ですか。", "notes": "同: element「要因」、deciding factor「決定的な要因」"}, {"no": 439, "word": "assemble", "pos": "動詞", "meaning": "組み立てる", "example_en": "These computers were assembled in Taiwan.", "example_ja": "これらのコンピュータは台湾で組み立てられた。", "notes": "「（人が）集まる」という意味もある。名: assembly「組み立て、集会、議会」、assembly line「（工場の）組み立てライン」"}, {"no": 440, "word": "attention", "pos": "名詞", "meaning": "注意", "example_en": "I wasn't paying attention to him.", "example_ja": "私は彼に注意を払っていなかった。", "notes": "pay attention to ~「〜に注意を払う」、形: attentive「よく注意している、心づかいの行き届いた」"}, {"no": 441, "word": "invoice", "pos": "名詞", "meaning": "請求書", "example_en": "We've received an invoice for sixty-five dollars.", "example_ja": "私たちは65ドルの請求書を受け取った。", "notes": "同: bill「請求書」"}, {"no": 442, "word": "prior to", "pos": "前置詞", "meaning": "〜の前に", "example_en": "Please arrive fifteen minutes prior to your appointment.", "example_ja": "予約時間の15分前に到着するようにしてください。", "notes": "同: before「〜の前に」、形: prior「事前の」"}, {"no": 443, "word": "refreshment", "pos": "名詞", "meaning": "軽い飲食料", "example_en": "Refreshments will be served after the meeting.", "example_ja": "会議の後、軽い飲食料が出ます。", "notes": "動: refresh「すっきりさせる」、形: refreshing「さわやかな」、名: beverage「飲み物」"}, {"no": 444, "word": "trust", "pos": "名詞", "meaning": "信用", "example_en": "Honesty is the key to building trust.", "example_ja": "誠実さは信用を築く鍵である。", "notes": "「信託」という意味もある。動: trust「信用する、当てにする」、形: trustworthy「信用できる、当てにできる」"}, {"no": 445, "word": "plumber", "pos": "名詞", "meaning": "配管工", "example_en": "I called the plumber to fix the sink.", "example_ja": "流しを修理するために配管工に電話した。", "notes": "名: plumbing「配管」"}, {"no": 446, "word": "update", "pos": "動詞", "meaning": "更新する", "example_en": "We update our Web site daily.", "example_ja": "私たちは毎日ウェブサイトを更新する。", "notes": "「最新の情報を与える、新しいものに替える」という意味もある。名: update「最新情報」"}, {"no": 447, "word": "upstairs", "pos": "副詞", "meaning": "上の階に", "example_en": "We have a meeting room upstairs.", "example_ja": "上の階に会議用の部屋があります。", "notes": "形: upstairs「上の階の」、名: upstairs「上の階」、反: downstairs「下の階に」、名: stairs「階段」"}, {"no": 448, "word": "manner", "pos": "名詞", "meaning": "態度", "example_en": "Matt acted in a professional manner.", "example_ja": "マットはプロらしい態度で行動した。", "notes": "「やり方、礼儀作法（この意味では複数形mannersになる）」などの意味もある。in a calm manner「落ち着いた態度で」"}, {"no": 449, "word": "consider", "pos": "動詞", "meaning": "考える", "example_en": "I'm considering taking the course.", "example_ja": "私はそのコースを取ろうかどうか考えている。", "notes": "consider ~ing「〜することを考える」、名: consideration「考慮、思いやり」、形: considerable「かなりの」、副: considerably「かなり」(=significantly, substantially)"}, {"no": 450, "word": "executive", "pos": "名詞", "meaning": "重役", "example_en": "Ms. James is an executive of a computer company.", "example_ja": "ジェームズさんはコンピュータ会社の重役です。", "notes": "形: executive「経営に関する、重役の」、chief executive officer (略: CEO)「最高経営責任者」"}, {"no": 451, "word": "means", "pos": "名詞", "meaning": "手段", "example_en": "Do you have any means of identification?", "example_ja": "身元を証明する手段を何かお持ちですか。", "notes": "meansは単数形でもsが付く。by all means「いかなる犠牲を払っても」"}, {"no": 452, "word": "regarding", "pos": "前置詞", "meaning": "〜に関する", "example_en": "We have received your letter regarding the defective products.", "example_ja": "当社は欠陥商品に関するあなたからの手紙を受け取りました。", "notes": "同: about, concerning, with regard to「〜に関する」、動: regard「〜と見なす」、名: regard「尊敬、関心」"}, {"no": 453, "word": "association", "pos": "名詞", "meaning": "提携", "example_en": "The book was published in association with the National Museum.", "example_ja": "この本は国立博物館の協力によって出版された。", "notes": "「関連、協会、連想」などの意味もある。in association with ~「〜と協力して(=in cooperation with)」、動: associate「関連付ける」、名: associate「仲間、共同経営者」"}, {"no": 454, "word": "budget", "pos": "名詞", "meaning": "予算", "example_en": "They're reviewing the budget for next year.", "example_ja": "彼らは来年度の予算案を検討している。", "notes": "動: budget「割り当てる」、形: budget「低価格の」(=cheap, inexpensive, affordable, reasonable)"}, {"no": 455, "word": "contain", "pos": "動詞", "meaning": "含む", "example_en": "This report contains information about the company's financial condition.", "example_ja": "この報告書には会社の財政状況に関する情報が含まれています。", "notes": "「中に入っている」という意味もある。名: container「容器」"}, {"no": 456, "word": "remain", "pos": "動詞", "meaning": "〜のままでいる", "example_en": "Please remain seated during take-off.", "example_ja": "離陸の際、座ったままでいてください。", "notes": "「とどまる」(=stay)という意味もある。名: remainder「残り」(=rest)"}, {"no": 457, "word": "chemical", "pos": "名詞", "meaning": "化学薬品", "example_en": "We use dangerous chemicals in our plant.", "example_ja": "当社の工場では危険な化学薬品を使っている。", "notes": "agricultural chemical「農薬」、形: chemical「化学の、化学的な」、名: chemistry「化学」、名: chemist「化学者」"}, {"no": 458, "word": "demonstrate", "pos": "動詞", "meaning": "実地説明をする", "example_en": "I'll be demonstrating some of our new products.", "example_ja": "当社の新製品のいくつかを取り出して実地説明いたします。", "notes": "「証明する、はっきりと示す」という意味もある。名: demonstration「デモンストレーション、実演」"}, {"no": 459, "word": "qualified", "pos": "形容詞", "meaning": "適任である", "example_en": "Tom is qualified for the position.", "example_ja": "トムはその職に適任である。", "notes": "「資格を持っている」という意味もある。動: qualify「資格を得る、資格を持つ、資格を与える」、名: qualification「資格、適任」"}, {"no": 460, "word": "revise", "pos": "動詞", "meaning": "修正する", "example_en": "We have to revise the budget.", "example_ja": "私たちは予算を修正する必要がある。", "notes": "「改訂する、復習する」という意味もある。名: revision「変更、見直し」"}, {"no": 461, "word": "relaxed", "pos": "形容詞", "meaning": "くつろいだ", "example_en": "When she entered the room, she looked relaxed.", "example_ja": "彼女は部屋に入ってきたとき、くつろいだように見えた。", "notes": "動: relax「リラックスする」、名: relaxation「くつろぎ、緩和」"}, {"no": 462, "word": "upgrade", "pos": "動詞", "meaning": "改良する", "example_en": "We can't afford to upgrade our facilities.", "example_ja": "私たちは設備を改良する余裕がない。", "notes": "「向上させる、格上げする、アップグレードする」などの意味もある。名: upgrade「改良、アップグレード」"}, {"no": 463, "word": "accompany", "pos": "動詞", "meaning": "同行する", "example_en": "Betty will accompany me to the conference.", "example_ja": "ベティーは私に同行して会議に行く。", "notes": "同: go with ~「〜と一緒に行く」"}, {"no": 464, "word": "attitude", "pos": "名詞", "meaning": "態度(姿勢)", "example_en": "He has a positive attitude to his work.", "example_ja": "彼は自分の仕事に対して積極的な態度を取っている。", "notes": "「見方、姿勢」という意味もある。後ろに続く前置詞はtoまたはtoward(s)"}, {"no": 465, "word": "commute", "pos": "動詞", "meaning": "通勤する", "example_en": "Amanda commutes to Montreal every day.", "example_ja": "アマンダは毎日モントリオールに通っている。", "notes": "名: commute「通勤、通学」、名: commuter「通う人」、commuter train「通勤列車」"}, {"no": 466, "word": "competitive", "pos": "形容詞", "meaning": "競争力のある", "example_en": "We need to cut labor costs to stay competitive.", "example_ja": "私たちは競争力を保つため、人件費を削減する必要がある。", "notes": "「競争が激しい、競争心の強い、他に負けない」という意味もある。動: compete「競う」、名: competition「競争」、名: competitor「競争相手、ライバル」"}, {"no": 467, "word": "refuse", "pos": "動詞", "meaning": "拒否する", "example_en": "He refused to speak with journalists.", "example_ja": "彼は報道関係者と話をすることを拒絶した。", "notes": "「（申し出などを）断る」という意味もある。反: accept「受け入れる」、名: refusal「拒否」"}, {"no": 468, "word": "subscribe", "pos": "動詞", "meaning": "定期購読する", "example_en": "I subscribe to Business Weekly.", "example_ja": "私はビジネスウィークリーを定期購読している。", "notes": "後ろに続く前置詞はto。名: subscription「定期購読」、名: subscriber「定期購読者」"}, {"no": 469, "word": "process", "pos": "動詞", "meaning": "処理する", "example_en": "It will take two weeks to process your visa application.", "example_ja": "あなたのビザ申請を処理するのに2週間かかります。", "notes": "「加工する」という意味もある。名: process「過程、作用、進行」、形: processed「加工された」"}, {"no": 470, "word": "comment", "pos": "名詞", "meaning": "意見", "example_en": "He made helpful comments on my proposal.", "example_ja": "彼は私の企画書に有益な意見を出してくれた。", "notes": "動: comment「意見を述べる」。名詞・動詞ともに後ろに前置詞onが続く"}, {"no": 471, "word": "necessary", "pos": "形容詞", "meaning": "必要な", "example_en": "Is it necessary to fill out this form?", "example_ja": "この用紙に記入する必要がありますか。", "notes": "「必然的な」という意味もある。同: essential, vital「絶対必要な」、名: necessity「必要、必需品」"}, {"no": 472, "word": "respectively", "pos": "副詞", "meaning": "それぞれ", "example_en": "Auckland and Sydney were ranked fifth and tenth, respectively.", "example_ja": "オークランドとシドニーはそれぞれ5位と10位にランク付けされた。", "notes": "形: respective「それぞれの」、関: in respect of ~「〜に関して」"}, {"no": 473, "word": "probable", "pos": "形容詞", "meaning": "起こりそうな", "example_en": "It is probable that unemployment will rise further.", "example_ja": "失業率はさらに上がる見込みだ。", "notes": "同: likely「起こりそうな」、関: possible「可能性がある」（probableより可能性が低い）、名: probability「見込み」(=likelihood)、副: probably「多分、おそらく」"}, {"no": 474, "word": "efficient", "pos": "形容詞", "meaning": "効率のよい", "example_en": "We need more efficient methods of collecting data.", "example_ja": "私たちはもっと効率のよいデータ収集方法が必要です。", "notes": "「有能な」という意味もある。energy efficient「燃費のよい」、名: efficiency「効率」、副: efficiently「効率的に」"}, {"no": 475, "word": "identify", "pos": "動詞", "meaning": "明らかにする", "example_en": "First, we must identify problem areas.", "example_ja": "はじめに私たちは問題点を明らかにしなければならない。", "notes": "「身元を確認する」という意味もある。名: identification「身分証明」"}, {"no": 476, "word": "particular", "pos": "形容詞", "meaning": "特定の", "example_en": "Is there any particular movie you want to see?", "example_ja": "何か特に見たい映画はありますか。", "notes": "同: specific, certain「特定の」、副: particularly「特に」"}, {"no": 477, "word": "relocate", "pos": "動詞", "meaning": "移転する", "example_en": "The company relocated to Los Angeles.", "example_ja": "その会社はロサンゼルスに移転した。", "notes": "relocate to 〈地名〉「〜へ移転する」、同: move to「〜へ引っ越す」、名: relocation「移転」"}, {"no": 478, "word": "remind", "pos": "動詞", "meaning": "思い出させる", "example_en": "My secretary reminded me about the meeting tomorrow.", "example_ja": "秘書が私に明日の会議のことを思い出させてくれた。", "notes": "関: remember「覚えている」、名: reminder「思い出させるもの」"}, {"no": 479, "word": "compared with", "pos": "熟語", "meaning": "〜と比べて", "example_en": "Our sales rose ten percent compared with last year.", "example_ja": "当社の売り上げは昨年と比べ、10パーセント上がった。", "notes": "compared to でも同じ意味になる。名: comparison「比較」"}, {"no": 480, "word": "establish", "pos": "動詞", "meaning": "設立する", "example_en": "The company was established in 1967.", "example_ja": "その会社は1967年に設立された。", "notes": "「確立する、証明する、認めるせる」などの意味もある。同: found「設立する」、名: establishment「設立、機関、権力層」、形: established「すでにある、定評のある」"}, {"no": 481, "word": "point out", "pos": "句動詞", "meaning": "指摘する", "example_en": "He pointed out that these data are inaccurate.", "example_ja": "彼はこれらのデータが正確でないことを指摘した。", "notes": "point out A to ~「〜にAを指摘する」"}, {"no": 482, "word": "property", "pos": "名詞", "meaning": "不動産", "example_en": "Property prices are falling this month.", "example_ja": "今月、不動産の価格は下がっている。", "notes": "「財産、所有物、特性」などの意味もある。"}, {"no": 483, "word": "restore", "pos": "動詞", "meaning": "修復する", "example_en": "The building was restored after the fire.", "example_ja": "その建物は火事のあと、修復された。", "notes": "「元の状態に戻す」という意味がある。名: restoration「復元、回復、復興、返還」"}, {"no": 484, "word": "status", "pos": "名詞", "meaning": "状況", "example_en": "What's the status of our order?", "example_ja": "私たちの注文品の状況はどうなっていますか。", "notes": "「地位」という意味もある。status quo「現状」"}, {"no": 485, "word": "expense", "pos": "名詞", "meaning": "経費", "example_en": "The company will cover travel expenses.", "example_ja": "会社が旅費を出してくれます。", "notes": "関: expenditure「支出」、形: expensive「高価な」(=costly, pricey)"}, {"no": 486, "word": "focus", "pos": "動詞", "meaning": "焦点を合わせる", "example_en": "The conference focuses on environmental issues.", "example_ja": "その会議は環境問題に焦点を合わせている。", "notes": "焦点を合わせる対象は前置詞onによって導く。「集中させる」という意味もある。名: focus「焦点、中心」"}, {"no": 487, "word": "laboratory", "pos": "名詞", "meaning": "研究所", "example_en": "The company has a research laboratory in Miami.", "example_ja": "その会社はマイアミに研究所を持っている。", "notes": "「実験室」という意味にもなる。略: lab"}, {"no": 488, "word": "obtain", "pos": "動詞", "meaning": "得る", "example_en": "You must obtain permission from the publisher.", "example_ja": "あなたは出版社から許可を得なければなりません。", "notes": "同: get「得る」、形: obtainable「手に入れることができる」"}, {"no": 489, "word": "reputation", "pos": "名詞", "meaning": "評判", "example_en": "We have a reputation for quality.", "example_ja": "当社は品質の良さで評判を得ている。", "notes": "形: reputed「〜といわれている」"}, {"no": 490, "word": "retail", "pos": "名詞", "meaning": "小売り", "example_en": "You can buy these products at retail stores.", "example_ja": "これらの製品は小売店でご購入いただけます。", "notes": "関: wholesale「卸売り」、名: retailer「小売業者」、関: wholesaler「卸売り業者」"}, {"no": 491, "word": "contribute", "pos": "動詞", "meaning": "寄付する", "example_en": "Ms. Hunter contributed ten thousand dollars to the school.", "example_ja": "ハンターさんはその学校へ1万ドルの寄付をした。", "notes": "「貢献する、原因となる、寄稿する」という意味もある。toとセットで使われることが多い。名: contribution「寄付、貢献、寄稿」"}, {"no": 492, "word": "convince", "pos": "動詞", "meaning": "納得させる", "example_en": "We have to convince the president.", "example_ja": "私たちは社長を納得させなければならない。", "notes": "形: convinced「確信した」、形: convincing「説得力のある」(=persuasive)"}, {"no": 493, "word": "divide", "pos": "動詞", "meaning": "分ける", "example_en": "We should divide the profits equally among us.", "example_ja": "利益は私たちの間で平等に分けるべきです。", "notes": "「隔てる、割り算をする」などの意味もある。同: share「分ける」、名: division「部署(=department)、分包、区画」"}, {"no": 494, "word": "fine", "pos": "名詞", "meaning": "罰金", "example_en": "I got a 55-dollar fine for illegal parking.", "example_ja": "私は違法駐車で55ドルの罰金を取られた。", "notes": "動: fine「罰金を科す」。形容詞のfine（よい、優れた、晴れたなどの意）とはまったく別の意味"}, {"no": 495, "word": "inquire", "pos": "動詞", "meaning": "尋ねる", "example_en": "I inquired about their service.", "example_ja": "私は彼らのサービスについて尋ねた。", "notes": "enquireという綴りもある（主に英）。名: inquiry「問い合わせ」、make an inquiry「問い合わせる」"}, {"no": 496, "word": "specific", "pos": "形容詞", "meaning": "明確な・特定の", "example_en": "Each product is designed for a specific purpose.", "example_ja": "それぞれの製品は特定の目的のために作られています。", "notes": "「厳密な」という意味もある。同: particular, certain「特定の」、副: specifically「特に、厳密に」、名: specification「仕様書」"}, {"no": 497, "word": "stock", "pos": "名詞", "meaning": "在庫", "example_en": "This model is currently out of stock.", "example_ja": "このモデルは現在、在庫が切れています。", "notes": "「株式」という意味もある。同: inventory「在庫」、in stock「在庫がある」、out of stock「在庫がない」、動: stock「仕入れる、満たす」"}, {"no": 498, "word": "aware", "pos": "形容詞", "meaning": "気が付いている", "example_en": "We are aware that our sales network is insufficient.", "example_ja": "私たちは販売網が十分でないことを知っています。", "notes": "aware of ~「〜に気付いている」、名: awareness「認識、自覚」"}, {"no": 499, "word": "broad", "pos": "形容詞", "meaning": "大まかな", "example_en": "He gave us a broad outline of the plan.", "example_ja": "彼は私たちにその計画の大まかな概要を示した。", "notes": "「広い」という意味もある。動: broaden「広げる」(=widen, expand)"}, {"no": 500, "word": "maximum", "pos": "形容詞", "meaning": "最大の", "example_en": "The factory is operating at maximum capacity.", "example_ja": "その工場は稼働能力限界で操業している。", "notes": "反: minimum「最小の」、動: maximize「最大にする」、反: minimize「最小限にする」、名: maximum「最大限」(反: minimum「最小限」)"}];
+    const QUIZ_SOURCE = {
+  "en_ja": [
+    {
+      "q_no": 1,
+      "no": 401,
+      "word": "cause",
+      "pos": "動詞",
+      "meaning": "引き起こす",
+      "choices": [
+        "状況",
+        "〜の前に",
+        "引き起こす",
+        "礼儀正しい",
+        "競争力のある",
+        "拒否する",
+        "指摘する",
+        "内線",
+        "普通は",
+        "思い出させる"
+      ],
+      "correct_letter": "3",
+      "example_en": "Heavy traffic is causing delays on Highway 18.",
+      "example_ja": "18号線では交通渋滞により遅れが生じています。",
+      "notes": "名: cause「原因、理由、大義」"
+    },
+    {
+      "q_no": 2,
+      "no": 402,
+      "word": "decade",
+      "pos": "名詞",
+      "meaning": "10年",
+      "choices": [
+        "すぐの",
+        "意見",
+        "不足",
+        "状況",
+        "起こりそうな",
+        "要因",
+        "修正する",
+        "10年",
+        "組み立てる",
+        "納得させる"
+      ],
+      "correct_letter": "8",
+      "example_en": "The city has changed over the last decade.",
+      "example_ja": "その市はこの10年で変わった。",
+      "notes": "ten yearsに言い換えることができる"
+    },
+    {
+      "q_no": 3,
+      "no": 403,
+      "word": "expire",
+      "pos": "動詞",
+      "meaning": "期限が切れる",
+      "choices": [
+        "転勤する",
+        "人口",
+        "内線",
+        "期限が切れる",
+        "研究所",
+        "最大の",
+        "明らかにする",
+        "定期購読する",
+        "納得させる",
+        "普通は"
+      ],
+      "correct_letter": "4",
+      "example_en": "My passport has expired.",
+      "example_ja": "私のパスポートは期限が切れた。",
+      "notes": "名: expiration〈加米〉、expiry〈英〉「満了、終結」、expiration date「有効期限、使用期限」(=expiry date)"
+    },
+    {
+      "q_no": 4,
+      "no": 404,
+      "word": "income",
+      "pos": "名詞",
+      "meaning": "収入",
+      "choices": [
+        "10年",
+        "収入",
+        "アンケート",
+        "思い出させる",
+        "修正する",
+        "態度(姿勢)",
+        "態度",
+        "定期購読する",
+        "経費",
+        "会場"
+      ],
+      "correct_letter": "2",
+      "example_en": "Tourism is the main source of income in the region.",
+      "example_ja": "観光業はこの地域の主な収入源です。",
+      "notes": "個人の「所得」という意味にもなる。同: revenue「収入」、反: expenditure「支出」"
+    },
+    {
+      "q_no": 5,
+      "no": 405,
+      "word": "immediate",
+      "pos": "形容詞",
+      "meaning": "早急な",
+      "choices": [
+        "温暖な",
+        "考える",
+        "在庫",
+        "10年",
+        "適任である",
+        "予算",
+        "会話",
+        "すぐの",
+        "早急な",
+        "通勤する"
+      ],
+      "correct_letter": "9",
+      "example_en": "We need to take immediate action.",
+      "example_ja": "私たちは早急な対応を取る必要があります。",
+      "notes": "副: immediately「早急に」"
+    },
+    {
+      "q_no": 6,
+      "no": 406,
+      "word": "questionnaire",
+      "pos": "名詞",
+      "meaning": "アンケート",
+      "choices": [
+        "小売り",
+        "アンケート",
+        "研究所",
+        "影響力",
+        "辞任する",
+        "思い出させる",
+        "競争力のある",
+        "含む",
+        "組み立てる",
+        "注ぐ"
+      ],
+      "correct_letter": "2",
+      "example_en": "Please complete the questionnaire after the seminar.",
+      "example_ja": "セミナーのあと、アンケートにご記入ください。",
+      "notes": "名: question「質問」、動: question「質問する、疑問に思う」"
+    },
+    {
+      "q_no": 7,
+      "no": 407,
+      "word": "routine",
+      "pos": "名詞",
+      "meaning": "習慣的に繰り返されること",
+      "choices": [
+        "定期購読する",
+        "くつろいだ",
+        "交換する",
+        "明らかにする",
+        "習慣的に繰り返されること",
+        "通勤する",
+        "指摘する",
+        "移転する",
+        "添付する",
+        "会場"
+      ],
+      "correct_letter": "5",
+      "example_en": "Exercise is part of my daily routine.",
+      "example_ja": "運動は私の日課の一部です。",
+      "notes": "「定められた手順」という意味もある。形: routine「決まった、いつもの」、副: routinely「いつものように」"
+    },
+    {
+      "q_no": 8,
+      "no": 408,
+      "word": "transfer",
+      "pos": "動詞",
+      "meaning": "転勤する",
+      "choices": [
+        "よくある",
+        "手段",
+        "転勤する",
+        "含む",
+        "更新する",
+        "影響力",
+        "〜のままでいる",
+        "請求書",
+        "意見",
+        "手法"
+      ],
+      "correct_letter": "3",
+      "example_en": "Mr. Chen transferred from Taipei to Bangkok.",
+      "example_ja": "チェンさんは台北からバンコクへ転勤した。",
+      "notes": "「転勤させる、乗り換える、移す」などの意味もある。名: transfer「転勤、移動、乗り換え」"
+    },
+    {
+      "q_no": 9,
+      "no": 409,
+      "word": "complicated",
+      "pos": "形容詞",
+      "meaning": "複雑な",
+      "choices": [
+        "辞任する",
+        "複雑な",
+        "専門家",
+        "明らかにする",
+        "意見",
+        "上の階に",
+        "指摘する",
+        "起こりそうな",
+        "身体の",
+        "評判"
+      ],
+      "correct_letter": "2",
+      "example_en": "Our evaluation system is very complicated.",
+      "example_ja": "当社の評価システムはとても複雑です。",
+      "notes": "同: complex「複雑な」、動: complicate「複雑にする」、名: complication「複雑にするもの」"
+    },
+    {
+      "q_no": 10,
+      "no": 410,
+      "word": "education",
+      "pos": "名詞",
+      "meaning": "教育",
+      "choices": [
+        "含む",
+        "複雑な",
+        "転勤する",
+        "求める",
+        "温暖な",
+        "予算",
+        "主催する",
+        "辞任する(身を引く)",
+        "10年",
+        "教育"
+      ],
+      "correct_letter": "0",
+      "example_en": "The government has increased spending on education.",
+      "example_ja": "政府は教育の支出を増やした。",
+      "notes": "動: educate「教育する」、形: educational「教育的な」"
+    },
+    {
+      "q_no": 11,
+      "no": 411,
+      "word": "greet",
+      "pos": "動詞",
+      "meaning": "出迎える",
+      "choices": [
+        "化学薬品",
+        "小売り",
+        "要因",
+        "出迎える",
+        "転勤する",
+        "明確な・特定の",
+        "収入",
+        "信用",
+        "上の階に",
+        "分ける"
+      ],
+      "correct_letter": "4",
+      "example_en": "The manager greeted us with a smile.",
+      "example_ja": "マネージャーは私たちを笑顔で出迎えてくれた。",
+      "notes": "「あいさつする」という意味もある。名: greeting「あいさつ」"
+    },
+    {
+      "q_no": 12,
+      "no": 412,
+      "word": "influence",
+      "pos": "名詞",
+      "meaning": "影響力",
+      "choices": [
+        "内線",
+        "重役",
+        "手段",
+        "よくある",
+        "主催する",
+        "上の階に",
+        "含む",
+        "焦点を合わせる",
+        "影響力",
+        "人口"
+      ],
+      "correct_letter": "9",
+      "example_en": "The former president still has influence over the company.",
+      "example_ja": "元社長はまだ、会社に影響力を持っている。",
+      "notes": "動: influence「影響を与える」(=affect)"
+    },
+    {
+      "q_no": 13,
+      "no": 413,
+      "word": "lack",
+      "pos": "名詞",
+      "meaning": "不足",
+      "choices": [
+        "10年",
+        "不足",
+        "内線",
+        "拒否する",
+        "不動産",
+        "転勤する",
+        "得る",
+        "車に乗せること",
+        "改良する",
+        "焦点を合わせる"
+      ],
+      "correct_letter": "2",
+      "example_en": "The project was canceled due to a lack of funds.",
+      "example_ja": "資金不足のため、そのプロジェクトは中止になった。",
+      "notes": "lack of ~「〜の不足」、同: shortage「不足」、動: lack「〜が足りない」"
+    },
+    {
+      "q_no": 14,
+      "no": 414,
+      "word": "mild",
+      "pos": "形容詞",
+      "meaning": "温暖な",
+      "choices": [
+        "注意",
+        "必要な",
+        "取り消す",
+        "辞任する(身を引く)",
+        "考える",
+        "尋ねる",
+        "出迎える",
+        "温暖な",
+        "早急な",
+        "修復する"
+      ],
+      "correct_letter": "8",
+      "example_en": "We had a mild winter this year.",
+      "example_ja": "今年は暖冬だった。",
+      "notes": "「軽い、マイルドな」などの意味もある。副: mildly「少し」(=slightly)"
+    },
+    {
+      "q_no": 15,
+      "no": 415,
+      "word": "normally",
+      "pos": "副詞",
+      "meaning": "普通は",
+      "choices": [
+        "会話",
+        "上の階に",
+        "必要な",
+        "在庫",
+        "辞任する",
+        "要因",
+        "組み立てる",
+        "注ぐ",
+        "手段",
+        "普通は"
+      ],
+      "correct_letter": "0",
+      "example_en": "I normally work forty hours a week.",
+      "example_ja": "私は普段、週に40時間働いています。",
+      "notes": "同: usually「普通は」、形: normal「通常の」"
+    },
+    {
+      "q_no": 16,
+      "no": 416,
+      "word": "physical",
+      "pos": "形容詞",
+      "meaning": "身体の",
+      "choices": [
+        "設立する",
+        "温暖な",
+        "重役",
+        "辞任する(身を引く)",
+        "身体の",
+        "教育",
+        "軽い飲食料",
+        "尋ねる",
+        "人口",
+        "態度(姿勢)"
+      ],
+      "correct_letter": "5",
+      "example_en": "I need to do physical exercise regularly.",
+      "example_ja": "私は定期的に身体的な運動をする必要がある。",
+      "notes": "副: physically「身体的に」、名: physician「医師、内科医」"
+    },
+    {
+      "q_no": 17,
+      "no": 417,
+      "word": "polite",
+      "pos": "形容詞",
+      "meaning": "礼儀正しい",
+      "choices": [
+        "礼儀正しい",
+        "〜の前に",
+        "経済的な",
+        "大まかな",
+        "取り消す",
+        "小売り",
+        "提携",
+        "更新する",
+        "内線",
+        "くつろいだ"
+      ],
+      "correct_letter": "1",
+      "example_en": "The hotel clerk was polite and helpful.",
+      "example_ja": "そのホテル従業員は礼儀正しく、親切だった。",
+      "notes": "「丁寧な」という意味もある。副: politely「丁寧に、礼儀正しく」"
+    },
+    {
+      "q_no": 18,
+      "no": 418,
+      "word": "population",
+      "pos": "名詞",
+      "meaning": "人口",
+      "choices": [
+        "それぞれ",
+        "信用",
+        "配管工",
+        "人口",
+        "分ける",
+        "提携",
+        "予算",
+        "期限が切れる",
+        "得る",
+        "修復する"
+      ],
+      "correct_letter": "4",
+      "example_en": "What is the population of India?",
+      "example_ja": "インドの人口はどのくらいですか。",
+      "notes": "working population「労働人口」"
+    },
+    {
+      "q_no": 19,
+      "no": 419,
+      "word": "pour",
+      "pos": "動詞",
+      "meaning": "注ぐ",
+      "choices": [
+        "期限が切れる",
+        "身体の",
+        "焦点を合わせる",
+        "注ぐ",
+        "交換する",
+        "修正する",
+        "拒否する",
+        "修復する",
+        "軽い飲食料",
+        "手法"
+      ],
+      "correct_letter": "4",
+      "example_en": "She's pouring coffee into a cup.",
+      "example_ja": "彼女はコーヒーをカップに注いでいる。",
+      "notes": "「雨が激しく降る、殺到する、光が出る」などの意味もある。pour A into B「AをBに注ぐ」"
+    },
+    {
+      "q_no": 20,
+      "no": 420,
+      "word": "instant",
+      "pos": "形容詞",
+      "meaning": "すぐの",
+      "choices": [
+        "焦点を合わせる",
+        "それぞれ",
+        "更新する",
+        "すぐの",
+        "改良する",
+        "尋ねる",
+        "拒否する",
+        "よく知っている",
+        "配管工",
+        "〜の前に"
+      ],
+      "correct_letter": "4",
+      "example_en": "The book was an instant success in California.",
+      "example_ja": "その本はカリフォルニアで即座の成功を収めた。",
+      "notes": "「（食品等が）インスタントの」という意味もある。同: immediate「すぐの」、名: instant「瞬間」、名: instance「事例」、for instance「例えば」(=for example)、副: instantly「すぐに」"
+    },
+    {
+      "q_no": 21,
+      "no": 421,
+      "word": "venue",
+      "pos": "名詞",
+      "meaning": "会場",
+      "choices": [
+        "注意",
+        "意見",
+        "会場",
+        "拒否する",
+        "最大の",
+        "状況",
+        "焦点を合わせる",
+        "評判",
+        "罰金",
+        "同行する"
+      ],
+      "correct_letter": "3",
+      "example_en": "Be sure to arrive at the venue on time.",
+      "example_ja": "必ず時間どおりに会場に到着するようにしてください。",
+      "notes": "後ろに続く前置詞はfor。例: the venue for the event「イベント会場」"
+    },
+    {
+      "q_no": 22,
+      "no": 422,
+      "word": "resign",
+      "pos": "動詞",
+      "meaning": "辞任する",
+      "choices": [
+        "起こりそうな",
+        "辞任する",
+        "専門家",
+        "得る",
+        "軽い飲食料",
+        "分ける",
+        "拒否する",
+        "手法",
+        "人口",
+        "態度(姿勢)"
+      ],
+      "correct_letter": "2",
+      "example_en": "The president resigned yesterday.",
+      "example_ja": "社長は昨日、辞任した。",
+      "notes": "名: resignation「辞任」、同: retire「退職する」、leave「辞める」、quit「辞める」"
+    },
+    {
+      "q_no": 23,
+      "no": 423,
+      "word": "attach",
+      "pos": "動詞",
+      "meaning": "添付する",
+      "choices": [
+        "指摘する",
+        "予算",
+        "気が付いている",
+        "必要な",
+        "状況",
+        "よくある",
+        "態度(姿勢)",
+        "評判",
+        "すぐの",
+        "添付する"
+      ],
+      "correct_letter": "0",
+      "example_en": "I attached the conference schedule for your information.",
+      "example_ja": "ご参考までに会議スケジュールを添付いたしました。",
+      "notes": "手紙、メールともに使う。「取り付ける、愛着を持たせる」などの意味もある。Attached is/are ~「〜が添付されています」、名: attachment「添付ファイル、付属品、愛着」"
+    },
+    {
+      "q_no": 24,
+      "no": 424,
+      "word": "cancel",
+      "pos": "動詞",
+      "meaning": "取り消す",
+      "choices": [
+        "焦点を合わせる",
+        "取り消す",
+        "辞任する",
+        "考える",
+        "通勤する",
+        "経済的な",
+        "主催する",
+        "内線",
+        "専門家",
+        "化学薬品"
+      ],
+      "correct_letter": "2",
+      "example_en": "I'd like to cancel my reservation.",
+      "example_ja": "予約の取り消しをお願いします。",
+      "notes": "名: cancellation「取り消し、キャンセル」、同: call off「中止する」"
+    },
+    {
+      "q_no": 25,
+      "no": 425,
+      "word": "common",
+      "pos": "形容詞",
+      "meaning": "よくある",
+      "choices": [
+        "それぞれ",
+        "状況",
+        "交換する",
+        "注ぐ",
+        "収入",
+        "よくある",
+        "化学薬品",
+        "〜のままでいる",
+        "修復する",
+        "会話"
+      ],
+      "correct_letter": "6",
+      "example_en": "It's a common spelling mistake.",
+      "example_ja": "それはよくあるスペルミスです。",
+      "notes": "「共通の」という意味もある。in common「共通して」、副: commonly「一般に、広く」"
+    },
+    {
+      "q_no": 26,
+      "no": 426,
+      "word": "conversation",
+      "pos": "名詞",
+      "meaning": "会話",
+      "choices": [
+        "組み立てる",
+        "アンケート",
+        "処理する",
+        "早急な",
+        "不足",
+        "会話",
+        "臨時の",
+        "出迎える",
+        "移転する",
+        "必要な"
+      ],
+      "correct_letter": "6",
+      "example_en": "They're having a conversation.",
+      "example_ja": "彼らは会話をしている。",
+      "notes": "類: chat「（カジュアルな）会話」、動: converse「会話する」"
+    },
+    {
+      "q_no": 27,
+      "no": 427,
+      "word": "economical",
+      "pos": "形容詞",
+      "meaning": "経済的な",
+      "choices": [
+        "改良する",
+        "くつろいだ",
+        "すぐの",
+        "分ける",
+        "車に乗せること",
+        "経済的な",
+        "小売り",
+        "主催する",
+        "請求書",
+        "軽い飲食料"
+      ],
+      "correct_letter": "6",
+      "example_en": "It's more economical to buy in bulk.",
+      "example_ja": "まとめて買うほうが経済的です。",
+      "notes": "お金や時間などを節約できるという意味。同: economic「経済に関する」、名: economy「経済、節約」、副: economically「経済的に」"
+    },
+    {
+      "q_no": 28,
+      "no": 428,
+      "word": "exchange",
+      "pos": "動詞",
+      "meaning": "交換する",
+      "choices": [
+        "主催する",
+        "〜の前に",
+        "収入",
+        "明確な・特定の",
+        "化学薬品",
+        "交換する",
+        "手法",
+        "定期購読する",
+        "特定の",
+        "最大の"
+      ],
+      "correct_letter": "6",
+      "example_en": "Can I exchange this jacket for a black one?",
+      "example_ja": "このジャケットを黒のものと交換することはできますか。",
+      "notes": "「交わす」という意味もある。名: exchange「交換、交換品、取引所」、foreign exchange「外国為替」、stock exchange「証券取引所」"
+    },
+    {
+      "q_no": 29,
+      "no": 429,
+      "word": "expert",
+      "pos": "名詞",
+      "meaning": "専門家",
+      "choices": [
+        "不動産",
+        "求める",
+        "交換する",
+        "普通は",
+        "早急な",
+        "納得させる",
+        "辞任する",
+        "専門家",
+        "起こりそうな",
+        "分ける"
+      ],
+      "correct_letter": "8",
+      "example_en": "Peter is a computer expert.",
+      "example_ja": "ピーターはコンピュータの専門家です。",
+      "notes": "an expert in/on/at「〜の専門家」、名: expertise「専門技術・知識」（後ろに続く前置詞はin）"
+    },
+    {
+      "q_no": 30,
+      "no": 430,
+      "word": "extension",
+      "pos": "名詞",
+      "meaning": "内線",
+      "choices": [
+        "習慣的に繰り返されること",
+        "よく知っている",
+        "通勤する",
+        "〜に関する",
+        "上の階に",
+        "意見",
+        "影響力",
+        "くつろいだ",
+        "内線",
+        "必要な"
+      ],
+      "correct_letter": "9",
+      "example_en": "What's your extension number?",
+      "example_ja": "あなたの内線番号は何番ですか。",
+      "notes": "「拡張、延長」などの意味もある。動: extend「伸ばす、広げる」"
+    },
+    {
+      "q_no": 31,
+      "no": 431,
+      "word": "familiar",
+      "pos": "形容詞",
+      "meaning": "よく知っている",
+      "choices": [
+        "通勤する",
+        "改良する",
+        "普通は",
+        "評判",
+        "すぐの",
+        "軽い飲食料",
+        "それぞれ",
+        "添付する",
+        "よく知っている",
+        "小売り"
+      ],
+      "correct_letter": "9",
+      "example_en": "Are you familiar with this software?",
+      "example_ja": "あなたはこのソフトウェアのことをよく知っていますか。",
+      "notes": "familiar with ~「〜のことをよく知っている」、familiar to ~「〜にとってなじみがある」、名: familiarity「よく知っていること」"
+    },
+    {
+      "q_no": 32,
+      "no": 432,
+      "word": "host",
+      "pos": "動詞",
+      "meaning": "主催する",
+      "choices": [
+        "明確な・特定の",
+        "添付する",
+        "不足",
+        "分ける",
+        "収入",
+        "修正する",
+        "主催する",
+        "車に乗せること",
+        "配管工",
+        "移転する"
+      ],
+      "correct_letter": "7",
+      "example_en": "The city hosts a music festival every year.",
+      "example_ja": "その市は毎年、音楽祭を主催する。",
+      "notes": "「番組の司会を務める」という意味もある。名: host「主催者、司会者」"
+    },
+    {
+      "q_no": 33,
+      "no": 433,
+      "word": "ride",
+      "pos": "名詞",
+      "meaning": "車に乗せること",
+      "choices": [
+        "明確な・特定の",
+        "最大の",
+        "注意",
+        "車に乗せること",
+        "臨時の",
+        "実地説明をする",
+        "指摘する",
+        "尋ねる",
+        "適任である",
+        "求める"
+      ],
+      "correct_letter": "4",
+      "example_en": "Can you give me a ride to the station?",
+      "example_ja": "駅まで車に乗せていってもらえますか。",
+      "notes": "give (人) a ride、動: ride「（乗り物に）乗る」"
+    },
+    {
+      "q_no": 34,
+      "no": 434,
+      "word": "seek",
+      "pos": "動詞",
+      "meaning": "求める",
+      "choices": [
+        "意見",
+        "小売り",
+        "辞任する(身を引く)",
+        "求める",
+        "設立する",
+        "注意",
+        "経済的な",
+        "それぞれ",
+        "重役",
+        "必要な"
+      ],
+      "correct_letter": "4",
+      "example_en": "We are seeking an accountant.",
+      "example_ja": "当社は経理担当者を求めています。",
+      "notes": "同: look for「探す」、seek to ~「〜しようとする」"
+    },
+    {
+      "q_no": 35,
+      "no": 435,
+      "word": "step down",
+      "pos": "動詞",
+      "meaning": "辞任する(身を引く)",
+      "choices": [
+        "専門家",
+        "要因",
+        "辞任する(身を引く)",
+        "予算",
+        "不動産",
+        "小売り",
+        "拒否する",
+        "設立する",
+        "意見",
+        "研究所"
+      ],
+      "correct_letter": "3",
+      "example_en": "Ms. Garcia will step down from her post in December.",
+      "example_ja": "ガルシアさんは今の職を12月に辞める。",
+      "notes": "同: resign「辞任する」"
+    },
+    {
+      "q_no": 36,
+      "no": 436,
+      "word": "technique",
+      "pos": "名詞",
+      "meaning": "手法",
+      "choices": [
+        "必要な",
+        "よくある",
+        "拒否する",
+        "会場",
+        "考える",
+        "手法",
+        "収入",
+        "化学薬品",
+        "出迎える",
+        "改良する"
+      ],
+      "correct_letter": "6",
+      "example_en": "The agency uses various advertising techniques.",
+      "example_ja": "その代理店はさまざまな広告手法を使う。",
+      "notes": "「技術、技能」という意味もある。形: technical「技術上の、専門的な」、副: technically「技術的に、厳密にいえば」、名: technician「技術者」(=engineer「技術者」)"
+    },
+    {
+      "q_no": 37,
+      "no": 437,
+      "word": "temporary",
+      "pos": "形容詞",
+      "meaning": "臨時の",
+      "choices": [
+        "取り消す",
+        "影響力",
+        "思い出させる",
+        "身体の",
+        "臨時の",
+        "すぐの",
+        "実地説明をする",
+        "更新する",
+        "配管工",
+        "よく知っている"
+      ],
+      "correct_letter": "5",
+      "example_en": "I found a temporary job at a department store.",
+      "example_ja": "私はデパートでの臨時の仕事を見つけた。",
+      "notes": "「一時的な」という意味もある。反: permanent「恒久的な」、副: temporarily「一時的に」"
+    },
+    {
+      "q_no": 38,
+      "no": 438,
+      "word": "factor",
+      "pos": "名詞",
+      "meaning": "要因",
+      "choices": [
+        "辞任する",
+        "請求書",
+        "求める",
+        "10年",
+        "〜と比べて",
+        "要因",
+        "温暖な",
+        "更新する",
+        "〜のままでいる",
+        "注ぐ"
+      ],
+      "correct_letter": "6",
+      "example_en": "What's the most important factor in choosing a job?",
+      "example_ja": "仕事を選ぶ際、最も重要な要因は何ですか。",
+      "notes": "同: element「要因」、deciding factor「決定的な要因」"
+    },
+    {
+      "q_no": 39,
+      "no": 439,
+      "word": "assemble",
+      "pos": "動詞",
+      "meaning": "組み立てる",
+      "choices": [
+        "明確な・特定の",
+        "組み立てる",
+        "要因",
+        "移転する",
+        "尋ねる",
+        "求める",
+        "納得させる",
+        "経済的な",
+        "予算",
+        "最大の"
+      ],
+      "correct_letter": "2",
+      "example_en": "These computers were assembled in Taiwan.",
+      "example_ja": "これらのコンピュータは台湾で組み立てられた。",
+      "notes": "「（人が）集まる」という意味もある。名: assembly「組み立て、集会、議会」、assembly line「（工場の）組み立てライン」"
+    },
+    {
+      "q_no": 40,
+      "no": 440,
+      "word": "attention",
+      "pos": "名詞",
+      "meaning": "注意",
+      "choices": [
+        "特定の",
+        "化学薬品",
+        "得る",
+        "適任である",
+        "考える",
+        "温暖な",
+        "注意",
+        "気が付いている",
+        "評判",
+        "軽い飲食料"
+      ],
+      "correct_letter": "7",
+      "example_en": "I wasn't paying attention to him.",
+      "example_ja": "私は彼に注意を払っていなかった。",
+      "notes": "pay attention to ~「〜に注意を払う」、形: attentive「よく注意している、心づかいの行き届いた」"
+    },
+    {
+      "q_no": 41,
+      "no": 441,
+      "word": "invoice",
+      "pos": "名詞",
+      "meaning": "請求書",
+      "choices": [
+        "車に乗せること",
+        "引き起こす",
+        "納得させる",
+        "転勤する",
+        "経済的な",
+        "内線",
+        "添付する",
+        "教育",
+        "交換する",
+        "請求書"
+      ],
+      "correct_letter": "0",
+      "example_en": "We've received an invoice for sixty-five dollars.",
+      "example_ja": "私たちは65ドルの請求書を受け取った。",
+      "notes": "同: bill「請求書」"
+    },
+    {
+      "q_no": 42,
+      "no": 442,
+      "word": "prior to",
+      "pos": "前置詞",
+      "meaning": "〜の前に",
+      "choices": [
+        "よくある",
+        "起こりそうな",
+        "辞任する(身を引く)",
+        "実地説明をする",
+        "注意",
+        "〜の前に",
+        "習慣的に繰り返されること",
+        "含む",
+        "得る",
+        "すぐの"
+      ],
+      "correct_letter": "6",
+      "example_en": "Please arrive fifteen minutes prior to your appointment.",
+      "example_ja": "予約時間の15分前に到着するようにしてください。",
+      "notes": "同: before「〜の前に」、形: prior「事前の」"
+    },
+    {
+      "q_no": 43,
+      "no": 443,
+      "word": "refreshment",
+      "pos": "名詞",
+      "meaning": "軽い飲食料",
+      "choices": [
+        "収入",
+        "要因",
+        "くつろいだ",
+        "教育",
+        "小売り",
+        "軽い飲食料",
+        "手段",
+        "大まかな",
+        "よくある",
+        "温暖な"
+      ],
+      "correct_letter": "6",
+      "example_en": "Refreshments will be served after the meeting.",
+      "example_ja": "会議の後、軽い飲食料が出ます。",
+      "notes": "動: refresh「すっきりさせる」、形: refreshing「さわやかな」、名: beverage「飲み物」"
+    },
+    {
+      "q_no": 44,
+      "no": 444,
+      "word": "trust",
+      "pos": "名詞",
+      "meaning": "信用",
+      "choices": [
+        "身体の",
+        "手段",
+        "移転する",
+        "それぞれ",
+        "信用",
+        "改良する",
+        "状況",
+        "車に乗せること",
+        "態度",
+        "評判"
+      ],
+      "correct_letter": "5",
+      "example_en": "Honesty is the key to building trust.",
+      "example_ja": "誠実さは信用を築く鍵である。",
+      "notes": "「信託」という意味もある。動: trust「信用する、当てにする」、形: trustworthy「信用できる、当てにできる」"
+    },
+    {
+      "q_no": 45,
+      "no": 445,
+      "word": "plumber",
+      "pos": "名詞",
+      "meaning": "配管工",
+      "choices": [
+        "教育",
+        "含む",
+        "同行する",
+        "請求書",
+        "臨時の",
+        "得る",
+        "組み立てる",
+        "身体の",
+        "配管工",
+        "求める"
+      ],
+      "correct_letter": "9",
+      "example_en": "I called the plumber to fix the sink.",
+      "example_ja": "流しを修理するために配管工に電話した。",
+      "notes": "名: plumbing「配管」"
+    },
+    {
+      "q_no": 46,
+      "no": 446,
+      "word": "update",
+      "pos": "動詞",
+      "meaning": "更新する",
+      "choices": [
+        "小売り",
+        "更新する",
+        "得る",
+        "〜のままでいる",
+        "態度(姿勢)",
+        "明らかにする",
+        "通勤する",
+        "分ける",
+        "転勤する",
+        "評判"
+      ],
+      "correct_letter": "2",
+      "example_en": "We update our Web site daily.",
+      "example_ja": "私たちは毎日ウェブサイトを更新する。",
+      "notes": "「最新の情報を与える、新しいものに替える」という意味もある。名: update「最新情報」"
+    },
+    {
+      "q_no": 47,
+      "no": 447,
+      "word": "upstairs",
+      "pos": "副詞",
+      "meaning": "上の階に",
+      "choices": [
+        "求める",
+        "状況",
+        "交換する",
+        "主催する",
+        "〜のままでいる",
+        "専門家",
+        "手法",
+        "身体の",
+        "上の階に",
+        "経済的な"
+      ],
+      "correct_letter": "9",
+      "example_en": "We have a meeting room upstairs.",
+      "example_ja": "上の階に会議用の部屋があります。",
+      "notes": "形: upstairs「上の階の」、名: upstairs「上の階」、反: downstairs「下の階に」、名: stairs「階段」"
+    },
+    {
+      "q_no": 48,
+      "no": 448,
+      "word": "manner",
+      "pos": "名詞",
+      "meaning": "態度",
+      "choices": [
+        "思い出させる",
+        "必要な",
+        "考える",
+        "態度",
+        "重役",
+        "〜に関する",
+        "明らかにする",
+        "〜と比べて",
+        "交換する",
+        "明確な・特定の"
+      ],
+      "correct_letter": "4",
+      "example_en": "Matt acted in a professional manner.",
+      "example_ja": "マットはプロらしい態度で行動した。",
+      "notes": "「やり方、礼儀作法（この意味では複数形mannersになる）」などの意味もある。in a calm manner「落ち着いた態度で」"
+    },
+    {
+      "q_no": 49,
+      "no": 449,
+      "word": "consider",
+      "pos": "動詞",
+      "meaning": "考える",
+      "choices": [
+        "手法",
+        "信用",
+        "寄付する",
+        "処理する",
+        "くつろいだ",
+        "手段",
+        "考える",
+        "拒否する",
+        "複雑な",
+        "大まかな"
+      ],
+      "correct_letter": "7",
+      "example_en": "I'm considering taking the course.",
+      "example_ja": "私はそのコースを取ろうかどうか考えている。",
+      "notes": "consider ~ing「〜することを考える」、名: consideration「考慮、思いやり」、形: considerable「かなりの」、副: considerably「かなり」(=significantly, substantially)"
+    },
+    {
+      "q_no": 50,
+      "no": 450,
+      "word": "executive",
+      "pos": "名詞",
+      "meaning": "重役",
+      "choices": [
+        "教育",
+        "辞任する(身を引く)",
+        "礼儀正しい",
+        "気が付いている",
+        "それぞれ",
+        "分ける",
+        "定期購読する",
+        "重役",
+        "最大の",
+        "明確な・特定の"
+      ],
+      "correct_letter": "8",
+      "example_en": "Ms. James is an executive of a computer company.",
+      "example_ja": "ジェームズさんはコンピュータ会社の重役です。",
+      "notes": "形: executive「経営に関する、重役の」、chief executive officer (略: CEO)「最高経営責任者」"
+    },
+    {
+      "q_no": 51,
+      "no": 451,
+      "word": "means",
+      "pos": "名詞",
+      "meaning": "手段",
+      "choices": [
+        "会話",
+        "通勤する",
+        "習慣的に繰り返されること",
+        "最大の",
+        "思い出させる",
+        "実地説明をする",
+        "専門家",
+        "すぐの",
+        "気が付いている",
+        "手段"
+      ],
+      "correct_letter": "0",
+      "example_en": "Do you have any means of identification?",
+      "example_ja": "身元を証明する手段を何かお持ちですか。",
+      "notes": "meansは単数形でもsが付く。by all means「いかなる犠牲を払っても」"
+    },
+    {
+      "q_no": 52,
+      "no": 452,
+      "word": "regarding",
+      "pos": "前置詞",
+      "meaning": "〜に関する",
+      "choices": [
+        "習慣的に繰り返されること",
+        "注意",
+        "よく知っている",
+        "早急な",
+        "不動産",
+        "収入",
+        "主催する",
+        "引き起こす",
+        "〜に関する",
+        "拒否する"
+      ],
+      "correct_letter": "9",
+      "example_en": "We have received your letter regarding the defective products.",
+      "example_ja": "当社は欠陥商品に関するあなたからの手紙を受け取りました。",
+      "notes": "同: about, concerning, with regard to「〜に関する」、動: regard「〜と見なす」、名: regard「尊敬、関心」"
+    },
+    {
+      "q_no": 53,
+      "no": 453,
+      "word": "association",
+      "pos": "名詞",
+      "meaning": "提携",
+      "choices": [
+        "特定の",
+        "添付する",
+        "〜と比べて",
+        "改良する",
+        "提携",
+        "罰金",
+        "通勤する",
+        "信用",
+        "期限が切れる",
+        "納得させる"
+      ],
+      "correct_letter": "5",
+      "example_en": "The book was published in association with the National Museum.",
+      "example_ja": "この本は国立博物館の協力によって出版された。",
+      "notes": "「関連、協会、連想」などの意味もある。in association with ~「〜と協力して(=in cooperation with)」、動: associate「関連付ける」、名: associate「仲間、共同経営者」"
+    },
+    {
+      "q_no": 54,
+      "no": 454,
+      "word": "budget",
+      "pos": "名詞",
+      "meaning": "予算",
+      "choices": [
+        "改良する",
+        "信用",
+        "期限が切れる",
+        "求める",
+        "予算",
+        "研究所",
+        "必要な",
+        "〜に関する",
+        "転勤する",
+        "請求書"
+      ],
+      "correct_letter": "5",
+      "example_en": "They're reviewing the budget for next year.",
+      "example_ja": "彼らは来年度の予算案を検討している。",
+      "notes": "動: budget「割り当てる」、形: budget「低価格の」(=cheap, inexpensive, affordable, reasonable)"
+    },
+    {
+      "q_no": 55,
+      "no": 455,
+      "word": "contain",
+      "pos": "動詞",
+      "meaning": "含む",
+      "choices": [
+        "辞任する",
+        "手段",
+        "明らかにする",
+        "収入",
+        "在庫",
+        "定期購読する",
+        "すぐの",
+        "含む",
+        "提携",
+        "焦点を合わせる"
+      ],
+      "correct_letter": "8",
+      "example_en": "This report contains information about the company's financial condition.",
+      "example_ja": "この報告書には会社の財政状況に関する情報が含まれています。",
+      "notes": "「中に入っている」という意味もある。名: container「容器」"
+    },
+    {
+      "q_no": 56,
+      "no": 456,
+      "word": "remain",
+      "pos": "動詞",
+      "meaning": "〜のままでいる",
+      "choices": [
+        "身体の",
+        "〜のままでいる",
+        "在庫",
+        "温暖な",
+        "内線",
+        "意見",
+        "くつろいだ",
+        "不動産",
+        "習慣的に繰り返されること",
+        "請求書"
+      ],
+      "correct_letter": "2",
+      "example_en": "Please remain seated during take-off.",
+      "example_ja": "離陸の際、座ったままでいてください。",
+      "notes": "「とどまる」(=stay)という意味もある。名: remainder「残り」(=rest)"
+    },
+    {
+      "q_no": 57,
+      "no": 457,
+      "word": "chemical",
+      "pos": "名詞",
+      "meaning": "化学薬品",
+      "choices": [
+        "化学薬品",
+        "礼儀正しい",
+        "修正する",
+        "アンケート",
+        "交換する",
+        "転勤する",
+        "〜に関する",
+        "期限が切れる",
+        "必要な",
+        "辞任する"
+      ],
+      "correct_letter": "1",
+      "example_en": "We use dangerous chemicals in our plant.",
+      "example_ja": "当社の工場では危険な化学薬品を使っている。",
+      "notes": "agricultural chemical「農薬」、形: chemical「化学の、化学的な」、名: chemistry「化学」、名: chemist「化学者」"
+    },
+    {
+      "q_no": 58,
+      "no": 458,
+      "word": "demonstrate",
+      "pos": "動詞",
+      "meaning": "実地説明をする",
+      "choices": [
+        "身体の",
+        "よく知っている",
+        "不動産",
+        "実地説明をする",
+        "専門家",
+        "辞任する",
+        "状況",
+        "辞任する(身を引く)",
+        "教育",
+        "大まかな"
+      ],
+      "correct_letter": "4",
+      "example_en": "I'll be demonstrating some of our new products.",
+      "example_ja": "当社の新製品のいくつかを取り出して実地説明いたします。",
+      "notes": "「証明する、はっきりと示す」という意味もある。名: demonstration「デモンストレーション、実演」"
+    },
+    {
+      "q_no": 59,
+      "no": 459,
+      "word": "qualified",
+      "pos": "形容詞",
+      "meaning": "適任である",
+      "choices": [
+        "分ける",
+        "引き起こす",
+        "適任である",
+        "意見",
+        "出迎える",
+        "辞任する(身を引く)",
+        "身体の",
+        "更新する",
+        "態度",
+        "会場"
+      ],
+      "correct_letter": "3",
+      "example_en": "Tom is qualified for the position.",
+      "example_ja": "トムはその職に適任である。",
+      "notes": "「資格を持っている」という意味もある。動: qualify「資格を得る、資格を持つ、資格を与える」、名: qualification「資格、適任」"
+    },
+    {
+      "q_no": 60,
+      "no": 460,
+      "word": "revise",
+      "pos": "動詞",
+      "meaning": "修正する",
+      "choices": [
+        "10年",
+        "修正する",
+        "経済的な",
+        "アンケート",
+        "分ける",
+        "意見",
+        "要因",
+        "態度(姿勢)",
+        "くつろいだ",
+        "手段"
+      ],
+      "correct_letter": "2",
+      "example_en": "We have to revise the budget.",
+      "example_ja": "私たちは予算を修正する必要がある。",
+      "notes": "「改訂する、復習する」という意味もある。名: revision「変更、見直し」"
+    },
+    {
+      "q_no": 61,
+      "no": 461,
+      "word": "relaxed",
+      "pos": "形容詞",
+      "meaning": "くつろいだ",
+      "choices": [
+        "設立する",
+        "内線",
+        "手法",
+        "修正する",
+        "影響力",
+        "在庫",
+        "罰金",
+        "手段",
+        "専門家",
+        "くつろいだ"
+      ],
+      "correct_letter": "0",
+      "example_en": "When she entered the room, she looked relaxed.",
+      "example_ja": "彼女は部屋に入ってきたとき、くつろいだように見えた。",
+      "notes": "動: relax「リラックスする」、名: relaxation「くつろぎ、緩和」"
+    },
+    {
+      "q_no": 62,
+      "no": 462,
+      "word": "upgrade",
+      "pos": "動詞",
+      "meaning": "改良する",
+      "choices": [
+        "〜に関する",
+        "温暖な",
+        "気が付いている",
+        "10年",
+        "修正する",
+        "改良する",
+        "臨時の",
+        "車に乗せること",
+        "思い出させる",
+        "指摘する"
+      ],
+      "correct_letter": "6",
+      "example_en": "We can't afford to upgrade our facilities.",
+      "example_ja": "私たちは設備を改良する余裕がない。",
+      "notes": "「向上させる、格上げする、アップグレードする」などの意味もある。名: upgrade「改良、アップグレード」"
+    },
+    {
+      "q_no": 63,
+      "no": 463,
+      "word": "accompany",
+      "pos": "動詞",
+      "meaning": "同行する",
+      "choices": [
+        "主催する",
+        "明らかにする",
+        "通勤する",
+        "処理する",
+        "焦点を合わせる",
+        "アンケート",
+        "添付する",
+        "同行する",
+        "〜のままでいる",
+        "起こりそうな"
+      ],
+      "correct_letter": "8",
+      "example_en": "Betty will accompany me to the conference.",
+      "example_ja": "ベティーは私に同行して会議に行く。",
+      "notes": "同: go with ~「〜と一緒に行く」"
+    },
+    {
+      "q_no": 64,
+      "no": 464,
+      "word": "attitude",
+      "pos": "名詞",
+      "meaning": "態度(姿勢)",
+      "choices": [
+        "不動産",
+        "含む",
+        "態度(姿勢)",
+        "影響力",
+        "通勤する",
+        "辞任する",
+        "10年",
+        "期限が切れる",
+        "設立する",
+        "注ぐ"
+      ],
+      "correct_letter": "3",
+      "example_en": "He has a positive attitude to his work.",
+      "example_ja": "彼は自分の仕事に対して積極的な態度を取っている。",
+      "notes": "「見方、姿勢」という意味もある。後ろに続く前置詞はtoまたはtoward(s)"
+    },
+    {
+      "q_no": 65,
+      "no": 465,
+      "word": "commute",
+      "pos": "動詞",
+      "meaning": "通勤する",
+      "choices": [
+        "実地説明をする",
+        "通勤する",
+        "化学薬品",
+        "臨時の",
+        "影響力",
+        "出迎える",
+        "態度",
+        "寄付する",
+        "会場",
+        "思い出させる"
+      ],
+      "correct_letter": "2",
+      "example_en": "Amanda commutes to Montreal every day.",
+      "example_ja": "アマンダは毎日モントリオールに通っている。",
+      "notes": "名: commute「通勤、通学」、名: commuter「通う人」、commuter train「通勤列車」"
+    },
+    {
+      "q_no": 66,
+      "no": 466,
+      "word": "competitive",
+      "pos": "形容詞",
+      "meaning": "競争力のある",
+      "choices": [
+        "最大の",
+        "処理する",
+        "専門家",
+        "よくある",
+        "競争力のある",
+        "辞任する",
+        "影響力",
+        "修正する",
+        "会場",
+        "移転する"
+      ],
+      "correct_letter": "5",
+      "example_en": "We need to cut labor costs to stay competitive.",
+      "example_ja": "私たちは競争力を保つため、人件費を削減する必要がある。",
+      "notes": "「競争が激しい、競争心の強い、他に負けない」という意味もある。動: compete「競う」、名: competition「競争」、名: competitor「競争相手、ライバル」"
+    },
+    {
+      "q_no": 67,
+      "no": 467,
+      "word": "refuse",
+      "pos": "動詞",
+      "meaning": "拒否する",
+      "choices": [
+        "交換する",
+        "〜に関する",
+        "効率のよい",
+        "寄付する",
+        "同行する",
+        "拒否する",
+        "よくある",
+        "通勤する",
+        "不足",
+        "くつろいだ"
+      ],
+      "correct_letter": "6",
+      "example_en": "He refused to speak with journalists.",
+      "example_ja": "彼は報道関係者と話をすることを拒絶した。",
+      "notes": "「（申し出などを）断る」という意味もある。反: accept「受け入れる」、名: refusal「拒否」"
+    },
+    {
+      "q_no": 68,
+      "no": 468,
+      "word": "subscribe",
+      "pos": "動詞",
+      "meaning": "定期購読する",
+      "choices": [
+        "経済的な",
+        "普通は",
+        "〜の前に",
+        "よく知っている",
+        "引き起こす",
+        "拒否する",
+        "定期購読する",
+        "必要な",
+        "臨時の",
+        "分ける"
+      ],
+      "correct_letter": "7",
+      "example_en": "I subscribe to Business Weekly.",
+      "example_ja": "私はビジネスウィークリーを定期購読している。",
+      "notes": "後ろに続く前置詞はto。名: subscription「定期購読」、名: subscriber「定期購読者」"
+    },
+    {
+      "q_no": 69,
+      "no": 469,
+      "word": "process",
+      "pos": "動詞",
+      "meaning": "処理する",
+      "choices": [
+        "在庫",
+        "研究所",
+        "更新する",
+        "同行する",
+        "指摘する",
+        "主催する",
+        "配管工",
+        "処理する",
+        "上の階に",
+        "温暖な"
+      ],
+      "correct_letter": "8",
+      "example_en": "It will take two weeks to process your visa application.",
+      "example_ja": "あなたのビザ申請を処理するのに2週間かかります。",
+      "notes": "「加工する」という意味もある。名: process「過程、作用、進行」、形: processed「加工された」"
+    },
+    {
+      "q_no": 70,
+      "no": 470,
+      "word": "comment",
+      "pos": "名詞",
+      "meaning": "意見",
+      "choices": [
+        "意見",
+        "状況",
+        "気が付いている",
+        "交換する",
+        "化学薬品",
+        "請求書",
+        "内線",
+        "考える",
+        "効率のよい",
+        "不動産"
+      ],
+      "correct_letter": "1",
+      "example_en": "He made helpful comments on my proposal.",
+      "example_ja": "彼は私の企画書に有益な意見を出してくれた。",
+      "notes": "動: comment「意見を述べる」。名詞・動詞ともに後ろに前置詞onが続く"
+    },
+    {
+      "q_no": 71,
+      "no": 471,
+      "word": "necessary",
+      "pos": "形容詞",
+      "meaning": "必要な",
+      "choices": [
+        "教育",
+        "処理する",
+        "予算",
+        "拒否する",
+        "納得させる",
+        "辞任する(身を引く)",
+        "〜のままでいる",
+        "必要な",
+        "最大の",
+        "〜の前に"
+      ],
+      "correct_letter": "8",
+      "example_en": "Is it necessary to fill out this form?",
+      "example_ja": "この用紙に記入する必要がありますか。",
+      "notes": "「必然的な」という意味もある。同: essential, vital「絶対必要な」、名: necessity「必要、必需品」"
+    },
+    {
+      "q_no": 72,
+      "no": 472,
+      "word": "respectively",
+      "pos": "副詞",
+      "meaning": "それぞれ",
+      "choices": [
+        "手法",
+        "それぞれ",
+        "出迎える",
+        "辞任する(身を引く)",
+        "専門家",
+        "小売り",
+        "設立する",
+        "収入",
+        "適任である",
+        "同行する"
+      ],
+      "correct_letter": "2",
+      "example_en": "Auckland and Sydney were ranked fifth and tenth, respectively.",
+      "example_ja": "オークランドとシドニーはそれぞれ5位と10位にランク付けされた。",
+      "notes": "形: respective「それぞれの」、関: in respect of ~「〜に関して」"
+    },
+    {
+      "q_no": 73,
+      "no": 473,
+      "word": "probable",
+      "pos": "形容詞",
+      "meaning": "起こりそうな",
+      "choices": [
+        "特定の",
+        "手法",
+        "〜に関する",
+        "上の階に",
+        "辞任する(身を引く)",
+        "よくある",
+        "評判",
+        "起こりそうな",
+        "尋ねる",
+        "温暖な"
+      ],
+      "correct_letter": "8",
+      "example_en": "It is probable that unemployment will rise further.",
+      "example_ja": "失業率はさらに上がる見込みだ。",
+      "notes": "同: likely「起こりそうな」、関: possible「可能性がある」（probableより可能性が低い）、名: probability「見込み」(=likelihood)、副: probably「多分、おそらく」"
+    },
+    {
+      "q_no": 74,
+      "no": 474,
+      "word": "efficient",
+      "pos": "形容詞",
+      "meaning": "効率のよい",
+      "choices": [
+        "効率のよい",
+        "設立する",
+        "期限が切れる",
+        "得る",
+        "態度",
+        "会場",
+        "不動産",
+        "必要な",
+        "大まかな",
+        "修正する"
+      ],
+      "correct_letter": "1",
+      "example_en": "We need more efficient methods of collecting data.",
+      "example_ja": "私たちはもっと効率のよいデータ収集方法が必要です。",
+      "notes": "「有能な」という意味もある。energy efficient「燃費のよい」、名: efficiency「効率」、副: efficiently「効率的に」"
+    },
+    {
+      "q_no": 75,
+      "no": 475,
+      "word": "identify",
+      "pos": "動詞",
+      "meaning": "明らかにする",
+      "choices": [
+        "上の階に",
+        "定期購読する",
+        "研究所",
+        "大まかな",
+        "要因",
+        "寄付する",
+        "状況",
+        "明らかにする",
+        "罰金",
+        "よくある"
+      ],
+      "correct_letter": "8",
+      "example_en": "First, we must identify problem areas.",
+      "example_ja": "はじめに私たちは問題点を明らかにしなければならない。",
+      "notes": "「身元を確認する」という意味もある。名: identification「身分証明」"
+    },
+    {
+      "q_no": 76,
+      "no": 476,
+      "word": "particular",
+      "pos": "形容詞",
+      "meaning": "特定の",
+      "choices": [
+        "習慣的に繰り返されること",
+        "影響力",
+        "10年",
+        "設立する",
+        "辞任する",
+        "特定の",
+        "教育",
+        "人口",
+        "化学薬品",
+        "起こりそうな"
+      ],
+      "correct_letter": "6",
+      "example_en": "Is there any particular movie you want to see?",
+      "example_ja": "何か特に見たい映画はありますか。",
+      "notes": "同: specific, certain「特定の」、副: particularly「特に」"
+    },
+    {
+      "q_no": 77,
+      "no": 477,
+      "word": "relocate",
+      "pos": "動詞",
+      "meaning": "移転する",
+      "choices": [
+        "人口",
+        "尋ねる",
+        "身体の",
+        "実地説明をする",
+        "最大の",
+        "移転する",
+        "請求書",
+        "手法",
+        "影響力",
+        "改良する"
+      ],
+      "correct_letter": "6",
+      "example_en": "The company relocated to Los Angeles.",
+      "example_ja": "その会社はロサンゼルスに移転した。",
+      "notes": "relocate to 〈地名〉「〜へ移転する」、同: move to「〜へ引っ越す」、名: relocation「移転」"
+    },
+    {
+      "q_no": 78,
+      "no": 478,
+      "word": "remind",
+      "pos": "動詞",
+      "meaning": "思い出させる",
+      "choices": [
+        "最大の",
+        "改良する",
+        "思い出させる",
+        "態度",
+        "必要な",
+        "同行する",
+        "人口",
+        "気が付いている",
+        "辞任する(身を引く)",
+        "辞任する"
+      ],
+      "correct_letter": "3",
+      "example_en": "My secretary reminded me about the meeting tomorrow.",
+      "example_ja": "秘書が私に明日の会議のことを思い出させてくれた。",
+      "notes": "関: remember「覚えている」、名: reminder「思い出させるもの」"
+    },
+    {
+      "q_no": 79,
+      "no": 479,
+      "word": "compared with",
+      "pos": "熟語",
+      "meaning": "〜と比べて",
+      "choices": [
+        "修復する",
+        "要因",
+        "競争力のある",
+        "経済的な",
+        "軽い飲食料",
+        "大まかな",
+        "〜と比べて",
+        "設立する",
+        "不足",
+        "寄付する"
+      ],
+      "correct_letter": "7",
+      "example_en": "Our sales rose ten percent compared with last year.",
+      "example_ja": "当社の売り上げは昨年と比べ、10パーセント上がった。",
+      "notes": "compared to でも同じ意味になる。名: comparison「比較」"
+    },
+    {
+      "q_no": 80,
+      "no": 480,
+      "word": "establish",
+      "pos": "動詞",
+      "meaning": "設立する",
+      "choices": [
+        "添付する",
+        "在庫",
+        "よく知っている",
+        "意見",
+        "転勤する",
+        "信用",
+        "更新する",
+        "設立する",
+        "指摘する",
+        "〜と比べて"
+      ],
+      "correct_letter": "8",
+      "example_en": "The company was established in 1967.",
+      "example_ja": "その会社は1967年に設立された。",
+      "notes": "「確立する、証明する、認めるせる」などの意味もある。同: found「設立する」、名: establishment「設立、機関、権力層」、形: established「すでにある、定評のある」"
+    },
+    {
+      "q_no": 81,
+      "no": 481,
+      "word": "point out",
+      "pos": "句動詞",
+      "meaning": "指摘する",
+      "choices": [
+        "辞任する(身を引く)",
+        "寄付する",
+        "最大の",
+        "処理する",
+        "辞任する",
+        "実地説明をする",
+        "経済的な",
+        "指摘する",
+        "添付する",
+        "拒否する"
+      ],
+      "correct_letter": "8",
+      "example_en": "He pointed out that these data are inaccurate.",
+      "example_ja": "彼はこれらのデータが正確でないことを指摘した。",
+      "notes": "point out A to ~「〜にAを指摘する」"
+    },
+    {
+      "q_no": 82,
+      "no": 482,
+      "word": "property",
+      "pos": "名詞",
+      "meaning": "不動産",
+      "choices": [
+        "不動産",
+        "軽い飲食料",
+        "普通は",
+        "〜の前に",
+        "化学薬品",
+        "〜と比べて",
+        "態度",
+        "礼儀正しい",
+        "内線",
+        "注ぐ"
+      ],
+      "correct_letter": "1",
+      "example_en": "Property prices are falling this month.",
+      "example_ja": "今月、不動産の価格は下がっている。",
+      "notes": "「財産、所有物、特性」などの意味もある。"
+    },
+    {
+      "q_no": 83,
+      "no": 483,
+      "word": "restore",
+      "pos": "動詞",
+      "meaning": "修復する",
+      "choices": [
+        "実地説明をする",
+        "小売り",
+        "主催する",
+        "10年",
+        "交換する",
+        "化学薬品",
+        "上の階に",
+        "修復する",
+        "経費",
+        "それぞれ"
+      ],
+      "correct_letter": "8",
+      "example_en": "The building was restored after the fire.",
+      "example_ja": "その建物は火事のあと、修復された。",
+      "notes": "「元の状態に戻す」という意味がある。名: restoration「復元、回復、復興、返還」"
+    },
+    {
+      "q_no": 84,
+      "no": 484,
+      "word": "status",
+      "pos": "名詞",
+      "meaning": "状況",
+      "choices": [
+        "小売り",
+        "〜の前に",
+        "早急な",
+        "よく知っている",
+        "尋ねる",
+        "明確な・特定の",
+        "適任である",
+        "よくある",
+        "くつろいだ",
+        "状況"
+      ],
+      "correct_letter": "0",
+      "example_en": "What's the status of our order?",
+      "example_ja": "私たちの注文品の状況はどうなっていますか。",
+      "notes": "「地位」という意味もある。status quo「現状」"
+    },
+    {
+      "q_no": 85,
+      "no": 485,
+      "word": "expense",
+      "pos": "名詞",
+      "meaning": "経費",
+      "choices": [
+        "評判",
+        "影響力",
+        "軽い飲食料",
+        "辞任する",
+        "人口",
+        "〜に関する",
+        "経費",
+        "会場",
+        "手法",
+        "同行する"
+      ],
+      "correct_letter": "7",
+      "example_en": "The company will cover travel expenses.",
+      "example_ja": "会社が旅費を出してくれます。",
+      "notes": "関: expenditure「支出」、形: expensive「高価な」(=costly, pricey)"
+    },
+    {
+      "q_no": 86,
+      "no": 486,
+      "word": "focus",
+      "pos": "動詞",
+      "meaning": "焦点を合わせる",
+      "choices": [
+        "信用",
+        "くつろいだ",
+        "実地説明をする",
+        "不足",
+        "思い出させる",
+        "早急な",
+        "影響力",
+        "態度(姿勢)",
+        "専門家",
+        "焦点を合わせる"
+      ],
+      "correct_letter": "0",
+      "example_en": "The conference focuses on environmental issues.",
+      "example_ja": "その会議は環境問題に焦点を合わせている。",
+      "notes": "焦点を合わせる対象は前置詞onによって導く。「集中させる」という意味もある。名: focus「焦点、中心」"
+    },
+    {
+      "q_no": 87,
+      "no": 487,
+      "word": "laboratory",
+      "pos": "名詞",
+      "meaning": "研究所",
+      "choices": [
+        "考える",
+        "寄付する",
+        "予算",
+        "重役",
+        "礼儀正しい",
+        "請求書",
+        "納得させる",
+        "効率のよい",
+        "よくある",
+        "研究所"
+      ],
+      "correct_letter": "0",
+      "example_en": "The company has a research laboratory in Miami.",
+      "example_ja": "その会社はマイアミに研究所を持っている。",
+      "notes": "「実験室」という意味にもなる。略: lab"
+    },
+    {
+      "q_no": 88,
+      "no": 488,
+      "word": "obtain",
+      "pos": "動詞",
+      "meaning": "得る",
+      "choices": [
+        "よくある",
+        "注意",
+        "車に乗せること",
+        "手段",
+        "不足",
+        "得る",
+        "影響力",
+        "10年",
+        "それぞれ",
+        "評判"
+      ],
+      "correct_letter": "6",
+      "example_en": "You must obtain permission from the publisher.",
+      "example_ja": "あなたは出版社から許可を得なければなりません。",
+      "notes": "同: get「得る」、形: obtainable「手に入れることができる」"
+    },
+    {
+      "q_no": 89,
+      "no": 489,
+      "word": "reputation",
+      "pos": "名詞",
+      "meaning": "評判",
+      "choices": [
+        "内線",
+        "小売り",
+        "会話",
+        "適任である",
+        "経費",
+        "求める",
+        "評判",
+        "修復する",
+        "出迎える",
+        "明確な・特定の"
+      ],
+      "correct_letter": "7",
+      "example_en": "We have a reputation for quality.",
+      "example_ja": "当社は品質の良さで評判を得ている。",
+      "notes": "形: reputed「〜といわれている」"
+    },
+    {
+      "q_no": 90,
+      "no": 490,
+      "word": "retail",
+      "pos": "名詞",
+      "meaning": "小売り",
+      "choices": [
+        "化学薬品",
+        "添付する",
+        "経費",
+        "小売り",
+        "予算",
+        "取り消す",
+        "重役",
+        "経済的な",
+        "移転する",
+        "修正する"
+      ],
+      "correct_letter": "4",
+      "example_en": "You can buy these products at retail stores.",
+      "example_ja": "これらの製品は小売店でご購入いただけます。",
+      "notes": "関: wholesale「卸売り」、名: retailer「小売業者」、関: wholesaler「卸売り業者」"
+    },
+    {
+      "q_no": 91,
+      "no": 491,
+      "word": "contribute",
+      "pos": "動詞",
+      "meaning": "寄付する",
+      "choices": [
+        "明確な・特定の",
+        "組み立てる",
+        "10年",
+        "寄付する",
+        "人口",
+        "アンケート",
+        "修復する",
+        "会場",
+        "設立する",
+        "更新する"
+      ],
+      "correct_letter": "4",
+      "example_en": "Ms. Hunter contributed ten thousand dollars to the school.",
+      "example_ja": "ハンターさんはその学校へ1万ドルの寄付をした。",
+      "notes": "「貢献する、原因となる、寄稿する」という意味もある。toとセットで使われることが多い。名: contribution「寄付、貢献、寄稿」"
+    },
+    {
+      "q_no": 92,
+      "no": 492,
+      "word": "convince",
+      "pos": "動詞",
+      "meaning": "納得させる",
+      "choices": [
+        "改良する",
+        "処理する",
+        "配管工",
+        "含む",
+        "請求書",
+        "交換する",
+        "〜のままでいる",
+        "主催する",
+        "納得させる",
+        "アンケート"
+      ],
+      "correct_letter": "9",
+      "example_en": "We have to convince the president.",
+      "example_ja": "私たちは社長を納得させなければならない。",
+      "notes": "形: convinced「確信した」、形: convincing「説得力のある」(=persuasive)"
+    },
+    {
+      "q_no": 93,
+      "no": 493,
+      "word": "divide",
+      "pos": "動詞",
+      "meaning": "分ける",
+      "choices": [
+        "分ける",
+        "取り消す",
+        "必要な",
+        "臨時の",
+        "実地説明をする",
+        "経費",
+        "起こりそうな",
+        "普通は",
+        "修復する",
+        "収入"
+      ],
+      "correct_letter": "1",
+      "example_en": "We should divide the profits equally among us.",
+      "example_ja": "利益は私たちの間で平等に分けるべきです。",
+      "notes": "「隔てる、割り算をする」などの意味もある。同: share「分ける」、名: division「部署(=department)、分包、区画」"
+    },
+    {
+      "q_no": 94,
+      "no": 494,
+      "word": "fine",
+      "pos": "名詞",
+      "meaning": "罰金",
+      "choices": [
+        "会話",
+        "臨時の",
+        "すぐの",
+        "化学薬品",
+        "罰金",
+        "必要な",
+        "〜に関する",
+        "影響力",
+        "経済的な",
+        "出迎える"
+      ],
+      "correct_letter": "5",
+      "example_en": "I got a 55-dollar fine for illegal parking.",
+      "example_ja": "私は違法駐車で55ドルの罰金を取られた。",
+      "notes": "動: fine「罰金を科す」。形容詞のfine（よい、優れた、晴れたなどの意）とはまったく別の意味"
+    },
+    {
+      "q_no": 95,
+      "no": 495,
+      "word": "inquire",
+      "pos": "動詞",
+      "meaning": "尋ねる",
+      "choices": [
+        "取り消す",
+        "小売り",
+        "〜と比べて",
+        "罰金",
+        "指摘する",
+        "尋ねる",
+        "実地説明をする",
+        "適任である",
+        "態度",
+        "同行する"
+      ],
+      "correct_letter": "6",
+      "example_en": "I inquired about their service.",
+      "example_ja": "私は彼らのサービスについて尋ねた。",
+      "notes": "enquireという綴りもある（主に英）。名: inquiry「問い合わせ」、make an inquiry「問い合わせる」"
+    },
+    {
+      "q_no": 96,
+      "no": 496,
+      "word": "specific",
+      "pos": "形容詞",
+      "meaning": "明確な・特定の",
+      "choices": [
+        "修復する",
+        "評判",
+        "会場",
+        "早急な",
+        "添付する",
+        "明確な・特定の",
+        "含む",
+        "処理する",
+        "同行する",
+        "寄付する"
+      ],
+      "correct_letter": "6",
+      "example_en": "Each product is designed for a specific purpose.",
+      "example_ja": "それぞれの製品は特定の目的のために作られています。",
+      "notes": "「厳密な」という意味もある。同: particular, certain「特定の」、副: specifically「特に、厳密に」、名: specification「仕様書」"
+    },
+    {
+      "q_no": 97,
+      "no": 497,
+      "word": "stock",
+      "pos": "名詞",
+      "meaning": "在庫",
+      "choices": [
+        "軽い飲食料",
+        "普通は",
+        "修復する",
+        "〜の前に",
+        "最大の",
+        "在庫",
+        "起こりそうな",
+        "不動産",
+        "注ぐ",
+        "10年"
+      ],
+      "correct_letter": "6",
+      "example_en": "This model is currently out of stock.",
+      "example_ja": "このモデルは現在、在庫が切れています。",
+      "notes": "「株式」という意味もある。同: inventory「在庫」、in stock「在庫がある」、out of stock「在庫がない」、動: stock「仕入れる、満たす」"
+    },
+    {
+      "q_no": 98,
+      "no": 498,
+      "word": "aware",
+      "pos": "形容詞",
+      "meaning": "気が付いている",
+      "choices": [
+        "寄付する",
+        "経費",
+        "添付する",
+        "気が付いている",
+        "アンケート",
+        "納得させる",
+        "辞任する",
+        "重役",
+        "経済的な",
+        "大まかな"
+      ],
+      "correct_letter": "4",
+      "example_en": "We are aware that our sales network is insufficient.",
+      "example_ja": "私たちは販売網が十分でないことを知っています。",
+      "notes": "aware of ~「〜に気付いている」、名: awareness「認識、自覚」"
+    },
+    {
+      "q_no": 99,
+      "no": 499,
+      "word": "broad",
+      "pos": "形容詞",
+      "meaning": "大まかな",
+      "choices": [
+        "内線",
+        "身体の",
+        "大まかな",
+        "必要な",
+        "すぐの",
+        "くつろいだ",
+        "10年",
+        "温暖な",
+        "罰金",
+        "請求書"
+      ],
+      "correct_letter": "3",
+      "example_en": "He gave us a broad outline of the plan.",
+      "example_ja": "彼は私たちにその計画の大まかな概要を示した。",
+      "notes": "「広い」という意味もある。動: broaden「広げる」(=widen, expand)"
+    },
+    {
+      "q_no": 100,
+      "no": 500,
+      "word": "maximum",
+      "pos": "形容詞",
+      "meaning": "最大の",
+      "choices": [
+        "最大の",
+        "取り消す",
+        "含む",
+        "修正する",
+        "教育",
+        "提携",
+        "〜の前に",
+        "普通は",
+        "温暖な",
+        "寄付する"
+      ],
+      "correct_letter": "1",
+      "example_en": "The factory is operating at maximum capacity.",
+      "example_ja": "その工場は稼働能力限界で操業している。",
+      "notes": "反: minimum「最小の」、動: maximize「最大にする」、反: minimize「最小限にする」、名: maximum「最大限」(反: minimum「最小限」)"
+    }
+  ],
+  "ja_en": [
+    {
+      "q_no": 1,
+      "no": 401,
+      "word": "cause",
+      "pos": "動詞",
+      "meaning": "引き起こす",
+      "choices": [
+        "attitude",
+        "physical",
+        "expire",
+        "cause",
+        "prior to",
+        "obtain",
+        "factor",
+        "qualified",
+        "reputation",
+        "mild"
+      ],
+      "correct_letter": "4",
+      "example_en": "Heavy traffic is causing delays on Highway 18.",
+      "example_ja": "18号線では交通渋滞により遅れが生じています。",
+      "notes": "名: cause「原因、理由、大義」"
+    },
+    {
+      "q_no": 2,
+      "no": 402,
+      "word": "decade",
+      "pos": "名詞",
+      "meaning": "10年",
+      "choices": [
+        "lack",
+        "decade",
+        "commute",
+        "competitive",
+        "particular",
+        "association",
+        "respectively",
+        "physical",
+        "remain",
+        "aware"
+      ],
+      "correct_letter": "2",
+      "example_en": "The city has changed over the last decade.",
+      "example_ja": "その市はこの10年で変わった。",
+      "notes": "ten yearsに言い換えることができる"
+    },
+    {
+      "q_no": 3,
+      "no": 403,
+      "word": "expire",
+      "pos": "動詞",
+      "meaning": "期限が切れる",
+      "choices": [
+        "expire",
+        "upgrade",
+        "necessary",
+        "obtain",
+        "seek",
+        "divide",
+        "probable",
+        "association",
+        "invoice",
+        "laboratory"
+      ],
+      "correct_letter": "1",
+      "example_en": "My passport has expired.",
+      "example_ja": "私のパスポートは期限が切れた。",
+      "notes": "名: expiration〈加米〉、expiry〈英〉「満了、終結」、expiration date「有効期限、使用期限」(=expiry date)"
+    },
+    {
+      "q_no": 4,
+      "no": 404,
+      "word": "income",
+      "pos": "名詞",
+      "meaning": "収入",
+      "choices": [
+        "mild",
+        "assemble",
+        "refuse",
+        "income",
+        "revise",
+        "demonstrate",
+        "step down",
+        "retail",
+        "prior to",
+        "divide"
+      ],
+      "correct_letter": "4",
+      "example_en": "Tourism is the main source of income in the region.",
+      "example_ja": "観光業はこの地域の主な収入源です。",
+      "notes": "個人の「所得」という意味にもなる。同: revenue「収入」、反: expenditure「支出」"
+    },
+    {
+      "q_no": 5,
+      "no": 405,
+      "word": "immediate",
+      "pos": "形容詞",
+      "meaning": "早急な",
+      "choices": [
+        "routine",
+        "venue",
+        "aware",
+        "necessary",
+        "point out",
+        "laboratory",
+        "upstairs",
+        "restore",
+        "technique",
+        "immediate"
+      ],
+      "correct_letter": "0",
+      "example_en": "We need to take immediate action.",
+      "example_ja": "私たちは早急な対応を取る必要があります。",
+      "notes": "副: immediately「早急に」"
+    },
+    {
+      "q_no": 6,
+      "no": 406,
+      "word": "questionnaire",
+      "pos": "名詞",
+      "meaning": "アンケート",
+      "choices": [
+        "transfer",
+        "income",
+        "normally",
+        "greet",
+        "status",
+        "update",
+        "means",
+        "upstairs",
+        "maximum",
+        "questionnaire"
+      ],
+      "correct_letter": "0",
+      "example_en": "Please complete the questionnaire after the seminar.",
+      "example_ja": "セミナーのあと、アンケートにご記入ください。",
+      "notes": "名: question「質問」、動: question「質問する、疑問に思う」"
+    },
+    {
+      "q_no": 7,
+      "no": 407,
+      "word": "routine",
+      "pos": "名詞",
+      "meaning": "習慣的に繰り返されること",
+      "choices": [
+        "aware",
+        "accompany",
+        "conversation",
+        "transfer",
+        "status",
+        "necessary",
+        "qualified",
+        "questionnaire",
+        "cancel",
+        "routine"
+      ],
+      "correct_letter": "0",
+      "example_en": "Exercise is part of my daily routine.",
+      "example_ja": "運動は私の日課の一部です。",
+      "notes": "「定められた手順」という意味もある。形: routine「決まった、いつもの」、副: routinely「いつものように」"
+    },
+    {
+      "q_no": 8,
+      "no": 408,
+      "word": "transfer",
+      "pos": "動詞",
+      "meaning": "転勤する",
+      "choices": [
+        "temporary",
+        "polite",
+        "familiar",
+        "expert",
+        "demonstrate",
+        "accompany",
+        "process",
+        "mild",
+        "subscribe",
+        "transfer"
+      ],
+      "correct_letter": "0",
+      "example_en": "Mr. Chen transferred from Taipei to Bangkok.",
+      "example_ja": "チェンさんは台北からバンコクへ転勤した。",
+      "notes": "「転勤させる、乗り換える、移す」などの意味もある。名: transfer「転勤、移動、乗り換え」"
+    },
+    {
+      "q_no": 9,
+      "no": 409,
+      "word": "complicated",
+      "pos": "形容詞",
+      "meaning": "複雑な",
+      "choices": [
+        "chemical",
+        "transfer",
+        "broad",
+        "reputation",
+        "complicated",
+        "attach",
+        "upstairs",
+        "normally",
+        "mild",
+        "step down"
+      ],
+      "correct_letter": "5",
+      "example_en": "Our evaluation system is very complicated.",
+      "example_ja": "当社の評価システムはとても複雑です。",
+      "notes": "同: complex「複雑な」、動: complicate「複雑にする」、名: complication「複雑にするもの」"
+    },
+    {
+      "q_no": 10,
+      "no": 410,
+      "word": "education",
+      "pos": "名詞",
+      "meaning": "教育",
+      "choices": [
+        "prior to",
+        "expense",
+        "compared with",
+        "divide",
+        "property",
+        "education",
+        "establish",
+        "immediate",
+        "association",
+        "expert"
+      ],
+      "correct_letter": "6",
+      "example_en": "The government has increased spending on education.",
+      "example_ja": "政府は教育の支出を増やした。",
+      "notes": "動: educate「教育する」、形: educational「教育的な」"
+    },
+    {
+      "q_no": 11,
+      "no": 411,
+      "word": "greet",
+      "pos": "動詞",
+      "meaning": "出迎える",
+      "choices": [
+        "resign",
+        "transfer",
+        "economical",
+        "greet",
+        "immediate",
+        "point out",
+        "fine",
+        "physical",
+        "polite",
+        "probable"
+      ],
+      "correct_letter": "4",
+      "example_en": "The manager greeted us with a smile.",
+      "example_ja": "マネージャーは私たちを笑顔で出迎えてくれた。",
+      "notes": "「あいさつする」という意味もある。名: greeting「あいさつ」"
+    },
+    {
+      "q_no": 12,
+      "no": 412,
+      "word": "influence",
+      "pos": "名詞",
+      "meaning": "影響力",
+      "choices": [
+        "property",
+        "necessary",
+        "contain",
+        "pour",
+        "lack",
+        "step down",
+        "prior to",
+        "influence",
+        "relocate",
+        "accompany"
+      ],
+      "correct_letter": "8",
+      "example_en": "The former president still has influence over the company.",
+      "example_ja": "元社長はまだ、会社に影響力を持っている。",
+      "notes": "動: influence「影響を与える」(=affect)"
+    },
+    {
+      "q_no": 13,
+      "no": 413,
+      "word": "lack",
+      "pos": "名詞",
+      "meaning": "不足",
+      "choices": [
+        "restore",
+        "obtain",
+        "respectively",
+        "particular",
+        "lack",
+        "invoice",
+        "consider",
+        "upgrade",
+        "upstairs",
+        "revise"
+      ],
+      "correct_letter": "5",
+      "example_en": "The project was canceled due to a lack of funds.",
+      "example_ja": "資金不足のため、そのプロジェクトは中止になった。",
+      "notes": "lack of ~「〜の不足」、同: shortage「不足」、動: lack「〜が足りない」"
+    },
+    {
+      "q_no": 14,
+      "no": 414,
+      "word": "mild",
+      "pos": "形容詞",
+      "meaning": "温暖な",
+      "choices": [
+        "normally",
+        "comment",
+        "mild",
+        "status",
+        "resign",
+        "subscribe",
+        "refuse",
+        "focus",
+        "executive",
+        "regarding"
+      ],
+      "correct_letter": "3",
+      "example_en": "We had a mild winter this year.",
+      "example_ja": "今年は暖冬だった。",
+      "notes": "「軽い、マイルドな」などの意味もある。副: mildly「少し」(=slightly)"
+    },
+    {
+      "q_no": 15,
+      "no": 415,
+      "word": "normally",
+      "pos": "副詞",
+      "meaning": "普通は",
+      "choices": [
+        "resign",
+        "status",
+        "convince",
+        "income",
+        "laboratory",
+        "refuse",
+        "instant",
+        "necessary",
+        "physical",
+        "normally"
+      ],
+      "correct_letter": "0",
+      "example_en": "I normally work forty hours a week.",
+      "example_ja": "私は普段、週に40時間働いています。",
+      "notes": "同: usually「普通は」、形: normal「通常の」"
+    },
+    {
+      "q_no": 16,
+      "no": 416,
+      "word": "physical",
+      "pos": "形容詞",
+      "meaning": "身体の",
+      "choices": [
+        "physical",
+        "commute",
+        "particular",
+        "step down",
+        "invoice",
+        "complicated",
+        "aware",
+        "influence",
+        "update",
+        "greet"
+      ],
+      "correct_letter": "1",
+      "example_en": "I need to do physical exercise regularly.",
+      "example_ja": "私は定期的に身体的な運動をする必要がある。",
+      "notes": "副: physically「身体的に」、名: physician「医師、内科医」"
+    },
+    {
+      "q_no": 17,
+      "no": 417,
+      "word": "polite",
+      "pos": "形容詞",
+      "meaning": "礼儀正しい",
+      "choices": [
+        "instant",
+        "necessary",
+        "step down",
+        "physical",
+        "polite",
+        "property",
+        "trust",
+        "demonstrate",
+        "prior to",
+        "technique"
+      ],
+      "correct_letter": "5",
+      "example_en": "The hotel clerk was polite and helpful.",
+      "example_ja": "そのホテル従業員は礼儀正しく、親切だった。",
+      "notes": "「丁寧な」という意味もある。副: politely「丁寧に、礼儀正しく」"
+    },
+    {
+      "q_no": 18,
+      "no": 418,
+      "word": "population",
+      "pos": "名詞",
+      "meaning": "人口",
+      "choices": [
+        "decade",
+        "contribute",
+        "seek",
+        "population",
+        "technique",
+        "probable",
+        "particular",
+        "trust",
+        "polite",
+        "status"
+      ],
+      "correct_letter": "4",
+      "example_en": "What is the population of India?",
+      "example_ja": "インドの人口はどのくらいですか。",
+      "notes": "working population「労働人口」"
+    },
+    {
+      "q_no": 19,
+      "no": 419,
+      "word": "pour",
+      "pos": "動詞",
+      "meaning": "注ぐ",
+      "choices": [
+        "invoice",
+        "exchange",
+        "compared with",
+        "relaxed",
+        "attach",
+        "convince",
+        "pour",
+        "extension",
+        "obtain",
+        "trust"
+      ],
+      "correct_letter": "7",
+      "example_en": "She's pouring coffee into a cup.",
+      "example_ja": "彼女はコーヒーをカップに注いでいる。",
+      "notes": "「雨が激しく降る、殺到する、光が出る」などの意味もある。pour A into B「AをBに注ぐ」"
+    },
+    {
+      "q_no": 20,
+      "no": 420,
+      "word": "instant",
+      "pos": "形容詞",
+      "meaning": "すぐの",
+      "choices": [
+        "relaxed",
+        "accompany",
+        "seek",
+        "instant",
+        "consider",
+        "population",
+        "expire",
+        "aware",
+        "economical",
+        "manner"
+      ],
+      "correct_letter": "4",
+      "example_en": "The book was an instant success in California.",
+      "example_ja": "その本はカリフォルニアで即座の成功を収めた。",
+      "notes": "「（食品等が）インスタントの」という意味もある。同: immediate「すぐの」、名: instant「瞬間」、名: instance「事例」、for instance「例えば」(=for example)、副: instantly「すぐに」"
+    },
+    {
+      "q_no": 21,
+      "no": 421,
+      "word": "venue",
+      "pos": "名詞",
+      "meaning": "会場",
+      "choices": [
+        "seek",
+        "means",
+        "cancel",
+        "subscribe",
+        "process",
+        "probable",
+        "property",
+        "venue",
+        "broad",
+        "mild"
+      ],
+      "correct_letter": "8",
+      "example_en": "Be sure to arrive at the venue on time.",
+      "example_ja": "必ず時間どおりに会場に到着するようにしてください。",
+      "notes": "後ろに続く前置詞はfor。例: the venue for the event「イベント会場」"
+    },
+    {
+      "q_no": 22,
+      "no": 422,
+      "word": "resign",
+      "pos": "動詞",
+      "meaning": "辞任する",
+      "choices": [
+        "temporary",
+        "resign",
+        "cancel",
+        "attention",
+        "immediate",
+        "identify",
+        "polite",
+        "laboratory",
+        "transfer",
+        "focus"
+      ],
+      "correct_letter": "2",
+      "example_en": "The president resigned yesterday.",
+      "example_ja": "社長は昨日、辞任した。",
+      "notes": "名: resignation「辞任」、同: retire「退職する」、leave「辞める」、quit「辞める」"
+    },
+    {
+      "q_no": 23,
+      "no": 423,
+      "word": "attach",
+      "pos": "動詞",
+      "meaning": "添付する",
+      "choices": [
+        "questionnaire",
+        "pour",
+        "cause",
+        "upgrade",
+        "transfer",
+        "attach",
+        "refreshment",
+        "divide",
+        "refuse",
+        "instant"
+      ],
+      "correct_letter": "6",
+      "example_en": "I attached the conference schedule for your information.",
+      "example_ja": "ご参考までに会議スケジュールを添付いたしました。",
+      "notes": "手紙、メールともに使う。「取り付ける、愛着を持たせる」などの意味もある。Attached is/are ~「〜が添付されています」、名: attachment「添付ファイル、付属品、愛着」"
+    },
+    {
+      "q_no": 24,
+      "no": 424,
+      "word": "cancel",
+      "pos": "動詞",
+      "meaning": "取り消す",
+      "choices": [
+        "expert",
+        "compared with",
+        "cancel",
+        "accompany",
+        "demonstrate",
+        "probable",
+        "property",
+        "influence",
+        "invoice",
+        "specific"
+      ],
+      "correct_letter": "3",
+      "example_en": "I'd like to cancel my reservation.",
+      "example_ja": "予約の取り消しをお願いします。",
+      "notes": "名: cancellation「取り消し、キャンセル」、同: call off「中止する」"
+    },
+    {
+      "q_no": 25,
+      "no": 425,
+      "word": "common",
+      "pos": "形容詞",
+      "meaning": "よくある",
+      "choices": [
+        "pour",
+        "upstairs",
+        "attitude",
+        "mild",
+        "revise",
+        "population",
+        "extension",
+        "probable",
+        "common",
+        "executive"
+      ],
+      "correct_letter": "9",
+      "example_en": "It's a common spelling mistake.",
+      "example_ja": "それはよくあるスペルミスです。",
+      "notes": "「共通の」という意味もある。in common「共通して」、副: commonly「一般に、広く」"
+    },
+    {
+      "q_no": 26,
+      "no": 426,
+      "word": "conversation",
+      "pos": "名詞",
+      "meaning": "会話",
+      "choices": [
+        "instant",
+        "necessary",
+        "influence",
+        "mild",
+        "population",
+        "income",
+        "conversation",
+        "prior to",
+        "regarding",
+        "expire"
+      ],
+      "correct_letter": "7",
+      "example_en": "They're having a conversation.",
+      "example_ja": "彼らは会話をしている。",
+      "notes": "類: chat「（カジュアルな）会話」、動: converse「会話する」"
+    },
+    {
+      "q_no": 27,
+      "no": 427,
+      "word": "economical",
+      "pos": "形容詞",
+      "meaning": "経済的な",
+      "choices": [
+        "common",
+        "demonstrate",
+        "normally",
+        "upgrade",
+        "process",
+        "relocate",
+        "accompany",
+        "maximum",
+        "executive",
+        "economical"
+      ],
+      "correct_letter": "0",
+      "example_en": "It's more economical to buy in bulk.",
+      "example_ja": "まとめて買うほうが経済的です。",
+      "notes": "お金や時間などを節約できるという意味。同: economic「経済に関する」、名: economy「経済、節約」、副: economically「経済的に」"
+    },
+    {
+      "q_no": 28,
+      "no": 428,
+      "word": "exchange",
+      "pos": "動詞",
+      "meaning": "交換する",
+      "choices": [
+        "ride",
+        "cause",
+        "normally",
+        "resign",
+        "contain",
+        "respectively",
+        "mild",
+        "association",
+        "exchange",
+        "revise"
+      ],
+      "correct_letter": "9",
+      "example_en": "Can I exchange this jacket for a black one?",
+      "example_ja": "このジャケットを黒のものと交換することはできますか。",
+      "notes": "「交わす」という意味もある。名: exchange「交換、交換品、取引所」、foreign exchange「外国為替」、stock exchange「証券取引所」"
+    },
+    {
+      "q_no": 29,
+      "no": 429,
+      "word": "expert",
+      "pos": "名詞",
+      "meaning": "専門家",
+      "choices": [
+        "influence",
+        "expense",
+        "complicated",
+        "routine",
+        "cause",
+        "economical",
+        "assemble",
+        "temporary",
+        "expert",
+        "resign"
+      ],
+      "correct_letter": "9",
+      "example_en": "Peter is a computer expert.",
+      "example_ja": "ピーターはコンピュータの専門家です。",
+      "notes": "an expert in/on/at「〜の専門家」、名: expertise「専門技術・知識」（後ろに続く前置詞はin）"
+    },
+    {
+      "q_no": 30,
+      "no": 430,
+      "word": "extension",
+      "pos": "名詞",
+      "meaning": "内線",
+      "choices": [
+        "probable",
+        "conversation",
+        "competitive",
+        "association",
+        "aware",
+        "temporary",
+        "extension",
+        "resign",
+        "plumber",
+        "host"
+      ],
+      "correct_letter": "7",
+      "example_en": "What's your extension number?",
+      "example_ja": "あなたの内線番号は何番ですか。",
+      "notes": "「拡張、延長」などの意味もある。動: extend「伸ばす、広げる」"
+    },
+    {
+      "q_no": 31,
+      "no": 431,
+      "word": "familiar",
+      "pos": "形容詞",
+      "meaning": "よく知っている",
+      "choices": [
+        "reputation",
+        "familiar",
+        "seek",
+        "expire",
+        "stock",
+        "upstairs",
+        "expense",
+        "relocate",
+        "refuse",
+        "greet"
+      ],
+      "correct_letter": "2",
+      "example_en": "Are you familiar with this software?",
+      "example_ja": "あなたはこのソフトウェアのことをよく知っていますか。",
+      "notes": "familiar with ~「〜のことをよく知っている」、familiar to ~「〜にとってなじみがある」、名: familiarity「よく知っていること」"
+    },
+    {
+      "q_no": 32,
+      "no": 432,
+      "word": "host",
+      "pos": "動詞",
+      "meaning": "主催する",
+      "choices": [
+        "expire",
+        "demonstrate",
+        "compared with",
+        "seek",
+        "budget",
+        "instant",
+        "executive",
+        "pour",
+        "assemble",
+        "host"
+      ],
+      "correct_letter": "0",
+      "example_en": "The city hosts a music festival every year.",
+      "example_ja": "その市は毎年、音楽祭を主催する。",
+      "notes": "「番組の司会を務める」という意味もある。名: host「主催者、司会者」"
+    },
+    {
+      "q_no": 33,
+      "no": 433,
+      "word": "ride",
+      "pos": "名詞",
+      "meaning": "車に乗せること",
+      "choices": [
+        "ride",
+        "assemble",
+        "retail",
+        "expert",
+        "broad",
+        "contribute",
+        "association",
+        "economical",
+        "exchange",
+        "divide"
+      ],
+      "correct_letter": "1",
+      "example_en": "Can you give me a ride to the station?",
+      "example_ja": "駅まで車に乗せていってもらえますか。",
+      "notes": "give (人) a ride、動: ride「（乗り物に）乗る」"
+    },
+    {
+      "q_no": 34,
+      "no": 434,
+      "word": "seek",
+      "pos": "動詞",
+      "meaning": "求める",
+      "choices": [
+        "polite",
+        "attention",
+        "chemical",
+        "resign",
+        "restore",
+        "executive",
+        "particular",
+        "laboratory",
+        "seek",
+        "demonstrate"
+      ],
+      "correct_letter": "9",
+      "example_en": "We are seeking an accountant.",
+      "example_ja": "当社は経理担当者を求めています。",
+      "notes": "同: look for「探す」、seek to ~「〜しようとする」"
+    },
+    {
+      "q_no": 35,
+      "no": 435,
+      "word": "step down",
+      "pos": "動詞",
+      "meaning": "辞任する(身を引く)",
+      "choices": [
+        "particular",
+        "point out",
+        "remain",
+        "means",
+        "executive",
+        "host",
+        "probable",
+        "process",
+        "step down",
+        "manner"
+      ],
+      "correct_letter": "9",
+      "example_en": "Ms. Garcia will step down from her post in December.",
+      "example_ja": "ガルシアさんは今の職を12月に辞める。",
+      "notes": "同: resign「辞任する」"
+    },
+    {
+      "q_no": 36,
+      "no": 436,
+      "word": "technique",
+      "pos": "名詞",
+      "meaning": "手法",
+      "choices": [
+        "invoice",
+        "refreshment",
+        "plumber",
+        "contain",
+        "broad",
+        "cause",
+        "technique",
+        "lack",
+        "complicated",
+        "familiar"
+      ],
+      "correct_letter": "7",
+      "example_en": "The agency uses various advertising techniques.",
+      "example_ja": "その代理店はさまざまな広告手法を使う。",
+      "notes": "「技術、技能」という意味もある。形: technical「技術上の、専門的な」、副: technically「技術的に、厳密にいえば」、名: technician「技術者」(=engineer「技術者」)"
+    },
+    {
+      "q_no": 37,
+      "no": 437,
+      "word": "temporary",
+      "pos": "形容詞",
+      "meaning": "臨時の",
+      "choices": [
+        "upgrade",
+        "commute",
+        "transfer",
+        "complicated",
+        "update",
+        "demonstrate",
+        "stock",
+        "qualified",
+        "temporary",
+        "remain"
+      ],
+      "correct_letter": "9",
+      "example_en": "I found a temporary job at a department store.",
+      "example_ja": "私はデパートでの臨時の仕事を見つけた。",
+      "notes": "「一時的な」という意味もある。反: permanent「恒久的な」、副: temporarily「一時的に」"
+    },
+    {
+      "q_no": 38,
+      "no": 438,
+      "word": "factor",
+      "pos": "名詞",
+      "meaning": "要因",
+      "choices": [
+        "invoice",
+        "prior to",
+        "establish",
+        "specific",
+        "particular",
+        "factor",
+        "process",
+        "extension",
+        "compared with",
+        "remain"
+      ],
+      "correct_letter": "6",
+      "example_en": "What's the most important factor in choosing a job?",
+      "example_ja": "仕事を選ぶ際、最も重要な要因は何ですか。",
+      "notes": "同: element「要因」、deciding factor「決定的な要因」"
+    },
+    {
+      "q_no": 39,
+      "no": 439,
+      "word": "assemble",
+      "pos": "動詞",
+      "meaning": "組み立てる",
+      "choices": [
+        "assemble",
+        "inquire",
+        "host",
+        "contribute",
+        "conversation",
+        "cause",
+        "prior to",
+        "plumber",
+        "remind",
+        "compared with"
+      ],
+      "correct_letter": "1",
+      "example_en": "These computers were assembled in Taiwan.",
+      "example_ja": "これらのコンピュータは台湾で組み立てられた。",
+      "notes": "「（人が）集まる」という意味もある。名: assembly「組み立て、集会、議会」、assembly line「（工場の）組み立てライン」"
+    },
+    {
+      "q_no": 40,
+      "no": 440,
+      "word": "attention",
+      "pos": "名詞",
+      "meaning": "注意",
+      "choices": [
+        "compared with",
+        "relaxed",
+        "decade",
+        "questionnaire",
+        "budget",
+        "manner",
+        "expire",
+        "attention",
+        "factor",
+        "convince"
+      ],
+      "correct_letter": "8",
+      "example_en": "I wasn't paying attention to him.",
+      "example_ja": "私は彼に注意を払っていなかった。",
+      "notes": "pay attention to ~「〜に注意を払う」、形: attentive「よく注意している、心づかいの行き届いた」"
+    },
+    {
+      "q_no": 41,
+      "no": 441,
+      "word": "invoice",
+      "pos": "名詞",
+      "meaning": "請求書",
+      "choices": [
+        "retail",
+        "specific",
+        "mild",
+        "education",
+        "relocate",
+        "normally",
+        "extension",
+        "contain",
+        "invoice",
+        "complicated"
+      ],
+      "correct_letter": "9",
+      "example_en": "We've received an invoice for sixty-five dollars.",
+      "example_ja": "私たちは65ドルの請求書を受け取った。",
+      "notes": "同: bill「請求書」"
+    },
+    {
+      "q_no": 42,
+      "no": 442,
+      "word": "prior to",
+      "pos": "前置詞",
+      "meaning": "〜の前に",
+      "choices": [
+        "demonstrate",
+        "prior to",
+        "chemical",
+        "cause",
+        "accompany",
+        "temporary",
+        "polite",
+        "lack",
+        "pour",
+        "restore"
+      ],
+      "correct_letter": "2",
+      "example_en": "Please arrive fifteen minutes prior to your appointment.",
+      "example_ja": "予約時間の15分前に到着するようにしてください。",
+      "notes": "同: before「〜の前に」、形: prior「事前の」"
+    },
+    {
+      "q_no": 43,
+      "no": 443,
+      "word": "refreshment",
+      "pos": "名詞",
+      "meaning": "軽い飲食料",
+      "choices": [
+        "normally",
+        "assemble",
+        "refreshment",
+        "comment",
+        "necessary",
+        "plumber",
+        "influence",
+        "probable",
+        "ride",
+        "common"
+      ],
+      "correct_letter": "3",
+      "example_en": "Refreshments will be served after the meeting.",
+      "example_ja": "会議の後、軽い飲食料が出ます。",
+      "notes": "動: refresh「すっきりさせる」、形: refreshing「さわやかな」、名: beverage「飲み物」"
+    },
+    {
+      "q_no": 44,
+      "no": 444,
+      "word": "trust",
+      "pos": "名詞",
+      "meaning": "信用",
+      "choices": [
+        "fine",
+        "comment",
+        "upgrade",
+        "restore",
+        "expert",
+        "probable",
+        "technique",
+        "routine",
+        "update",
+        "trust"
+      ],
+      "correct_letter": "0",
+      "example_en": "Honesty is the key to building trust.",
+      "example_ja": "誠実さは信用を築く鍵である。",
+      "notes": "「信託」という意味もある。動: trust「信用する、当てにする」、形: trustworthy「信用できる、当てにできる」"
+    },
+    {
+      "q_no": 45,
+      "no": 445,
+      "word": "plumber",
+      "pos": "名詞",
+      "meaning": "配管工",
+      "choices": [
+        "decade",
+        "income",
+        "plumber",
+        "necessary",
+        "commute",
+        "lack",
+        "invoice",
+        "conversation",
+        "property",
+        "ride"
+      ],
+      "correct_letter": "3",
+      "example_en": "I called the plumber to fix the sink.",
+      "example_ja": "流しを修理するために配管工に電話した。",
+      "notes": "名: plumbing「配管」"
+    },
+    {
+      "q_no": 46,
+      "no": 446,
+      "word": "update",
+      "pos": "動詞",
+      "meaning": "更新する",
+      "choices": [
+        "routine",
+        "restore",
+        "remind",
+        "expire",
+        "broad",
+        "chemical",
+        "relaxed",
+        "status",
+        "reputation",
+        "update"
+      ],
+      "correct_letter": "0",
+      "example_en": "We update our Web site daily.",
+      "example_ja": "私たちは毎日ウェブサイトを更新する。",
+      "notes": "「最新の情報を与える、新しいものに替える」という意味もある。名: update「最新情報」"
+    },
+    {
+      "q_no": 47,
+      "no": 447,
+      "word": "upstairs",
+      "pos": "副詞",
+      "meaning": "上の階に",
+      "choices": [
+        "regarding",
+        "status",
+        "upstairs",
+        "contribute",
+        "attach",
+        "polite",
+        "assemble",
+        "attention",
+        "conversation",
+        "compared with"
+      ],
+      "correct_letter": "3",
+      "example_en": "We have a meeting room upstairs.",
+      "example_ja": "上の階に会議用の部屋があります。",
+      "notes": "形: upstairs「上の階の」、名: upstairs「上の階」、反: downstairs「下の階に」、名: stairs「階段」"
+    },
+    {
+      "q_no": 48,
+      "no": 448,
+      "word": "manner",
+      "pos": "名詞",
+      "meaning": "態度",
+      "choices": [
+        "cancel",
+        "revise",
+        "attach",
+        "point out",
+        "fine",
+        "expert",
+        "greet",
+        "manner",
+        "budget",
+        "attention"
+      ],
+      "correct_letter": "8",
+      "example_en": "Matt acted in a professional manner.",
+      "example_ja": "マットはプロらしい態度で行動した。",
+      "notes": "「やり方、礼儀作法（この意味では複数形mannersになる）」などの意味もある。in a calm manner「落ち着いた態度で」"
+    },
+    {
+      "q_no": 49,
+      "no": 449,
+      "word": "consider",
+      "pos": "動詞",
+      "meaning": "考える",
+      "choices": [
+        "seek",
+        "identify",
+        "invoice",
+        "host",
+        "polite",
+        "expert",
+        "subscribe",
+        "establish",
+        "consider",
+        "prior to"
+      ],
+      "correct_letter": "9",
+      "example_en": "I'm considering taking the course.",
+      "example_ja": "私はそのコースを取ろうかどうか考えている。",
+      "notes": "consider ~ing「〜することを考える」、名: consideration「考慮、思いやり」、形: considerable「かなりの」、副: considerably「かなり」(=significantly, substantially)"
+    },
+    {
+      "q_no": 50,
+      "no": 450,
+      "word": "executive",
+      "pos": "名詞",
+      "meaning": "重役",
+      "choices": [
+        "specific",
+        "property",
+        "questionnaire",
+        "complicated",
+        "expire",
+        "cause",
+        "divide",
+        "executive",
+        "probable",
+        "transfer"
+      ],
+      "correct_letter": "8",
+      "example_en": "Ms. James is an executive of a computer company.",
+      "example_ja": "ジェームズさんはコンピュータ会社の重役です。",
+      "notes": "形: executive「経営に関する、重役の」、chief executive officer (略: CEO)「最高経営責任者」"
+    },
+    {
+      "q_no": 51,
+      "no": 451,
+      "word": "means",
+      "pos": "名詞",
+      "meaning": "手段",
+      "choices": [
+        "convince",
+        "lack",
+        "process",
+        "association",
+        "means",
+        "retail",
+        "education",
+        "contain",
+        "maximum",
+        "qualified"
+      ],
+      "correct_letter": "5",
+      "example_en": "Do you have any means of identification?",
+      "example_ja": "身元を証明する手段を何かお持ちですか。",
+      "notes": "meansは単数形でもsが付く。by all means「いかなる犠牲を払っても」"
+    },
+    {
+      "q_no": 52,
+      "no": 452,
+      "word": "regarding",
+      "pos": "前置詞",
+      "meaning": "〜に関する",
+      "choices": [
+        "host",
+        "questionnaire",
+        "relocate",
+        "plumber",
+        "trust",
+        "regarding",
+        "lack",
+        "attach",
+        "commute",
+        "chemical"
+      ],
+      "correct_letter": "6",
+      "example_en": "We have received your letter regarding the defective products.",
+      "example_ja": "当社は欠陥商品に関するあなたからの手紙を受け取りました。",
+      "notes": "同: about, concerning, with regard to「〜に関する」、動: regard「〜と見なす」、名: regard「尊敬、関心」"
+    },
+    {
+      "q_no": 53,
+      "no": 453,
+      "word": "association",
+      "pos": "名詞",
+      "meaning": "提携",
+      "choices": [
+        "attitude",
+        "contain",
+        "manner",
+        "association",
+        "lack",
+        "reputation",
+        "refuse",
+        "polite",
+        "transfer",
+        "physical"
+      ],
+      "correct_letter": "4",
+      "example_en": "The book was published in association with the National Museum.",
+      "example_ja": "この本は国立博物館の協力によって出版された。",
+      "notes": "「関連、協会、連想」などの意味もある。in association with ~「〜と協力して(=in cooperation with)」、動: associate「関連付ける」、名: associate「仲間、共同経営者」"
+    },
+    {
+      "q_no": 54,
+      "no": 454,
+      "word": "budget",
+      "pos": "名詞",
+      "meaning": "予算",
+      "choices": [
+        "respectively",
+        "conversation",
+        "ride",
+        "relaxed",
+        "fine",
+        "invoice",
+        "budget",
+        "particular",
+        "pour",
+        "subscribe"
+      ],
+      "correct_letter": "7",
+      "example_en": "They're reviewing the budget for next year.",
+      "example_ja": "彼らは来年度の予算案を検討している。",
+      "notes": "動: budget「割り当てる」、形: budget「低価格の」(=cheap, inexpensive, affordable, reasonable)"
+    },
+    {
+      "q_no": 55,
+      "no": 455,
+      "word": "contain",
+      "pos": "動詞",
+      "meaning": "含む",
+      "choices": [
+        "stock",
+        "income",
+        "population",
+        "venue",
+        "expert",
+        "subscribe",
+        "factor",
+        "relaxed",
+        "regarding",
+        "contain"
+      ],
+      "correct_letter": "0",
+      "example_en": "This report contains information about the company's financial condition.",
+      "example_ja": "この報告書には会社の財政状況に関する情報が含まれています。",
+      "notes": "「中に入っている」という意味もある。名: container「容器」"
+    },
+    {
+      "q_no": 56,
+      "no": 456,
+      "word": "remain",
+      "pos": "動詞",
+      "meaning": "〜のままでいる",
+      "choices": [
+        "refuse",
+        "population",
+        "process",
+        "retail",
+        "immediate",
+        "remain",
+        "relaxed",
+        "means",
+        "status",
+        "upgrade"
+      ],
+      "correct_letter": "6",
+      "example_en": "Please remain seated during take-off.",
+      "example_ja": "離陸の際、座ったままでいてください。",
+      "notes": "「とどまる」(=stay)という意味もある。名: remainder「残り」(=rest)"
+    },
+    {
+      "q_no": 57,
+      "no": 457,
+      "word": "chemical",
+      "pos": "名詞",
+      "meaning": "化学薬品",
+      "choices": [
+        "immediate",
+        "stock",
+        "invoice",
+        "upstairs",
+        "prior to",
+        "complicated",
+        "means",
+        "conversation",
+        "physical",
+        "chemical"
+      ],
+      "correct_letter": "0",
+      "example_en": "We use dangerous chemicals in our plant.",
+      "example_ja": "当社の工場では危険な化学薬品を使っている。",
+      "notes": "agricultural chemical「農薬」、形: chemical「化学の、化学的な」、名: chemistry「化学」、名: chemist「化学者」"
+    },
+    {
+      "q_no": 58,
+      "no": 458,
+      "word": "demonstrate",
+      "pos": "動詞",
+      "meaning": "実地説明をする",
+      "choices": [
+        "prior to",
+        "mild",
+        "executive",
+        "exchange",
+        "expire",
+        "ride",
+        "necessary",
+        "education",
+        "maximum",
+        "demonstrate"
+      ],
+      "correct_letter": "0",
+      "example_en": "I'll be demonstrating some of our new products.",
+      "example_ja": "当社の新製品のいくつかを取り出して実地説明いたします。",
+      "notes": "「証明する、はっきりと示す」という意味もある。名: demonstration「デモンストレーション、実演」"
+    },
+    {
+      "q_no": 59,
+      "no": 459,
+      "word": "qualified",
+      "pos": "形容詞",
+      "meaning": "適任である",
+      "choices": [
+        "complicated",
+        "exchange",
+        "qualified",
+        "refuse",
+        "specific",
+        "restore",
+        "extension",
+        "process",
+        "population",
+        "regarding"
+      ],
+      "correct_letter": "3",
+      "example_en": "Tom is qualified for the position.",
+      "example_ja": "トムはその職に適任である。",
+      "notes": "「資格を持っている」という意味もある。動: qualify「資格を得る、資格を持つ、資格を与える」、名: qualification「資格、適任」"
+    },
+    {
+      "q_no": 60,
+      "no": 460,
+      "word": "revise",
+      "pos": "動詞",
+      "meaning": "修正する",
+      "choices": [
+        "step down",
+        "revise",
+        "ride",
+        "restore",
+        "aware",
+        "remain",
+        "convince",
+        "demonstrate",
+        "education",
+        "population"
+      ],
+      "correct_letter": "2",
+      "example_en": "We have to revise the budget.",
+      "example_ja": "私たちは予算を修正する必要がある。",
+      "notes": "「改訂する、復習する」という意味もある。名: revision「変更、見直し」"
+    },
+    {
+      "q_no": 61,
+      "no": 461,
+      "word": "relaxed",
+      "pos": "形容詞",
+      "meaning": "くつろいだ",
+      "choices": [
+        "relaxed",
+        "identify",
+        "contribute",
+        "decade",
+        "routine",
+        "trust",
+        "contain",
+        "seek",
+        "expert",
+        "association"
+      ],
+      "correct_letter": "1",
+      "example_en": "When she entered the room, she looked relaxed.",
+      "example_ja": "彼女は部屋に入ってきたとき、くつろいだように見えた。",
+      "notes": "動: relax「リラックスする」、名: relaxation「くつろぎ、緩和」"
+    },
+    {
+      "q_no": 62,
+      "no": 462,
+      "word": "upgrade",
+      "pos": "動詞",
+      "meaning": "改良する",
+      "choices": [
+        "invoice",
+        "accompany",
+        "host",
+        "obtain",
+        "necessary",
+        "upgrade",
+        "budget",
+        "cause",
+        "executive",
+        "polite"
+      ],
+      "correct_letter": "6",
+      "example_en": "We can't afford to upgrade our facilities.",
+      "example_ja": "私たちは設備を改良する余裕がない。",
+      "notes": "「向上させる、格上げする、アップグレードする」などの意味もある。名: upgrade「改良、アップグレード」"
+    },
+    {
+      "q_no": 63,
+      "no": 463,
+      "word": "accompany",
+      "pos": "動詞",
+      "meaning": "同行する",
+      "choices": [
+        "host",
+        "fine",
+        "influence",
+        "establish",
+        "accompany",
+        "commute",
+        "divide",
+        "normally",
+        "cause",
+        "income"
+      ],
+      "correct_letter": "5",
+      "example_en": "Betty will accompany me to the conference.",
+      "example_ja": "ベティーは私に同行して会議に行く。",
+      "notes": "同: go with ~「〜と一緒に行く」"
+    },
+    {
+      "q_no": 64,
+      "no": 464,
+      "word": "attitude",
+      "pos": "名詞",
+      "meaning": "態度(姿勢)",
+      "choices": [
+        "revise",
+        "instant",
+        "chemical",
+        "attitude",
+        "contain",
+        "exchange",
+        "inquire",
+        "technique",
+        "step down",
+        "complicated"
+      ],
+      "correct_letter": "4",
+      "example_en": "He has a positive attitude to his work.",
+      "example_ja": "彼は自分の仕事に対して積極的な態度を取っている。",
+      "notes": "「見方、姿勢」という意味もある。後ろに続く前置詞はtoまたはtoward(s)"
+    },
+    {
+      "q_no": 65,
+      "no": 465,
+      "word": "commute",
+      "pos": "動詞",
+      "meaning": "通勤する",
+      "choices": [
+        "commute",
+        "relocate",
+        "immediate",
+        "complicated",
+        "economical",
+        "comment",
+        "identify",
+        "status",
+        "plumber",
+        "attach"
+      ],
+      "correct_letter": "1",
+      "example_en": "Amanda commutes to Montreal every day.",
+      "example_ja": "アマンダは毎日モントリオールに通っている。",
+      "notes": "名: commute「通勤、通学」、名: commuter「通う人」、commuter train「通勤列車」"
+    },
+    {
+      "q_no": 66,
+      "no": 466,
+      "word": "competitive",
+      "pos": "形容詞",
+      "meaning": "競争力のある",
+      "choices": [
+        "instant",
+        "stock",
+        "maximum",
+        "restore",
+        "point out",
+        "laboratory",
+        "establish",
+        "manner",
+        "competitive",
+        "polite"
+      ],
+      "correct_letter": "9",
+      "example_en": "We need to cut labor costs to stay competitive.",
+      "example_ja": "私たちは競争力を保つため、人件費を削減する必要がある。",
+      "notes": "「競争が激しい、競争心の強い、他に負けない」という意味もある。動: compete「競う」、名: competition「競争」、名: competitor「競争相手、ライバル」"
+    },
+    {
+      "q_no": 67,
+      "no": 467,
+      "word": "refuse",
+      "pos": "動詞",
+      "meaning": "拒否する",
+      "choices": [
+        "manner",
+        "identify",
+        "education",
+        "association",
+        "refuse",
+        "immediate",
+        "factor",
+        "establish",
+        "aware",
+        "temporary"
+      ],
+      "correct_letter": "5",
+      "example_en": "He refused to speak with journalists.",
+      "example_ja": "彼は報道関係者と話をすることを拒絶した。",
+      "notes": "「（申し出などを）断る」という意味もある。反: accept「受け入れる」、名: refusal「拒否」"
+    },
+    {
+      "q_no": 68,
+      "no": 468,
+      "word": "subscribe",
+      "pos": "動詞",
+      "meaning": "定期購読する",
+      "choices": [
+        "status",
+        "education",
+        "decade",
+        "contribute",
+        "budget",
+        "refreshment",
+        "complicated",
+        "point out",
+        "compared with",
+        "subscribe"
+      ],
+      "correct_letter": "0",
+      "example_en": "I subscribe to Business Weekly.",
+      "example_ja": "私はビジネスウィークリーを定期購読している。",
+      "notes": "後ろに続く前置詞はto。名: subscription「定期購読」、名: subscriber「定期購読者」"
+    },
+    {
+      "q_no": 69,
+      "no": 469,
+      "word": "process",
+      "pos": "動詞",
+      "meaning": "処理する",
+      "choices": [
+        "commute",
+        "resign",
+        "status",
+        "respectively",
+        "establish",
+        "point out",
+        "property",
+        "complicated",
+        "expense",
+        "process"
+      ],
+      "correct_letter": "0",
+      "example_en": "It will take two weeks to process your visa application.",
+      "example_ja": "あなたのビザ申請を処理するのに2週間かかります。",
+      "notes": "「加工する」という意味もある。名: process「過程、作用、進行」、形: processed「加工された」"
+    },
+    {
+      "q_no": 70,
+      "no": 470,
+      "word": "comment",
+      "pos": "名詞",
+      "meaning": "意見",
+      "choices": [
+        "compared with",
+        "comment",
+        "questionnaire",
+        "fine",
+        "decade",
+        "competitive",
+        "refreshment",
+        "commute",
+        "particular",
+        "step down"
+      ],
+      "correct_letter": "2",
+      "example_en": "He made helpful comments on my proposal.",
+      "example_ja": "彼は私の企画書に有益な意見を出してくれた。",
+      "notes": "動: comment「意見を述べる」。名詞・動詞ともに後ろに前置詞onが続く"
+    },
+    {
+      "q_no": 71,
+      "no": 471,
+      "word": "necessary",
+      "pos": "形容詞",
+      "meaning": "必要な",
+      "choices": [
+        "budget",
+        "expire",
+        "necessary",
+        "association",
+        "temporary",
+        "upstairs",
+        "particular",
+        "attitude",
+        "venue",
+        "contribute"
+      ],
+      "correct_letter": "3",
+      "example_en": "Is it necessary to fill out this form?",
+      "example_ja": "この用紙に記入する必要がありますか。",
+      "notes": "「必然的な」という意味もある。同: essential, vital「絶対必要な」、名: necessity「必要、必需品」"
+    },
+    {
+      "q_no": 72,
+      "no": 472,
+      "word": "respectively",
+      "pos": "副詞",
+      "meaning": "それぞれ",
+      "choices": [
+        "contribute",
+        "step down",
+        "remain",
+        "decade",
+        "education",
+        "refuse",
+        "respectively",
+        "specific",
+        "attention",
+        "process"
+      ],
+      "correct_letter": "7",
+      "example_en": "Auckland and Sydney were ranked fifth and tenth, respectively.",
+      "example_ja": "オークランドとシドニーはそれぞれ5位と10位にランク付けされた。",
+      "notes": "形: respective「それぞれの」、関: in respect of ~「〜に関して」"
+    },
+    {
+      "q_no": 73,
+      "no": 473,
+      "word": "probable",
+      "pos": "形容詞",
+      "meaning": "起こりそうな",
+      "choices": [
+        "retail",
+        "executive",
+        "regarding",
+        "contribute",
+        "factor",
+        "technique",
+        "attitude",
+        "probable",
+        "education",
+        "pour"
+      ],
+      "correct_letter": "8",
+      "example_en": "It is probable that unemployment will rise further.",
+      "example_ja": "失業率はさらに上がる見込みだ。",
+      "notes": "同: likely「起こりそうな」、関: possible「可能性がある」（probableより可能性が低い）、名: probability「見込み」(=likelihood)、副: probably「多分、おそらく」"
+    },
+    {
+      "q_no": 74,
+      "no": 474,
+      "word": "efficient",
+      "pos": "形容詞",
+      "meaning": "効率のよい",
+      "choices": [
+        "accompany",
+        "identify",
+        "efficient",
+        "maximum",
+        "physical",
+        "relocate",
+        "regarding",
+        "qualified",
+        "laboratory",
+        "remind"
+      ],
+      "correct_letter": "3",
+      "example_en": "We need more efficient methods of collecting data.",
+      "example_ja": "私たちはもっと効率のよいデータ収集方法が必要です。",
+      "notes": "「有能な」という意味もある。energy efficient「燃費のよい」、名: efficiency「効率」、副: efficiently「効率的に」"
+    },
+    {
+      "q_no": 75,
+      "no": 475,
+      "word": "identify",
+      "pos": "動詞",
+      "meaning": "明らかにする",
+      "choices": [
+        "means",
+        "demonstrate",
+        "qualified",
+        "identify",
+        "cancel",
+        "refuse",
+        "complicated",
+        "seek",
+        "accompany",
+        "assemble"
+      ],
+      "correct_letter": "4",
+      "example_en": "First, we must identify problem areas.",
+      "example_ja": "はじめに私たちは問題点を明らかにしなければならない。",
+      "notes": "「身元を確認する」という意味もある。名: identification「身分証明」"
+    },
+    {
+      "q_no": 76,
+      "no": 476,
+      "word": "particular",
+      "pos": "形容詞",
+      "meaning": "特定の",
+      "choices": [
+        "trust",
+        "influence",
+        "commute",
+        "assemble",
+        "relocate",
+        "relaxed",
+        "retail",
+        "update",
+        "revise",
+        "particular"
+      ],
+      "correct_letter": "0",
+      "example_en": "Is there any particular movie you want to see?",
+      "example_ja": "何か特に見たい映画はありますか。",
+      "notes": "同: specific, certain「特定の」、副: particularly「特に」"
+    },
+    {
+      "q_no": 77,
+      "no": 477,
+      "word": "relocate",
+      "pos": "動詞",
+      "meaning": "移転する",
+      "choices": [
+        "common",
+        "regarding",
+        "relocate",
+        "contribute",
+        "maximum",
+        "competitive",
+        "restore",
+        "attitude",
+        "upgrade",
+        "demonstrate"
+      ],
+      "correct_letter": "3",
+      "example_en": "The company relocated to Los Angeles.",
+      "example_ja": "その会社はロサンゼルスに移転した。",
+      "notes": "relocate to 〈地名〉「〜へ移転する」、同: move to「〜へ引っ越す」、名: relocation「移転」"
+    },
+    {
+      "q_no": 78,
+      "no": 478,
+      "word": "remind",
+      "pos": "動詞",
+      "meaning": "思い出させる",
+      "choices": [
+        "refuse",
+        "remind",
+        "attention",
+        "questionnaire",
+        "technique",
+        "venue",
+        "attach",
+        "budget",
+        "expert",
+        "efficient"
+      ],
+      "correct_letter": "2",
+      "example_en": "My secretary reminded me about the meeting tomorrow.",
+      "example_ja": "秘書が私に明日の会議のことを思い出させてくれた。",
+      "notes": "関: remember「覚えている」、名: reminder「思い出させるもの」"
+    },
+    {
+      "q_no": 79,
+      "no": 479,
+      "word": "compared with",
+      "pos": "熟語",
+      "meaning": "〜と比べて",
+      "choices": [
+        "instant",
+        "expense",
+        "fine",
+        "education",
+        "upstairs",
+        "compared with",
+        "income",
+        "retail",
+        "relaxed",
+        "population"
+      ],
+      "correct_letter": "6",
+      "example_en": "Our sales rose ten percent compared with last year.",
+      "example_ja": "当社の売り上げは昨年と比べ、10パーセント上がった。",
+      "notes": "compared to でも同じ意味になる。名: comparison「比較」"
+    },
+    {
+      "q_no": 80,
+      "no": 480,
+      "word": "establish",
+      "pos": "動詞",
+      "meaning": "設立する",
+      "choices": [
+        "property",
+        "plumber",
+        "contain",
+        "influence",
+        "prior to",
+        "expire",
+        "expert",
+        "competitive",
+        "routine",
+        "establish"
+      ],
+      "correct_letter": "0",
+      "example_en": "The company was established in 1967.",
+      "example_ja": "その会社は1967年に設立された。",
+      "notes": "「確立する、証明する、認めるせる」などの意味もある。同: found「設立する」、名: establishment「設立、機関、権力層」、形: established「すでにある、定評のある」"
+    },
+    {
+      "q_no": 81,
+      "no": 481,
+      "word": "point out",
+      "pos": "句動詞",
+      "meaning": "指摘する",
+      "choices": [
+        "familiar",
+        "ride",
+        "particular",
+        "expert",
+        "commute",
+        "compared with",
+        "resign",
+        "point out",
+        "immediate",
+        "refuse"
+      ],
+      "correct_letter": "8",
+      "example_en": "He pointed out that these data are inaccurate.",
+      "example_ja": "彼はこれらのデータが正確でないことを指摘した。",
+      "notes": "point out A to ~「〜にAを指摘する」"
+    },
+    {
+      "q_no": 82,
+      "no": 482,
+      "word": "property",
+      "pos": "名詞",
+      "meaning": "不動産",
+      "choices": [
+        "relocate",
+        "upstairs",
+        "probable",
+        "invoice",
+        "inquire",
+        "property",
+        "establish",
+        "focus",
+        "plumber",
+        "greet"
+      ],
+      "correct_letter": "6",
+      "example_en": "Property prices are falling this month.",
+      "example_ja": "今月、不動産の価格は下がっている。",
+      "notes": "「財産、所有物、特性」などの意味もある。"
+    },
+    {
+      "q_no": 83,
+      "no": 483,
+      "word": "restore",
+      "pos": "動詞",
+      "meaning": "修復する",
+      "choices": [
+        "restore",
+        "status",
+        "normally",
+        "reputation",
+        "stock",
+        "aware",
+        "focus",
+        "inquire",
+        "necessary",
+        "exchange"
+      ],
+      "correct_letter": "1",
+      "example_en": "The building was restored after the fire.",
+      "example_ja": "その建物は火事のあと、修復された。",
+      "notes": "「元の状態に戻す」という意味がある。名: restoration「復元、回復、復興、返還」"
+    },
+    {
+      "q_no": 84,
+      "no": 484,
+      "word": "status",
+      "pos": "名詞",
+      "meaning": "状況",
+      "choices": [
+        "attitude",
+        "factor",
+        "technique",
+        "budget",
+        "venue",
+        "revise",
+        "expert",
+        "status",
+        "prior to",
+        "polite"
+      ],
+      "correct_letter": "8",
+      "example_en": "What's the status of our order?",
+      "example_ja": "私たちの注文品の状況はどうなっていますか。",
+      "notes": "「地位」という意味もある。status quo「現状」"
+    },
+    {
+      "q_no": 85,
+      "no": 485,
+      "word": "expense",
+      "pos": "名詞",
+      "meaning": "経費",
+      "choices": [
+        "focus",
+        "update",
+        "expense",
+        "upstairs",
+        "obtain",
+        "expire",
+        "instant",
+        "association",
+        "respectively",
+        "specific"
+      ],
+      "correct_letter": "3",
+      "example_en": "The company will cover travel expenses.",
+      "example_ja": "会社が旅費を出してくれます。",
+      "notes": "関: expenditure「支出」、形: expensive「高価な」(=costly, pricey)"
+    },
+    {
+      "q_no": 86,
+      "no": 486,
+      "word": "focus",
+      "pos": "動詞",
+      "meaning": "焦点を合わせる",
+      "choices": [
+        "step down",
+        "remain",
+        "relocate",
+        "focus",
+        "familiar",
+        "demonstrate",
+        "competitive",
+        "attitude",
+        "assemble",
+        "commute"
+      ],
+      "correct_letter": "4",
+      "example_en": "The conference focuses on environmental issues.",
+      "example_ja": "その会議は環境問題に焦点を合わせている。",
+      "notes": "焦点を合わせる対象は前置詞onによって導く。「集中させる」という意味もある。名: focus「焦点、中心」"
+    },
+    {
+      "q_no": 87,
+      "no": 487,
+      "word": "laboratory",
+      "pos": "名詞",
+      "meaning": "研究所",
+      "choices": [
+        "laboratory",
+        "lack",
+        "refreshment",
+        "temporary",
+        "stock",
+        "qualified",
+        "attitude",
+        "relaxed",
+        "focus",
+        "technique"
+      ],
+      "correct_letter": "1",
+      "example_en": "The company has a research laboratory in Miami.",
+      "example_ja": "その会社はマイアミに研究所を持っている。",
+      "notes": "「実験室」という意味にもなる。略: lab"
+    },
+    {
+      "q_no": 88,
+      "no": 488,
+      "word": "obtain",
+      "pos": "動詞",
+      "meaning": "得る",
+      "choices": [
+        "normally",
+        "exchange",
+        "manner",
+        "obtain",
+        "focus",
+        "stock",
+        "property",
+        "efficient",
+        "attention",
+        "cause"
+      ],
+      "correct_letter": "4",
+      "example_en": "You must obtain permission from the publisher.",
+      "example_ja": "あなたは出版社から許可を得なければなりません。",
+      "notes": "同: get「得る」、形: obtainable「手に入れることができる」"
+    },
+    {
+      "q_no": 89,
+      "no": 489,
+      "word": "reputation",
+      "pos": "名詞",
+      "meaning": "評判",
+      "choices": [
+        "point out",
+        "attention",
+        "fine",
+        "laboratory",
+        "contain",
+        "reputation",
+        "aware",
+        "normally",
+        "prior to",
+        "chemical"
+      ],
+      "correct_letter": "6",
+      "example_en": "We have a reputation for quality.",
+      "example_ja": "当社は品質の良さで評判を得ている。",
+      "notes": "形: reputed「〜といわれている」"
+    },
+    {
+      "q_no": 90,
+      "no": 490,
+      "word": "retail",
+      "pos": "名詞",
+      "meaning": "小売り",
+      "choices": [
+        "lack",
+        "conversation",
+        "broad",
+        "competitive",
+        "probable",
+        "step down",
+        "comment",
+        "education",
+        "retail",
+        "contain"
+      ],
+      "correct_letter": "9",
+      "example_en": "You can buy these products at retail stores.",
+      "example_ja": "これらの製品は小売店でご購入いただけます。",
+      "notes": "関: wholesale「卸売り」、名: retailer「小売業者」、関: wholesaler「卸売り業者」"
+    },
+    {
+      "q_no": 91,
+      "no": 491,
+      "word": "contribute",
+      "pos": "動詞",
+      "meaning": "寄付する",
+      "choices": [
+        "plumber",
+        "relocate",
+        "immediate",
+        "exchange",
+        "assemble",
+        "remind",
+        "association",
+        "contribute",
+        "attitude",
+        "update"
+      ],
+      "correct_letter": "8",
+      "example_en": "Ms. Hunter contributed ten thousand dollars to the school.",
+      "example_ja": "ハンターさんはその学校へ1万ドルの寄付をした。",
+      "notes": "「貢献する、原因となる、寄稿する」という意味もある。toとセットで使われることが多い。名: contribution「寄付、貢献、寄稿」"
+    },
+    {
+      "q_no": 92,
+      "no": 492,
+      "word": "convince",
+      "pos": "動詞",
+      "meaning": "納得させる",
+      "choices": [
+        "trust",
+        "convince",
+        "familiar",
+        "ride",
+        "questionnaire",
+        "relocate",
+        "upgrade",
+        "fine",
+        "broad",
+        "focus"
+      ],
+      "correct_letter": "2",
+      "example_en": "We have to convince the president.",
+      "example_ja": "私たちは社長を納得させなければならない。",
+      "notes": "形: convinced「確信した」、形: convincing「説得力のある」(=persuasive)"
+    },
+    {
+      "q_no": 93,
+      "no": 493,
+      "word": "divide",
+      "pos": "動詞",
+      "meaning": "分ける",
+      "choices": [
+        "prior to",
+        "reputation",
+        "restore",
+        "trust",
+        "income",
+        "point out",
+        "divide",
+        "resign",
+        "polite",
+        "population"
+      ],
+      "correct_letter": "7",
+      "example_en": "We should divide the profits equally among us.",
+      "example_ja": "利益は私たちの間で平等に分けるべきです。",
+      "notes": "「隔てる、割り算をする」などの意味もある。同: share「分ける」、名: division「部署(=department)、分包、区画」"
+    },
+    {
+      "q_no": 94,
+      "no": 494,
+      "word": "fine",
+      "pos": "名詞",
+      "meaning": "罰金",
+      "choices": [
+        "familiar",
+        "commute",
+        "transfer",
+        "normally",
+        "fine",
+        "expire",
+        "seek",
+        "temporary",
+        "cancel",
+        "prior to"
+      ],
+      "correct_letter": "5",
+      "example_en": "I got a 55-dollar fine for illegal parking.",
+      "example_ja": "私は違法駐車で55ドルの罰金を取られた。",
+      "notes": "動: fine「罰金を科す」。形容詞のfine（よい、優れた、晴れたなどの意）とはまったく別の意味"
+    },
+    {
+      "q_no": 95,
+      "no": 495,
+      "word": "inquire",
+      "pos": "動詞",
+      "meaning": "尋ねる",
+      "choices": [
+        "population",
+        "remain",
+        "transfer",
+        "questionnaire",
+        "inquire",
+        "conversation",
+        "divide",
+        "economical",
+        "immediate",
+        "compared with"
+      ],
+      "correct_letter": "5",
+      "example_en": "I inquired about their service.",
+      "example_ja": "私は彼らのサービスについて尋ねた。",
+      "notes": "enquireという綴りもある（主に英）。名: inquiry「問い合わせ」、make an inquiry「問い合わせる」"
+    },
+    {
+      "q_no": 96,
+      "no": 496,
+      "word": "specific",
+      "pos": "形容詞",
+      "meaning": "明確な・特定の",
+      "choices": [
+        "conversation",
+        "expire",
+        "chemical",
+        "attention",
+        "specific",
+        "common",
+        "means",
+        "immediate",
+        "broad",
+        "seek"
+      ],
+      "correct_letter": "5",
+      "example_en": "Each product is designed for a specific purpose.",
+      "example_ja": "それぞれの製品は特定の目的のために作られています。",
+      "notes": "「厳密な」という意味もある。同: particular, certain「特定の」、副: specifically「特に、厳密に」、名: specification「仕様書」"
+    },
+    {
+      "q_no": 97,
+      "no": 497,
+      "word": "stock",
+      "pos": "名詞",
+      "meaning": "在庫",
+      "choices": [
+        "retail",
+        "polite",
+        "demonstrate",
+        "stock",
+        "update",
+        "complicated",
+        "contain",
+        "association",
+        "budget",
+        "upstairs"
+      ],
+      "correct_letter": "4",
+      "example_en": "This model is currently out of stock.",
+      "example_ja": "このモデルは現在、在庫が切れています。",
+      "notes": "「株式」という意味もある。同: inventory「在庫」、in stock「在庫がある」、out of stock「在庫がない」、動: stock「仕入れる、満たす」"
+    },
+    {
+      "q_no": 98,
+      "no": 498,
+      "word": "aware",
+      "pos": "形容詞",
+      "meaning": "気が付いている",
+      "choices": [
+        "refreshment",
+        "population",
+        "routine",
+        "aware",
+        "economical",
+        "mild",
+        "immediate",
+        "identify",
+        "process",
+        "resign"
+      ],
+      "correct_letter": "4",
+      "example_en": "We are aware that our sales network is insufficient.",
+      "example_ja": "私たちは販売網が十分でないことを知っています。",
+      "notes": "aware of ~「〜に気付いている」、名: awareness「認識、自覚」"
+    },
+    {
+      "q_no": 99,
+      "no": 499,
+      "word": "broad",
+      "pos": "形容詞",
+      "meaning": "大まかな",
+      "choices": [
+        "upstairs",
+        "broad",
+        "physical",
+        "routine",
+        "status",
+        "relocate",
+        "trust",
+        "pour",
+        "mild",
+        "common"
+      ],
+      "correct_letter": "2",
+      "example_en": "He gave us a broad outline of the plan.",
+      "example_ja": "彼は私たちにその計画の大まかな概要を示した。",
+      "notes": "「広い」という意味もある。動: broaden「広げる」(=widen, expand)"
+    },
+    {
+      "q_no": 100,
+      "no": 500,
+      "word": "maximum",
+      "pos": "形容詞",
+      "meaning": "最大の",
+      "choices": [
+        "property",
+        "establish",
+        "complicated",
+        "necessary",
+        "ride",
+        "accompany",
+        "point out",
+        "retail",
+        "refreshment",
+        "maximum"
+      ],
+      "correct_letter": "0",
+      "example_en": "The factory is operating at maximum capacity.",
+      "example_ja": "その工場は稼働能力限界で操業している。",
+      "notes": "反: minimum「最小の」、動: maximize「最大にする」、反: minimize「最小限にする」、名: maximum「最大限」(反: minimum「最小限」)"
+    }
+  ],
+  "all_words": [
+    {
+      "no": 401,
+      "word": "cause",
+      "pos": "動詞",
+      "meaning": "引き起こす",
+      "example_en": "Heavy traffic is causing delays on Highway 18.",
+      "example_ja": "18号線では交通渋滞により遅れが生じています。",
+      "notes": "名: cause「原因、理由、大義」"
+    },
+    {
+      "no": 402,
+      "word": "decade",
+      "pos": "名詞",
+      "meaning": "10年",
+      "example_en": "The city has changed over the last decade.",
+      "example_ja": "その市はこの10年で変わった。",
+      "notes": "ten yearsに言い換えることができる"
+    },
+    {
+      "no": 403,
+      "word": "expire",
+      "pos": "動詞",
+      "meaning": "期限が切れる",
+      "example_en": "My passport has expired.",
+      "example_ja": "私のパスポートは期限が切れた。",
+      "notes": "名: expiration〈加米〉、expiry〈英〉「満了、終結」、expiration date「有効期限、使用期限」(=expiry date)"
+    },
+    {
+      "no": 404,
+      "word": "income",
+      "pos": "名詞",
+      "meaning": "収入",
+      "example_en": "Tourism is the main source of income in the region.",
+      "example_ja": "観光業はこの地域の主な収入源です。",
+      "notes": "個人の「所得」という意味にもなる。同: revenue「収入」、反: expenditure「支出」"
+    },
+    {
+      "no": 405,
+      "word": "immediate",
+      "pos": "形容詞",
+      "meaning": "早急な",
+      "example_en": "We need to take immediate action.",
+      "example_ja": "私たちは早急な対応を取る必要があります。",
+      "notes": "副: immediately「早急に」"
+    },
+    {
+      "no": 406,
+      "word": "questionnaire",
+      "pos": "名詞",
+      "meaning": "アンケート",
+      "example_en": "Please complete the questionnaire after the seminar.",
+      "example_ja": "セミナーのあと、アンケートにご記入ください。",
+      "notes": "名: question「質問」、動: question「質問する、疑問に思う」"
+    },
+    {
+      "no": 407,
+      "word": "routine",
+      "pos": "名詞",
+      "meaning": "習慣的に繰り返されること",
+      "example_en": "Exercise is part of my daily routine.",
+      "example_ja": "運動は私の日課の一部です。",
+      "notes": "「定められた手順」という意味もある。形: routine「決まった、いつもの」、副: routinely「いつものように」"
+    },
+    {
+      "no": 408,
+      "word": "transfer",
+      "pos": "動詞",
+      "meaning": "転勤する",
+      "example_en": "Mr. Chen transferred from Taipei to Bangkok.",
+      "example_ja": "チェンさんは台北からバンコクへ転勤した。",
+      "notes": "「転勤させる、乗り換える、移す」などの意味もある。名: transfer「転勤、移動、乗り換え」"
+    },
+    {
+      "no": 409,
+      "word": "complicated",
+      "pos": "形容詞",
+      "meaning": "複雑な",
+      "example_en": "Our evaluation system is very complicated.",
+      "example_ja": "当社の評価システムはとても複雑です。",
+      "notes": "同: complex「複雑な」、動: complicate「複雑にする」、名: complication「複雑にするもの」"
+    },
+    {
+      "no": 410,
+      "word": "education",
+      "pos": "名詞",
+      "meaning": "教育",
+      "example_en": "The government has increased spending on education.",
+      "example_ja": "政府は教育の支出を増やした。",
+      "notes": "動: educate「教育する」、形: educational「教育的な」"
+    },
+    {
+      "no": 411,
+      "word": "greet",
+      "pos": "動詞",
+      "meaning": "出迎える",
+      "example_en": "The manager greeted us with a smile.",
+      "example_ja": "マネージャーは私たちを笑顔で出迎えてくれた。",
+      "notes": "「あいさつする」という意味もある。名: greeting「あいさつ」"
+    },
+    {
+      "no": 412,
+      "word": "influence",
+      "pos": "名詞",
+      "meaning": "影響力",
+      "example_en": "The former president still has influence over the company.",
+      "example_ja": "元社長はまだ、会社に影響力を持っている。",
+      "notes": "動: influence「影響を与える」(=affect)"
+    },
+    {
+      "no": 413,
+      "word": "lack",
+      "pos": "名詞",
+      "meaning": "不足",
+      "example_en": "The project was canceled due to a lack of funds.",
+      "example_ja": "資金不足のため、そのプロジェクトは中止になった。",
+      "notes": "lack of ~「〜の不足」、同: shortage「不足」、動: lack「〜が足りない」"
+    },
+    {
+      "no": 414,
+      "word": "mild",
+      "pos": "形容詞",
+      "meaning": "温暖な",
+      "example_en": "We had a mild winter this year.",
+      "example_ja": "今年は暖冬だった。",
+      "notes": "「軽い、マイルドな」などの意味もある。副: mildly「少し」(=slightly)"
+    },
+    {
+      "no": 415,
+      "word": "normally",
+      "pos": "副詞",
+      "meaning": "普通は",
+      "example_en": "I normally work forty hours a week.",
+      "example_ja": "私は普段、週に40時間働いています。",
+      "notes": "同: usually「普通は」、形: normal「通常の」"
+    },
+    {
+      "no": 416,
+      "word": "physical",
+      "pos": "形容詞",
+      "meaning": "身体の",
+      "example_en": "I need to do physical exercise regularly.",
+      "example_ja": "私は定期的に身体的な運動をする必要がある。",
+      "notes": "副: physically「身体的に」、名: physician「医師、内科医」"
+    },
+    {
+      "no": 417,
+      "word": "polite",
+      "pos": "形容詞",
+      "meaning": "礼儀正しい",
+      "example_en": "The hotel clerk was polite and helpful.",
+      "example_ja": "そのホテル従業員は礼儀正しく、親切だった。",
+      "notes": "「丁寧な」という意味もある。副: politely「丁寧に、礼儀正しく」"
+    },
+    {
+      "no": 418,
+      "word": "population",
+      "pos": "名詞",
+      "meaning": "人口",
+      "example_en": "What is the population of India?",
+      "example_ja": "インドの人口はどのくらいですか。",
+      "notes": "working population「労働人口」"
+    },
+    {
+      "no": 419,
+      "word": "pour",
+      "pos": "動詞",
+      "meaning": "注ぐ",
+      "example_en": "She's pouring coffee into a cup.",
+      "example_ja": "彼女はコーヒーをカップに注いでいる。",
+      "notes": "「雨が激しく降る、殺到する、光が出る」などの意味もある。pour A into B「AをBに注ぐ」"
+    },
+    {
+      "no": 420,
+      "word": "instant",
+      "pos": "形容詞",
+      "meaning": "すぐの",
+      "example_en": "The book was an instant success in California.",
+      "example_ja": "その本はカリフォルニアで即座の成功を収めた。",
+      "notes": "「（食品等が）インスタントの」という意味もある。同: immediate「すぐの」、名: instant「瞬間」、名: instance「事例」、for instance「例えば」(=for example)、副: instantly「すぐに」"
+    },
+    {
+      "no": 421,
+      "word": "venue",
+      "pos": "名詞",
+      "meaning": "会場",
+      "example_en": "Be sure to arrive at the venue on time.",
+      "example_ja": "必ず時間どおりに会場に到着するようにしてください。",
+      "notes": "後ろに続く前置詞はfor。例: the venue for the event「イベント会場」"
+    },
+    {
+      "no": 422,
+      "word": "resign",
+      "pos": "動詞",
+      "meaning": "辞任する",
+      "example_en": "The president resigned yesterday.",
+      "example_ja": "社長は昨日、辞任した。",
+      "notes": "名: resignation「辞任」、同: retire「退職する」、leave「辞める」、quit「辞める」"
+    },
+    {
+      "no": 423,
+      "word": "attach",
+      "pos": "動詞",
+      "meaning": "添付する",
+      "example_en": "I attached the conference schedule for your information.",
+      "example_ja": "ご参考までに会議スケジュールを添付いたしました。",
+      "notes": "手紙、メールともに使う。「取り付ける、愛着を持たせる」などの意味もある。Attached is/are ~「〜が添付されています」、名: attachment「添付ファイル、付属品、愛着」"
+    },
+    {
+      "no": 424,
+      "word": "cancel",
+      "pos": "動詞",
+      "meaning": "取り消す",
+      "example_en": "I'd like to cancel my reservation.",
+      "example_ja": "予約の取り消しをお願いします。",
+      "notes": "名: cancellation「取り消し、キャンセル」、同: call off「中止する」"
+    },
+    {
+      "no": 425,
+      "word": "common",
+      "pos": "形容詞",
+      "meaning": "よくある",
+      "example_en": "It's a common spelling mistake.",
+      "example_ja": "それはよくあるスペルミスです。",
+      "notes": "「共通の」という意味もある。in common「共通して」、副: commonly「一般に、広く」"
+    },
+    {
+      "no": 426,
+      "word": "conversation",
+      "pos": "名詞",
+      "meaning": "会話",
+      "example_en": "They're having a conversation.",
+      "example_ja": "彼らは会話をしている。",
+      "notes": "類: chat「（カジュアルな）会話」、動: converse「会話する」"
+    },
+    {
+      "no": 427,
+      "word": "economical",
+      "pos": "形容詞",
+      "meaning": "経済的な",
+      "example_en": "It's more economical to buy in bulk.",
+      "example_ja": "まとめて買うほうが経済的です。",
+      "notes": "お金や時間などを節約できるという意味。同: economic「経済に関する」、名: economy「経済、節約」、副: economically「経済的に」"
+    },
+    {
+      "no": 428,
+      "word": "exchange",
+      "pos": "動詞",
+      "meaning": "交換する",
+      "example_en": "Can I exchange this jacket for a black one?",
+      "example_ja": "このジャケットを黒のものと交換することはできますか。",
+      "notes": "「交わす」という意味もある。名: exchange「交換、交換品、取引所」、foreign exchange「外国為替」、stock exchange「証券取引所」"
+    },
+    {
+      "no": 429,
+      "word": "expert",
+      "pos": "名詞",
+      "meaning": "専門家",
+      "example_en": "Peter is a computer expert.",
+      "example_ja": "ピーターはコンピュータの専門家です。",
+      "notes": "an expert in/on/at「〜の専門家」、名: expertise「専門技術・知識」（後ろに続く前置詞はin）"
+    },
+    {
+      "no": 430,
+      "word": "extension",
+      "pos": "名詞",
+      "meaning": "内線",
+      "example_en": "What's your extension number?",
+      "example_ja": "あなたの内線番号は何番ですか。",
+      "notes": "「拡張、延長」などの意味もある。動: extend「伸ばす、広げる」"
+    },
+    {
+      "no": 431,
+      "word": "familiar",
+      "pos": "形容詞",
+      "meaning": "よく知っている",
+      "example_en": "Are you familiar with this software?",
+      "example_ja": "あなたはこのソフトウェアのことをよく知っていますか。",
+      "notes": "familiar with ~「〜のことをよく知っている」、familiar to ~「〜にとってなじみがある」、名: familiarity「よく知っていること」"
+    },
+    {
+      "no": 432,
+      "word": "host",
+      "pos": "動詞",
+      "meaning": "主催する",
+      "example_en": "The city hosts a music festival every year.",
+      "example_ja": "その市は毎年、音楽祭を主催する。",
+      "notes": "「番組の司会を務める」という意味もある。名: host「主催者、司会者」"
+    },
+    {
+      "no": 433,
+      "word": "ride",
+      "pos": "名詞",
+      "meaning": "車に乗せること",
+      "example_en": "Can you give me a ride to the station?",
+      "example_ja": "駅まで車に乗せていってもらえますか。",
+      "notes": "give (人) a ride、動: ride「（乗り物に）乗る」"
+    },
+    {
+      "no": 434,
+      "word": "seek",
+      "pos": "動詞",
+      "meaning": "求める",
+      "example_en": "We are seeking an accountant.",
+      "example_ja": "当社は経理担当者を求めています。",
+      "notes": "同: look for「探す」、seek to ~「〜しようとする」"
+    },
+    {
+      "no": 435,
+      "word": "step down",
+      "pos": "動詞",
+      "meaning": "辞任する(身を引く)",
+      "example_en": "Ms. Garcia will step down from her post in December.",
+      "example_ja": "ガルシアさんは今の職を12月に辞める。",
+      "notes": "同: resign「辞任する」"
+    },
+    {
+      "no": 436,
+      "word": "technique",
+      "pos": "名詞",
+      "meaning": "手法",
+      "example_en": "The agency uses various advertising techniques.",
+      "example_ja": "その代理店はさまざまな広告手法を使う。",
+      "notes": "「技術、技能」という意味もある。形: technical「技術上の、専門的な」、副: technically「技術的に、厳密にいえば」、名: technician「技術者」(=engineer「技術者」)"
+    },
+    {
+      "no": 437,
+      "word": "temporary",
+      "pos": "形容詞",
+      "meaning": "臨時の",
+      "example_en": "I found a temporary job at a department store.",
+      "example_ja": "私はデパートでの臨時の仕事を見つけた。",
+      "notes": "「一時的な」という意味もある。反: permanent「恒久的な」、副: temporarily「一時的に」"
+    },
+    {
+      "no": 438,
+      "word": "factor",
+      "pos": "名詞",
+      "meaning": "要因",
+      "example_en": "What's the most important factor in choosing a job?",
+      "example_ja": "仕事を選ぶ際、最も重要な要因は何ですか。",
+      "notes": "同: element「要因」、deciding factor「決定的な要因」"
+    },
+    {
+      "no": 439,
+      "word": "assemble",
+      "pos": "動詞",
+      "meaning": "組み立てる",
+      "example_en": "These computers were assembled in Taiwan.",
+      "example_ja": "これらのコンピュータは台湾で組み立てられた。",
+      "notes": "「（人が）集まる」という意味もある。名: assembly「組み立て、集会、議会」、assembly line「（工場の）組み立てライン」"
+    },
+    {
+      "no": 440,
+      "word": "attention",
+      "pos": "名詞",
+      "meaning": "注意",
+      "example_en": "I wasn't paying attention to him.",
+      "example_ja": "私は彼に注意を払っていなかった。",
+      "notes": "pay attention to ~「〜に注意を払う」、形: attentive「よく注意している、心づかいの行き届いた」"
+    },
+    {
+      "no": 441,
+      "word": "invoice",
+      "pos": "名詞",
+      "meaning": "請求書",
+      "example_en": "We've received an invoice for sixty-five dollars.",
+      "example_ja": "私たちは65ドルの請求書を受け取った。",
+      "notes": "同: bill「請求書」"
+    },
+    {
+      "no": 442,
+      "word": "prior to",
+      "pos": "前置詞",
+      "meaning": "〜の前に",
+      "example_en": "Please arrive fifteen minutes prior to your appointment.",
+      "example_ja": "予約時間の15分前に到着するようにしてください。",
+      "notes": "同: before「〜の前に」、形: prior「事前の」"
+    },
+    {
+      "no": 443,
+      "word": "refreshment",
+      "pos": "名詞",
+      "meaning": "軽い飲食料",
+      "example_en": "Refreshments will be served after the meeting.",
+      "example_ja": "会議の後、軽い飲食料が出ます。",
+      "notes": "動: refresh「すっきりさせる」、形: refreshing「さわやかな」、名: beverage「飲み物」"
+    },
+    {
+      "no": 444,
+      "word": "trust",
+      "pos": "名詞",
+      "meaning": "信用",
+      "example_en": "Honesty is the key to building trust.",
+      "example_ja": "誠実さは信用を築く鍵である。",
+      "notes": "「信託」という意味もある。動: trust「信用する、当てにする」、形: trustworthy「信用できる、当てにできる」"
+    },
+    {
+      "no": 445,
+      "word": "plumber",
+      "pos": "名詞",
+      "meaning": "配管工",
+      "example_en": "I called the plumber to fix the sink.",
+      "example_ja": "流しを修理するために配管工に電話した。",
+      "notes": "名: plumbing「配管」"
+    },
+    {
+      "no": 446,
+      "word": "update",
+      "pos": "動詞",
+      "meaning": "更新する",
+      "example_en": "We update our Web site daily.",
+      "example_ja": "私たちは毎日ウェブサイトを更新する。",
+      "notes": "「最新の情報を与える、新しいものに替える」という意味もある。名: update「最新情報」"
+    },
+    {
+      "no": 447,
+      "word": "upstairs",
+      "pos": "副詞",
+      "meaning": "上の階に",
+      "example_en": "We have a meeting room upstairs.",
+      "example_ja": "上の階に会議用の部屋があります。",
+      "notes": "形: upstairs「上の階の」、名: upstairs「上の階」、反: downstairs「下の階に」、名: stairs「階段」"
+    },
+    {
+      "no": 448,
+      "word": "manner",
+      "pos": "名詞",
+      "meaning": "態度",
+      "example_en": "Matt acted in a professional manner.",
+      "example_ja": "マットはプロらしい態度で行動した。",
+      "notes": "「やり方、礼儀作法（この意味では複数形mannersになる）」などの意味もある。in a calm manner「落ち着いた態度で」"
+    },
+    {
+      "no": 449,
+      "word": "consider",
+      "pos": "動詞",
+      "meaning": "考える",
+      "example_en": "I'm considering taking the course.",
+      "example_ja": "私はそのコースを取ろうかどうか考えている。",
+      "notes": "consider ~ing「〜することを考える」、名: consideration「考慮、思いやり」、形: considerable「かなりの」、副: considerably「かなり」(=significantly, substantially)"
+    },
+    {
+      "no": 450,
+      "word": "executive",
+      "pos": "名詞",
+      "meaning": "重役",
+      "example_en": "Ms. James is an executive of a computer company.",
+      "example_ja": "ジェームズさんはコンピュータ会社の重役です。",
+      "notes": "形: executive「経営に関する、重役の」、chief executive officer (略: CEO)「最高経営責任者」"
+    },
+    {
+      "no": 451,
+      "word": "means",
+      "pos": "名詞",
+      "meaning": "手段",
+      "example_en": "Do you have any means of identification?",
+      "example_ja": "身元を証明する手段を何かお持ちですか。",
+      "notes": "meansは単数形でもsが付く。by all means「いかなる犠牲を払っても」"
+    },
+    {
+      "no": 452,
+      "word": "regarding",
+      "pos": "前置詞",
+      "meaning": "〜に関する",
+      "example_en": "We have received your letter regarding the defective products.",
+      "example_ja": "当社は欠陥商品に関するあなたからの手紙を受け取りました。",
+      "notes": "同: about, concerning, with regard to「〜に関する」、動: regard「〜と見なす」、名: regard「尊敬、関心」"
+    },
+    {
+      "no": 453,
+      "word": "association",
+      "pos": "名詞",
+      "meaning": "提携",
+      "example_en": "The book was published in association with the National Museum.",
+      "example_ja": "この本は国立博物館の協力によって出版された。",
+      "notes": "「関連、協会、連想」などの意味もある。in association with ~「〜と協力して(=in cooperation with)」、動: associate「関連付ける」、名: associate「仲間、共同経営者」"
+    },
+    {
+      "no": 454,
+      "word": "budget",
+      "pos": "名詞",
+      "meaning": "予算",
+      "example_en": "They're reviewing the budget for next year.",
+      "example_ja": "彼らは来年度の予算案を検討している。",
+      "notes": "動: budget「割り当てる」、形: budget「低価格の」(=cheap, inexpensive, affordable, reasonable)"
+    },
+    {
+      "no": 455,
+      "word": "contain",
+      "pos": "動詞",
+      "meaning": "含む",
+      "example_en": "This report contains information about the company's financial condition.",
+      "example_ja": "この報告書には会社の財政状況に関する情報が含まれています。",
+      "notes": "「中に入っている」という意味もある。名: container「容器」"
+    },
+    {
+      "no": 456,
+      "word": "remain",
+      "pos": "動詞",
+      "meaning": "〜のままでいる",
+      "example_en": "Please remain seated during take-off.",
+      "example_ja": "離陸の際、座ったままでいてください。",
+      "notes": "「とどまる」(=stay)という意味もある。名: remainder「残り」(=rest)"
+    },
+    {
+      "no": 457,
+      "word": "chemical",
+      "pos": "名詞",
+      "meaning": "化学薬品",
+      "example_en": "We use dangerous chemicals in our plant.",
+      "example_ja": "当社の工場では危険な化学薬品を使っている。",
+      "notes": "agricultural chemical「農薬」、形: chemical「化学の、化学的な」、名: chemistry「化学」、名: chemist「化学者」"
+    },
+    {
+      "no": 458,
+      "word": "demonstrate",
+      "pos": "動詞",
+      "meaning": "実地説明をする",
+      "example_en": "I'll be demonstrating some of our new products.",
+      "example_ja": "当社の新製品のいくつかを取り出して実地説明いたします。",
+      "notes": "「証明する、はっきりと示す」という意味もある。名: demonstration「デモンストレーション、実演」"
+    },
+    {
+      "no": 459,
+      "word": "qualified",
+      "pos": "形容詞",
+      "meaning": "適任である",
+      "example_en": "Tom is qualified for the position.",
+      "example_ja": "トムはその職に適任である。",
+      "notes": "「資格を持っている」という意味もある。動: qualify「資格を得る、資格を持つ、資格を与える」、名: qualification「資格、適任」"
+    },
+    {
+      "no": 460,
+      "word": "revise",
+      "pos": "動詞",
+      "meaning": "修正する",
+      "example_en": "We have to revise the budget.",
+      "example_ja": "私たちは予算を修正する必要がある。",
+      "notes": "「改訂する、復習する」という意味もある。名: revision「変更、見直し」"
+    },
+    {
+      "no": 461,
+      "word": "relaxed",
+      "pos": "形容詞",
+      "meaning": "くつろいだ",
+      "example_en": "When she entered the room, she looked relaxed.",
+      "example_ja": "彼女は部屋に入ってきたとき、くつろいだように見えた。",
+      "notes": "動: relax「リラックスする」、名: relaxation「くつろぎ、緩和」"
+    },
+    {
+      "no": 462,
+      "word": "upgrade",
+      "pos": "動詞",
+      "meaning": "改良する",
+      "example_en": "We can't afford to upgrade our facilities.",
+      "example_ja": "私たちは設備を改良する余裕がない。",
+      "notes": "「向上させる、格上げする、アップグレードする」などの意味もある。名: upgrade「改良、アップグレード」"
+    },
+    {
+      "no": 463,
+      "word": "accompany",
+      "pos": "動詞",
+      "meaning": "同行する",
+      "example_en": "Betty will accompany me to the conference.",
+      "example_ja": "ベティーは私に同行して会議に行く。",
+      "notes": "同: go with ~「〜と一緒に行く」"
+    },
+    {
+      "no": 464,
+      "word": "attitude",
+      "pos": "名詞",
+      "meaning": "態度(姿勢)",
+      "example_en": "He has a positive attitude to his work.",
+      "example_ja": "彼は自分の仕事に対して積極的な態度を取っている。",
+      "notes": "「見方、姿勢」という意味もある。後ろに続く前置詞はtoまたはtoward(s)"
+    },
+    {
+      "no": 465,
+      "word": "commute",
+      "pos": "動詞",
+      "meaning": "通勤する",
+      "example_en": "Amanda commutes to Montreal every day.",
+      "example_ja": "アマンダは毎日モントリオールに通っている。",
+      "notes": "名: commute「通勤、通学」、名: commuter「通う人」、commuter train「通勤列車」"
+    },
+    {
+      "no": 466,
+      "word": "competitive",
+      "pos": "形容詞",
+      "meaning": "競争力のある",
+      "example_en": "We need to cut labor costs to stay competitive.",
+      "example_ja": "私たちは競争力を保つため、人件費を削減する必要がある。",
+      "notes": "「競争が激しい、競争心の強い、他に負けない」という意味もある。動: compete「競う」、名: competition「競争」、名: competitor「競争相手、ライバル」"
+    },
+    {
+      "no": 467,
+      "word": "refuse",
+      "pos": "動詞",
+      "meaning": "拒否する",
+      "example_en": "He refused to speak with journalists.",
+      "example_ja": "彼は報道関係者と話をすることを拒絶した。",
+      "notes": "「（申し出などを）断る」という意味もある。反: accept「受け入れる」、名: refusal「拒否」"
+    },
+    {
+      "no": 468,
+      "word": "subscribe",
+      "pos": "動詞",
+      "meaning": "定期購読する",
+      "example_en": "I subscribe to Business Weekly.",
+      "example_ja": "私はビジネスウィークリーを定期購読している。",
+      "notes": "後ろに続く前置詞はto。名: subscription「定期購読」、名: subscriber「定期購読者」"
+    },
+    {
+      "no": 469,
+      "word": "process",
+      "pos": "動詞",
+      "meaning": "処理する",
+      "example_en": "It will take two weeks to process your visa application.",
+      "example_ja": "あなたのビザ申請を処理するのに2週間かかります。",
+      "notes": "「加工する」という意味もある。名: process「過程、作用、進行」、形: processed「加工された」"
+    },
+    {
+      "no": 470,
+      "word": "comment",
+      "pos": "名詞",
+      "meaning": "意見",
+      "example_en": "He made helpful comments on my proposal.",
+      "example_ja": "彼は私の企画書に有益な意見を出してくれた。",
+      "notes": "動: comment「意見を述べる」。名詞・動詞ともに後ろに前置詞onが続く"
+    },
+    {
+      "no": 471,
+      "word": "necessary",
+      "pos": "形容詞",
+      "meaning": "必要な",
+      "example_en": "Is it necessary to fill out this form?",
+      "example_ja": "この用紙に記入する必要がありますか。",
+      "notes": "「必然的な」という意味もある。同: essential, vital「絶対必要な」、名: necessity「必要、必需品」"
+    },
+    {
+      "no": 472,
+      "word": "respectively",
+      "pos": "副詞",
+      "meaning": "それぞれ",
+      "example_en": "Auckland and Sydney were ranked fifth and tenth, respectively.",
+      "example_ja": "オークランドとシドニーはそれぞれ5位と10位にランク付けされた。",
+      "notes": "形: respective「それぞれの」、関: in respect of ~「〜に関して」"
+    },
+    {
+      "no": 473,
+      "word": "probable",
+      "pos": "形容詞",
+      "meaning": "起こりそうな",
+      "example_en": "It is probable that unemployment will rise further.",
+      "example_ja": "失業率はさらに上がる見込みだ。",
+      "notes": "同: likely「起こりそうな」、関: possible「可能性がある」（probableより可能性が低い）、名: probability「見込み」(=likelihood)、副: probably「多分、おそらく」"
+    },
+    {
+      "no": 474,
+      "word": "efficient",
+      "pos": "形容詞",
+      "meaning": "効率のよい",
+      "example_en": "We need more efficient methods of collecting data.",
+      "example_ja": "私たちはもっと効率のよいデータ収集方法が必要です。",
+      "notes": "「有能な」という意味もある。energy efficient「燃費のよい」、名: efficiency「効率」、副: efficiently「効率的に」"
+    },
+    {
+      "no": 475,
+      "word": "identify",
+      "pos": "動詞",
+      "meaning": "明らかにする",
+      "example_en": "First, we must identify problem areas.",
+      "example_ja": "はじめに私たちは問題点を明らかにしなければならない。",
+      "notes": "「身元を確認する」という意味もある。名: identification「身分証明」"
+    },
+    {
+      "no": 476,
+      "word": "particular",
+      "pos": "形容詞",
+      "meaning": "特定の",
+      "example_en": "Is there any particular movie you want to see?",
+      "example_ja": "何か特に見たい映画はありますか。",
+      "notes": "同: specific, certain「特定の」、副: particularly「特に」"
+    },
+    {
+      "no": 477,
+      "word": "relocate",
+      "pos": "動詞",
+      "meaning": "移転する",
+      "example_en": "The company relocated to Los Angeles.",
+      "example_ja": "その会社はロサンゼルスに移転した。",
+      "notes": "relocate to 〈地名〉「〜へ移転する」、同: move to「〜へ引っ越す」、名: relocation「移転」"
+    },
+    {
+      "no": 478,
+      "word": "remind",
+      "pos": "動詞",
+      "meaning": "思い出させる",
+      "example_en": "My secretary reminded me about the meeting tomorrow.",
+      "example_ja": "秘書が私に明日の会議のことを思い出させてくれた。",
+      "notes": "関: remember「覚えている」、名: reminder「思い出させるもの」"
+    },
+    {
+      "no": 479,
+      "word": "compared with",
+      "pos": "熟語",
+      "meaning": "〜と比べて",
+      "example_en": "Our sales rose ten percent compared with last year.",
+      "example_ja": "当社の売り上げは昨年と比べ、10パーセント上がった。",
+      "notes": "compared to でも同じ意味になる。名: comparison「比較」"
+    },
+    {
+      "no": 480,
+      "word": "establish",
+      "pos": "動詞",
+      "meaning": "設立する",
+      "example_en": "The company was established in 1967.",
+      "example_ja": "その会社は1967年に設立された。",
+      "notes": "「確立する、証明する、認めるせる」などの意味もある。同: found「設立する」、名: establishment「設立、機関、権力層」、形: established「すでにある、定評のある」"
+    },
+    {
+      "no": 481,
+      "word": "point out",
+      "pos": "句動詞",
+      "meaning": "指摘する",
+      "example_en": "He pointed out that these data are inaccurate.",
+      "example_ja": "彼はこれらのデータが正確でないことを指摘した。",
+      "notes": "point out A to ~「〜にAを指摘する」"
+    },
+    {
+      "no": 482,
+      "word": "property",
+      "pos": "名詞",
+      "meaning": "不動産",
+      "example_en": "Property prices are falling this month.",
+      "example_ja": "今月、不動産の価格は下がっている。",
+      "notes": "「財産、所有物、特性」などの意味もある。"
+    },
+    {
+      "no": 483,
+      "word": "restore",
+      "pos": "動詞",
+      "meaning": "修復する",
+      "example_en": "The building was restored after the fire.",
+      "example_ja": "その建物は火事のあと、修復された。",
+      "notes": "「元の状態に戻す」という意味がある。名: restoration「復元、回復、復興、返還」"
+    },
+    {
+      "no": 484,
+      "word": "status",
+      "pos": "名詞",
+      "meaning": "状況",
+      "example_en": "What's the status of our order?",
+      "example_ja": "私たちの注文品の状況はどうなっていますか。",
+      "notes": "「地位」という意味もある。status quo「現状」"
+    },
+    {
+      "no": 485,
+      "word": "expense",
+      "pos": "名詞",
+      "meaning": "経費",
+      "example_en": "The company will cover travel expenses.",
+      "example_ja": "会社が旅費を出してくれます。",
+      "notes": "関: expenditure「支出」、形: expensive「高価な」(=costly, pricey)"
+    },
+    {
+      "no": 486,
+      "word": "focus",
+      "pos": "動詞",
+      "meaning": "焦点を合わせる",
+      "example_en": "The conference focuses on environmental issues.",
+      "example_ja": "その会議は環境問題に焦点を合わせている。",
+      "notes": "焦点を合わせる対象は前置詞onによって導く。「集中させる」という意味もある。名: focus「焦点、中心」"
+    },
+    {
+      "no": 487,
+      "word": "laboratory",
+      "pos": "名詞",
+      "meaning": "研究所",
+      "example_en": "The company has a research laboratory in Miami.",
+      "example_ja": "その会社はマイアミに研究所を持っている。",
+      "notes": "「実験室」という意味にもなる。略: lab"
+    },
+    {
+      "no": 488,
+      "word": "obtain",
+      "pos": "動詞",
+      "meaning": "得る",
+      "example_en": "You must obtain permission from the publisher.",
+      "example_ja": "あなたは出版社から許可を得なければなりません。",
+      "notes": "同: get「得る」、形: obtainable「手に入れることができる」"
+    },
+    {
+      "no": 489,
+      "word": "reputation",
+      "pos": "名詞",
+      "meaning": "評判",
+      "example_en": "We have a reputation for quality.",
+      "example_ja": "当社は品質の良さで評判を得ている。",
+      "notes": "形: reputed「〜といわれている」"
+    },
+    {
+      "no": 490,
+      "word": "retail",
+      "pos": "名詞",
+      "meaning": "小売り",
+      "example_en": "You can buy these products at retail stores.",
+      "example_ja": "これらの製品は小売店でご購入いただけます。",
+      "notes": "関: wholesale「卸売り」、名: retailer「小売業者」、関: wholesaler「卸売り業者」"
+    },
+    {
+      "no": 491,
+      "word": "contribute",
+      "pos": "動詞",
+      "meaning": "寄付する",
+      "example_en": "Ms. Hunter contributed ten thousand dollars to the school.",
+      "example_ja": "ハンターさんはその学校へ1万ドルの寄付をした。",
+      "notes": "「貢献する、原因となる、寄稿する」という意味もある。toとセットで使われることが多い。名: contribution「寄付、貢献、寄稿」"
+    },
+    {
+      "no": 492,
+      "word": "convince",
+      "pos": "動詞",
+      "meaning": "納得させる",
+      "example_en": "We have to convince the president.",
+      "example_ja": "私たちは社長を納得させなければならない。",
+      "notes": "形: convinced「確信した」、形: convincing「説得力のある」(=persuasive)"
+    },
+    {
+      "no": 493,
+      "word": "divide",
+      "pos": "動詞",
+      "meaning": "分ける",
+      "example_en": "We should divide the profits equally among us.",
+      "example_ja": "利益は私たちの間で平等に分けるべきです。",
+      "notes": "「隔てる、割り算をする」などの意味もある。同: share「分ける」、名: division「部署(=department)、分包、区画」"
+    },
+    {
+      "no": 494,
+      "word": "fine",
+      "pos": "名詞",
+      "meaning": "罰金",
+      "example_en": "I got a 55-dollar fine for illegal parking.",
+      "example_ja": "私は違法駐車で55ドルの罰金を取られた。",
+      "notes": "動: fine「罰金を科す」。形容詞のfine（よい、優れた、晴れたなどの意）とはまったく別の意味"
+    },
+    {
+      "no": 495,
+      "word": "inquire",
+      "pos": "動詞",
+      "meaning": "尋ねる",
+      "example_en": "I inquired about their service.",
+      "example_ja": "私は彼らのサービスについて尋ねた。",
+      "notes": "enquireという綴りもある（主に英）。名: inquiry「問い合わせ」、make an inquiry「問い合わせる」"
+    },
+    {
+      "no": 496,
+      "word": "specific",
+      "pos": "形容詞",
+      "meaning": "明確な・特定の",
+      "example_en": "Each product is designed for a specific purpose.",
+      "example_ja": "それぞれの製品は特定の目的のために作られています。",
+      "notes": "「厳密な」という意味もある。同: particular, certain「特定の」、副: specifically「特に、厳密に」、名: specification「仕様書」"
+    },
+    {
+      "no": 497,
+      "word": "stock",
+      "pos": "名詞",
+      "meaning": "在庫",
+      "example_en": "This model is currently out of stock.",
+      "example_ja": "このモデルは現在、在庫が切れています。",
+      "notes": "「株式」という意味もある。同: inventory「在庫」、in stock「在庫がある」、out of stock「在庫がない」、動: stock「仕入れる、満たす」"
+    },
+    {
+      "no": 498,
+      "word": "aware",
+      "pos": "形容詞",
+      "meaning": "気が付いている",
+      "example_en": "We are aware that our sales network is insufficient.",
+      "example_ja": "私たちは販売網が十分でないことを知っています。",
+      "notes": "aware of ~「〜に気付いている」、名: awareness「認識、自覚」"
+    },
+    {
+      "no": 499,
+      "word": "broad",
+      "pos": "形容詞",
+      "meaning": "大まかな",
+      "example_en": "He gave us a broad outline of the plan.",
+      "example_ja": "彼は私たちにその計画の大まかな概要を示した。",
+      "notes": "「広い」という意味もある。動: broaden「広げる」(=widen, expand)"
+    },
+    {
+      "no": 500,
+      "word": "maximum",
+      "pos": "形容詞",
+      "meaning": "最大の",
+      "example_en": "The factory is operating at maximum capacity.",
+      "example_ja": "その工場は稼働能力限界で操業している。",
+      "notes": "反: minimum「最小の」、動: maximize「最大にする」、反: minimize「最小限にする」、名: maximum「最大限」(反: minimum「最小限」)"
+    }
+  ]
+};
     const CHOICE_KEYS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
     let currentMode = "en_ja";
@@ -671,50 +6007,14 @@
     let wrongTotal = 0;
     let wrongQuestions = [];
     let isAnswered = false;
-    let answerHistory = {};
-    let currentChoicesData = null;
-
-    // 出題のたびに毎回ランダムで10択を生成する関数
-    function generateDynamicChoices(targetItem, mode) {
-      const isEnJa = (mode === "en_ja");
-      const correctAnswer = isEnJa ? targetItem.meaning : targetItem.word;
-      
-      // 他の単語99語からランダムにサンプリング
-      const others = ALL_WORDS.filter(w => w.no !== targetItem.no);
-      // シャッフル
-      const shuffledOthers = [...others].sort(() => Math.random() - 0.5);
-      
-      const dummyAnswers = [];
-      for (const item of shuffledOthers) {
-        const ans = isEnJa ? item.meaning : item.word;
-        if (ans !== correctAnswer && !dummyAnswers.includes(ans)) {
-          dummyAnswers.push(ans);
-        }
-        if (dummyAnswers.length === 9) break;
-      }
-      
-      // 正解1つ + ダミー9つ
-      const choices = [correctAnswer, ...dummyAnswers];
-      // 選択肢の並び順をランダムシャッフル！
-      choices.sort(() => Math.random() - 0.5);
-      
-      const correctLetter = CHOICE_KEYS[choices.indexOf(correctAnswer)];
-      
-      return {
-        choices: choices,
-        correctLetter: correctLetter
-      };
-    }
 
     function init() {
-      // 出題順は番号順 (401〜500)
-      questionsList = [...ALL_WORDS];
+      questionsList = [...QUIZ_SOURCE[currentMode]];
       currentIndex = 0;
       correctTotal = 0;
       wrongTotal = 0;
       wrongQuestions = [];
       isAnswered = false;
-      answerHistory = {};
       
       document.getElementById("quizCard").style.display = "block";
       document.getElementById("resultView").style.display = "none";
@@ -736,7 +6036,7 @@
       const q = questionsList[currentIndex];
       
       document.getElementById("progressText").textContent = `${currentIndex + 1} / ${questionsList.length}`;
-      document.getElementById("qNumberBadge").textContent = `Q${currentIndex + 1} / ${questionsList.length} [No. ${q.no}]`;
+      document.getElementById("qNumberBadge").textContent = `Q${q.q_no} [No. ${q.no}]`;
       document.getElementById("posTag").textContent = q.pos;
       
       const pct = ((currentIndex) / questionsList.length) * 100;
@@ -752,13 +6052,10 @@
         audioBtn.style.display = "none";
       }
 
-      // 毎回ランダムに10択を生成
-      currentChoicesData = generateDynamicChoices(q, currentMode);
-
       const grid = document.getElementById("choicesGrid");
       grid.innerHTML = "";
       
-      currentChoicesData.choices.forEach((choice, idx) => {
+      q.choices.forEach((choice, idx) => {
         const btn = document.createElement("button");
         btn.className = "choice-btn";
         btn.innerHTML = `<span class="choice-key">${CHOICE_KEYS[idx]}</span><span>${choice}</span>`;
@@ -774,13 +6071,12 @@
       if (isAnswered) return;
       isAnswered = true;
 
-      const isCorrect = (selectedKey === currentChoicesData.correctLetter);
-      answerHistory[q.no] = isCorrect ? 'correct' : 'wrong';
-
+      const isCorrect = (selectedKey === q.correct_letter);
+      
       const allBtns = document.querySelectorAll(".choice-btn");
       allBtns.forEach((btn, idx) => {
         btn.disabled = true;
-        if (CHOICE_KEYS[idx] === currentChoicesData.correctLetter) {
+        if (CHOICE_KEYS[idx] === q.correct_letter) {
           btn.classList.add("correct");
         }
       });
@@ -858,95 +6154,13 @@
       renderQuestion();
     }
 
-    function openJumpModal() {
-      const grid = document.getElementById("jumpGrid");
-      grid.innerHTML = "";
-      questionsList.forEach((q, idx) => {
-        const btn = document.createElement("button");
-        btn.className = "grid-num-btn";
-        btn.textContent = q.no;
-        if (idx === currentIndex) btn.classList.add("current");
-        if (answerHistory[q.no] === 'correct') btn.classList.add("answered-correct");
-        if (answerHistory[q.no] === 'wrong') btn.classList.add("answered-wrong");
-        btn.onclick = () => {
-          currentIndex = idx;
-          document.getElementById("jumpModal").style.display = "none";
-          renderQuestion();
-        };
-        grid.appendChild(btn);
-      });
-      document.getElementById("jumpModal").style.display = "flex";
-    }
-
-    function closeJumpModal(e) {
-      if (e.target.id === 'jumpModal') {
-        document.getElementById("jumpModal").style.display = "none";
-      }
-    }
-
-    /* タブ切り替え */
-    function showQuizTab() {
-      document.getElementById("quizArea").style.display = "block";
-      document.getElementById("wordbookArea").style.display = "none";
-      document.getElementById("btnQuizTab").classList.add("btn-tab-active");
-      document.getElementById("btnWordbookTab").classList.remove("btn-tab-active");
-    }
-
-    function showWordbookTab() {
-      document.getElementById("quizArea").style.display = "none";
-      document.getElementById("wordbookArea").style.display = "block";
-      document.getElementById("btnQuizTab").classList.remove("btn-tab-active");
-      document.getElementById("btnWordbookTab").classList.add("btn-tab-active");
-      renderWordbookList(ALL_WORDS);
-    }
-
-    function renderWordbookList(words) {
-      const container = document.getElementById("wordListContainer");
-      container.innerHTML = "";
-      words.forEach(w => {
-        const card = document.createElement("div");
-        card.className = "word-card";
-        card.innerHTML = `
-          <div class="word-header">
-            <div>
-              <span style="font-weight: 800; color: #1e3a8a; font-size: 0.9rem; margin-right: 0.5rem;">No.${w.no}</span>
-              <strong style="font-size: 1.2rem; color: #0f172a;">${w.word}</strong>
-              <span style="font-size: 0.8rem; background: #f1f5f9; padding: 0.2rem 0.5rem; border-radius: 4px; margin-left: 0.5rem; color: #475569;">${w.pos}</span>
-            </div>
-            <button class="btn-audio-sm" onclick="speakDirect('${w.word}')">発音</button>
-          </div>
-          <div style="font-size: 1rem; font-weight: 700; color: #2563eb; margin-bottom: 0.4rem;">${w.meaning}</div>
-          <div style="font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 0.2rem;">${w.example_en}</div>
-          <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.4rem;">${w.example_ja}</div>
-          <div style="font-size: 0.8rem; background: #f8fafc; padding: 0.35rem 0.6rem; border-radius: 4px; color: #475569;">${w.notes}</div>
-        `;
-        container.appendChild(card);
-      });
-    }
-
-    function filterWordList() {
-      const q = document.getElementById("searchInput").value.toLowerCase();
-      const filtered = ALL_WORDS.filter(w => 
-        w.word.toLowerCase().includes(q) ||
-        w.meaning.toLowerCase().includes(q) ||
-        w.no.toString().includes(q) ||
-        w.example_en.toLowerCase().includes(q) ||
-        w.example_ja.toLowerCase().includes(q)
-      );
-      renderWordbookList(filtered);
-    }
-
-    function speakDirect(text) {
+    function speakText(text) {
       if (!window.speechSynthesis) return;
       window.speechSynthesis.cancel();
       const u = new SpeechSynthesisUtterance(text);
       u.lang = 'en-US';
       u.rate = 0.9;
       window.speechSynthesis.speak(u);
-    }
-
-    function speakText(text) {
-      speakDirect(text);
     }
 
     function speakTargetWord() {
@@ -960,14 +6174,15 @@
     }
 
     window.addEventListener("keydown", (e) => {
-      if (document.getElementById("wordbookArea").style.display === "block") return;
       if (!isAnswered) {
         const fullToHalf = {'１':'1','２':'2','３':'3','４':'4','５':'5','６':'6','７':'7','８':'8','９':'9','０':'0'};
         const normalizedKey = fullToHalf[e.key] || e.key;
         const index = CHOICE_KEYS.indexOf(normalizedKey);
         if (index !== -1) {
           const btns = document.querySelectorAll(".choice-btn");
-          if (btns[index]) btns[index].click();
+          if (btns[index]) {
+            btns[index].click();
+          }
         }
       } else {
         if (e.key === "Enter" || e.key === " ") {

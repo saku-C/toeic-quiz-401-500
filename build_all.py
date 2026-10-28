@@ -206,7 +206,7 @@ ws_words.views.sheetView[0].showGridLines = True
 ws_words.freeze_panes = "A5"
 
 ws_words.merge_cells("A1:G1")
-ws_words["A1"] = "TOEIC L&R 出る単特急 金のフレーズ 重要単語一覧 (No. 401 - 500)"
+ws_words["A1"] = "単語帳 重要単語一覧 (No. 401 - 500)"
 ws_words["A1"].font = Font(name=font_family, size=15, bold=True, color="FFFFFF")
 ws_words["A1"].fill = PatternFill(start_color="1E3A8A", end_color="1E3A8A", fill_type="solid")
 ws_words["A1"].alignment = Alignment(horizontal="center", vertical="center")
