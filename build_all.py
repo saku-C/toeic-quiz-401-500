@@ -458,8 +458,11 @@ build_quiz_sheet(
 )
 
 excel_path = os.path.join(OUTPUT_DIR, "TOEIC_Words_401-500_100Quiz.xlsx")
-wb.save(excel_path)
-print("Saved Excel:", excel_path)
+try:
+    wb.save(excel_path)
+    print("Saved Excel:", excel_path)
+except PermissionError:
+    print(f"Notice: {excel_path} is open in Excel, skipped rewrite.")
 
 excel_path_ja = os.path.join(OUTPUT_DIR, "TOEIC単語401-500_100問10択クイズ.xlsx")
 try:
@@ -473,11 +476,14 @@ except Exception as e:
 # 2. CSV 作成 (UTF-8 with BOM)
 # -------------------------------------------------------------
 csv_words_file = os.path.join(OUTPUT_DIR, "TOEIC_Words_401-500_List.csv")
-with open(csv_words_file, mode="w", encoding="utf-8-sig", newline="") as f:
-    writer = csv.writer(f)
-    writer.writerow(["No.", "英単語", "日本語訳", "品詞", "例文", "例文の日本語訳", "補足・関連語"])
-    for w in words_data:
-        writer.writerow([w["no"], w["word"], w["meaning"], w["pos"], w["example_en"], w["example_ja"], w["notes"]])
+try:
+    with open(csv_words_file, mode="w", encoding="utf-8-sig", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["No.", "英単語", "日本語訳", "品詞", "例文", "例文の日本語訳", "補足・関連語"])
+        for w in words_data:
+            writer.writerow([w["no"], w["word"], w["meaning"], w["pos"], w["example_en"], w["example_ja"], w["notes"]])
+except PermissionError:
+    print(f"Notice: {csv_words_file} is open in Excel, skipped rewrite.")
 
 csv_quiz_en_file = os.path.join(OUTPUT_DIR, "TOEIC_100Quiz_EN_to_JA.csv")
 with open(csv_quiz_en_file, mode="w", encoding="utf-8-sig", newline="") as f:
@@ -737,21 +743,22 @@ html_content = f'''<!DOCTYPE html>
     .btn-audio {{
       background: #f1f5f9;
       border: 1px solid var(--border);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      padding: 0.35rem 0.85rem;
+      height: 36px;
+      border-radius: 18px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
       transition: all 0.2s;
     }}
 
     .btn-audio:hover {{
       background: var(--primary-light);
       border-color: var(--primary);
-      transform: scale(1.08);
     }}
 
     .choices-grid {{
@@ -867,15 +874,23 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .btn-audio-sm {{
-      background: transparent;
-      border: none;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 0.95rem;
-      opacity: 0.7;
-      transition: opacity 0.2s;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }}
     .btn-audio-sm:hover {{
-      opacity: 1;
+      background: var(--primary-light);
+      border-color: var(--primary);
     }}
 
     .example-ja {{
@@ -943,7 +958,7 @@ html_content = f'''<!DOCTYPE html>
   <div class="container">
     <header>
       <div class="title-group">
-        <h1>🎯 TOEIC 100問10択クイズ</h1>
+        <h1>TOEIC 100問10択クイズ</h1>
         <p>No. 401 〜 500 (出題順: 番号順)</p>
       </div>
       <div class="controls">
@@ -962,8 +977,8 @@ html_content = f'''<!DOCTYPE html>
           <span id="progressText" style="font-weight: 700;">1 / 100</span>
         </div>
         <div style="display: flex; gap: 0.5rem;">
-          <span class="stat-badge badge-correct">⭕ <span id="correctCount">0</span></span>
-          <span class="stat-badge badge-wrong">❌ <span id="wrongCount">0</span></span>
+          <span class="stat-badge badge-correct">○ <span id="correctCount">0</span></span>
+          <span class="stat-badge badge-wrong">× <span id="wrongCount">0</span></span>
           <span class="stat-badge badge-accuracy">正答率: <span id="accuracyText">0.0%</span></span>
         </div>
       </div>
@@ -980,28 +995,28 @@ html_content = f'''<!DOCTYPE html>
 
       <div class="target-wrapper">
         <div class="target-word" id="targetWord">cause</div>
-        <button class="btn-audio" id="btnSpeakWord" title="単語の発音を聞く" onclick="speakTargetWord()">🔊</button>
+        <button class="btn-audio" id="btnSpeakWord" title="単語の発音を聞く" onclick="speakTargetWord()">発音</button>
       </div>
 
       <div class="choices-grid" id="choicesGrid"></div>
 
       <div class="explanation-card" id="explanationCard">
-        <div class="explanation-title">💡 単語解説・例文</div>
+        <div class="explanation-title">単語解説・例文</div>
         <div class="example-en-row">
           <div class="example-en" id="expEn">Heavy traffic is causing delays on Highway 18.</div>
-          <button class="btn-audio-sm" id="btnSpeakSentence" title="例文の発音を聞く" onclick="speakSentence()">🔊</button>
+          <button class="btn-audio-sm" id="btnSpeakSentence" title="例文の発音を聞く" onclick="speakSentence()">例文音声</button>
         </div>
         <div class="example-ja" id="expJa">18号線では交通渋滞により遅れが生じています。</div>
         <div class="notes-text" id="expNotes">名: cause「原因、理由、大義」</div>
       </div>
 
       <div class="action-row">
-        <button class="btn-next" id="btnNext" onclick="nextQuestion()">次の問題へ (Enter ⏎)</button>
+        <button class="btn-next" id="btnNext" onclick="nextQuestion()">次の問題へ (Enter)</button>
       </div>
     </div>
 
     <div class="quiz-card result-view" id="resultView">
-      <h2>🎉 お疲れ様でした！クイズ終了</h2>
+      <h2>お疲れ様でした！クイズ終了</h2>
       <p style="color: var(--text-muted); margin-top: 0.5rem;">100問の挑戦が完了しました！</p>
       
       <div class="result-score" id="finalScore">95 / 100</div>

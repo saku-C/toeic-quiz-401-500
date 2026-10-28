@@ -3,8 +3,7 @@
 Web公開用 index.html 生成スクリプト
 - 出題順: No.401 〜 No.500 (番号順で固定)
 - 10択の選択肢: 毎回出題時/リセット時に完全にランダム生成！
-- 📖 素の単語帳一覧モード（検索・発音・全項目表示）
-- Web Audio 効果音（ピンポン♪ / ブブー）
+- 単語帳一覧モード（検索・発音・全項目表示）
 - Web Speech API ネイティブ発音再生
 - 問題一覧ジャンプモーダル
 - Googleスプレッドシート用CSV & Excel ダウンロード
@@ -259,14 +258,16 @@ html_content = f'''<!DOCTYPE html>
     .btn-audio {{
       background: #f1f5f9;
       border: 1px solid var(--border);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
+      padding: 0.35rem 0.85rem;
+      height: 36px;
+      border-radius: 18px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--primary);
       transition: all 0.2s;
       flex-shrink: 0;
     }}
@@ -274,7 +275,6 @@ html_content = f'''<!DOCTYPE html>
     .btn-audio:hover {{
       background: var(--primary-light);
       border-color: var(--primary);
-      transform: scale(1.08);
     }}
 
     /* 10択グリッド */
@@ -399,15 +399,23 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .btn-audio-sm {{
-      background: transparent;
-      border: none;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
       cursor: pointer;
-      font-size: 0.95rem;
-      opacity: 0.7;
-      transition: opacity 0.2s;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary);
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }}
     .btn-audio-sm:hover {{
-      opacity: 1;
+      background: var(--primary-light);
+      border-color: var(--primary);
     }}
 
     .example-ja {{
@@ -563,14 +571,13 @@ html_content = f'''<!DOCTYPE html>
   <div class="container">
     <header>
       <div class="title-group">
-        <h1>🎯 TOEIC 100問10択クイズ <span class="top-badge">毎回ランダム10択</span></h1>
+        <h1>TOEIC 100問10択クイズ <span class="top-badge">毎回ランダム10択</span></h1>
         <p>No. 401 〜 500 (出題順: 番号順)</p>
       </div>
       <div class="controls">
-        <button class="control-btn btn-tab-active" id="btnQuizTab" onclick="showQuizTab()">✏️ クイズ</button>
-        <button class="control-btn" id="btnWordbookTab" onclick="showWordbookTab()">📖 素の単語帳(一覧)</button>
-        <button class="control-btn" id="soundToggleBtn" onclick="toggleSound()">🔊 音ON</button>
-        <button class="control-btn" onclick="openJumpModal()">📋 進捗一覧</button>
+        <button class="control-btn btn-tab-active" id="btnQuizTab" onclick="showQuizTab()">クイズ</button>
+        <button class="control-btn" id="btnWordbookTab" onclick="showWordbookTab()">単語帳一覧</button>
+        <button class="control-btn" onclick="openJumpModal()">進捗一覧</button>
       </div>
     </header>
 
@@ -584,8 +591,8 @@ html_content = f'''<!DOCTYPE html>
             <span style="font-size: 0.75rem; color: var(--text-muted); margin-left: 0.3rem;">(番号順に出題)</span>
           </div>
           <div style="display: flex; gap: 0.4rem;">
-            <span class="stat-badge badge-correct">⭕ <span id="correctCount">0</span></span>
-            <span class="stat-badge badge-wrong">❌ <span id="wrongCount">0</span></span>
+            <span class="stat-badge badge-correct">○ <span id="correctCount">0</span></span>
+            <span class="stat-badge badge-wrong">× <span id="wrongCount">0</span></span>
             <span class="stat-badge badge-accuracy">正答率: <span id="accuracyText">0.0%</span></span>
           </div>
         </div>
@@ -599,8 +606,8 @@ html_content = f'''<!DOCTYPE html>
           <span class="q-number" id="qNumberBadge" onclick="openJumpModal()" title="クリックして問題一覧を開く">Q1 / 100 [No. 401]</span>
           <div style="display: flex; gap: 0.4rem; align-items: center;">
             <select id="modeSelect" onchange="changeMode()" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
-              <option value="en_ja">英 ➔ 日 (10択)</option>
-              <option value="ja_en">日 ➔ 英 (10択)</option>
+              <option value="en_ja">英 → 日 (10択)</option>
+              <option value="ja_en">日 → 英 (10択)</option>
             </select>
             <span class="pos-tag" id="posTag">動詞</span>
           </div>
@@ -608,28 +615,28 @@ html_content = f'''<!DOCTYPE html>
 
         <div class="target-wrapper">
           <div class="target-word" id="targetWord">cause</div>
-          <button class="btn-audio" id="btnSpeakWord" title="単語の発音を聞く" onclick="speakTargetWord()">🔊</button>
+          <button class="btn-audio" id="btnSpeakWord" title="単語の発音を聞く" onclick="speakTargetWord()">発音</button>
         </div>
 
         <div class="choices-grid" id="choicesGrid"></div>
 
         <div class="explanation-card" id="explanationCard">
-          <div class="explanation-title">💡 単語解説・例文</div>
+          <div class="explanation-title">単語解説・例文</div>
           <div class="example-en-row">
             <div class="example-en" id="expEn">Heavy traffic is causing delays on Highway 18.</div>
-            <button class="btn-audio-sm" id="btnSpeakSentence" title="例文の発音を聞く" onclick="speakSentence()">🔊</button>
+            <button class="btn-audio-sm" id="btnSpeakSentence" title="例文の発音を聞く" onclick="speakSentence()">例文音声</button>
           </div>
           <div class="example-ja" id="expJa">18号線では交通渋滞により遅れが生じています。</div>
           <div class="notes-text" id="expNotes">名: cause「原因、理由、大義」</div>
         </div>
 
         <div class="action-row">
-          <button class="btn-next" id="btnNext" onclick="nextQuestion()">次の問題へ (Enter ⏎)</button>
+          <button class="btn-next" id="btnNext" onclick="nextQuestion()">次の問題へ (Enter)</button>
         </div>
       </div>
 
       <div class="quiz-card result-view" id="resultView">
-        <h2>🎉 お疲れ様でした！クイズ終了</h2>
+        <h2>お疲れ様でした！クイズ終了</h2>
         <p style="color: var(--text-muted); margin-top: 0.5rem;">全100問の挑戦が完了しました！</p>
         
         <div class="result-score" id="finalScore">95 / 100</div>
@@ -646,13 +653,13 @@ html_content = f'''<!DOCTYPE html>
     <div id="wordbookArea" class="wordbook-view">
       <div style="background: #ffffff; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--border); margin-bottom: 1rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="font-size: 1.15rem; font-weight: 800; color: #1e3a8a;">📖 素の単語帳 (No.401 〜 500 全100語)</h2>
+          <h2 style="font-size: 1.15rem; font-weight: 800; color: #1e3a8a;">単語帳一覧 (No.401 〜 500 全100語)</h2>
           <div style="display: flex; gap: 0.4rem;">
-            <a class="control-btn" href="TOEIC_Words_401-500_List.csv" download>📥 CSV保存</a>
-            <a class="control-btn" href="TOEIC_Words_401-500_100Quiz.xlsx" download>📥 Excel保存</a>
+            <a class="control-btn" href="TOEIC_Words_401-500_List.csv" download>CSV保存</a>
+            <a class="control-btn" href="TOEIC_Words_401-500_100Quiz.xlsx" download>Excel保存</a>
           </div>
         </div>
-        <input type="text" id="searchInput" class="search-box" placeholder="🔍 単語・意味・例文を検索..." oninput="filterWordList()">
+        <input type="text" id="searchInput" class="search-box" placeholder="単語・意味・例文を検索..." oninput="filterWordList()">
         <div id="wordListContainer"></div>
       </div>
     </div>
@@ -663,7 +670,7 @@ html_content = f'''<!DOCTYPE html>
     <div class="modal-content" onclick="event.stopPropagation()">
       <div style="display: flex; justify-content: space-between; align-items: center;">
         <h3 style="font-size: 1.1rem; font-weight: 700;">問題一覧 (No.401 〜 500)</h3>
-        <button class="control-btn" onclick="document.getElementById('jumpModal').style.display='none'">閉じる ✕</button>
+        <button class="control-btn" onclick="document.getElementById('jumpModal').style.display='none'">閉じる</button>
       </div>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">番号をクリックするとその問題に直接ジャンプします。（出題順: 番号順）</p>
       <div class="modal-grid" id="jumpGrid"></div>
@@ -682,60 +689,9 @@ html_content = f'''<!DOCTYPE html>
     let wrongQuestions = [];
     let isAnswered = false;
     let answerHistory = {{}};
-    let soundEnabled = true;
-
-    // 現在の問題の10択データを保持
     let currentChoicesData = null;
 
-    // Web Audio API
-    let audioCtx = null;
-    function getAudioContext() {{
-      if (!audioCtx) {{
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      }}
-      if (audioCtx.state === 'suspended') {{
-        audioCtx.resume();
-      }}
-      return audioCtx;
-    }}
-
-    function playSound(type) {{
-      if (!soundEnabled) return;
-      try {{
-        const ctx = getAudioContext();
-        if (type === 'correct') {{
-          const osc1 = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc1.connect(gain);
-          gain.connect(ctx.destination);
-          osc1.frequency.setValueAtTime(523.25, ctx.currentTime);
-          osc1.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
-          gain.gain.setValueAtTime(0.12, ctx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
-          osc1.start();
-          osc1.stop(ctx.currentTime + 0.35);
-        }} else {{
-          const osc = ctx.createOscillator();
-          const gain = ctx.createGain();
-          osc.connect(gain);
-          gain.connect(ctx.destination);
-          osc.type = 'sawtooth';
-          osc.frequency.setValueAtTime(160, ctx.currentTime);
-          osc.frequency.linearRampToValueAtTime(110, ctx.currentTime + 0.22);
-          gain.gain.setValueAtTime(0.15, ctx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.22);
-          osc.start();
-          osc.stop(ctx.currentTime + 0.22);
-        }}
-      }} catch (e) {{}}
-    }}
-
-    function toggleSound() {{
-      soundEnabled = !soundEnabled;
-      document.getElementById('soundToggleBtn').textContent = soundEnabled ? '🔊 音ON' : '🔇 音OFF';
-    }}
-
-    /* ★出題のたびに毎回ランダムで10択を生成するコア関数★ */
+    // 出題のたびに毎回ランダムで10択を生成する関数
     function generateDynamicChoices(targetItem, mode) {{
       const isEnJa = (mode === "en_ja");
       const correctAnswer = isEnJa ? targetItem.meaning : targetItem.word;
@@ -813,7 +769,7 @@ html_content = f'''<!DOCTYPE html>
         audioBtn.style.display = "none";
       }}
 
-      // ★毎回ランダムに10択を生成！★
+      // 毎回ランダムに10択を生成
       currentChoicesData = generateDynamicChoices(q, currentMode);
 
       const grid = document.getElementById("choicesGrid");
@@ -847,11 +803,9 @@ html_content = f'''<!DOCTYPE html>
       }});
 
       if (isCorrect) {{
-        playSound('correct');
         correctTotal++;
         document.getElementById("correctCount").textContent = correctTotal;
       }} else {{
-        playSound('wrong');
         wrongTotal++;
         document.getElementById("wrongCount").textContent = wrongTotal;
         clickedBtn.classList.add("wrong");
@@ -976,7 +930,7 @@ html_content = f'''<!DOCTYPE html>
               <strong style="font-size: 1.2rem; color: #0f172a;">${{w.word}}</strong>
               <span style="font-size: 0.8rem; background: #f1f5f9; padding: 0.2rem 0.5rem; border-radius: 4px; margin-left: 0.5rem; color: #475569;">${{w.pos}}</span>
             </div>
-            <button class="btn-audio-sm" style="font-size: 1.1rem;" onclick="speakDirect('${{w.word}}')">🔊</button>
+            <button class="btn-audio-sm" onclick="speakDirect('${{w.word}}')">発音</button>
           </div>
           <div style="font-size: 1rem; font-weight: 700; color: #2563eb; margin-bottom: 0.4rem;">${{w.meaning}}</div>
           <div style="font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 0.2rem;">${{w.example_en}}</div>
