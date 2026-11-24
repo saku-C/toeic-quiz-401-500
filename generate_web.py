@@ -4,7 +4,7 @@ Web公開用 index.html 生成スクリプト
 - 出題順: No.501 〜 No.600 (番号順で固定)
 - 10択の選択肢: 毎回出題時/リセット時に完全にランダム生成
 - 選択肢記号: 1〜0
-- スクロール不要の1画面完結レイアウト (100dvh)
+- スクロール不要の1画面完結レイアウト (100dvh) + 大きな押しやすいボタン + 自動文字サイズ調整
 - 単語帳一覧モード（検索・発音・全項目表示）
 - Web Speech API ネイティブ発音再生
 - 問題一覧ジャンプモーダル
@@ -72,19 +72,12 @@ html_content = f'''<!DOCTYPE html>
       flex-direction: column;
     }}
 
-    @media (max-height: 520px) {{
-      body {{
-        height: auto;
-        min-height: 100dvh;
-        overflow-y: auto;
-      }}
-    }}
-
     .container {{
-      max-width: 920px;
+      max-width: 1120px;
+      max-height: 860px;
       width: 100%;
       height: 100%;
-      margin: 0 auto;
+      margin: auto;
       padding: 0.5rem 0.75rem;
       display: flex;
       flex-direction: column;
@@ -107,7 +100,7 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .title-group h1 {{
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 800;
       color: #1e3a8a;
       display: flex;
@@ -117,7 +110,7 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .range-sub {{
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--text-muted);
       margin-left: 0.25rem;
@@ -125,18 +118,19 @@ html_content = f'''<!DOCTYPE html>
 
     .controls {{
       display: flex;
-      gap: 0.4rem;
+      gap: 0.45rem;
       flex-wrap: wrap;
       align-items: center;
     }}
 
     select, button.control-btn, a.control-btn {{
-      padding: 0.32rem 0.65rem;
-      border-radius: 0.5rem;
+      padding: 0.4rem 0.85rem;
+      min-height: 36px;
+      border-radius: 0.55rem;
       border: 1px solid var(--border);
       background: var(--card-bg);
       color: var(--text-main);
-      font-size: 0.78rem;
+      font-size: 0.86rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s ease;
@@ -211,23 +205,26 @@ html_content = f'''<!DOCTYPE html>
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
       flex-wrap: wrap;
     }}
 
     .header-left, .header-right {{
       display: flex;
       align-items: center;
-      gap: 0.35rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
     }}
 
     .q-number {{
-      font-size: 0.78rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: var(--primary);
       background: var(--primary-light);
-      padding: 0.24rem 0.6rem;
+      padding: 0.3rem 0.7rem;
+      min-height: 34px;
+      display: inline-flex;
+      align-items: center;
       border-radius: 0.45rem;
       cursor: pointer;
       transition: background 0.15s;
@@ -237,26 +234,30 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .pos-tag {{
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       font-weight: 700;
       color: #475569;
       background: #f1f5f9;
-      padding: 0.24rem 0.55rem;
+      padding: 0.3rem 0.7rem;
+      min-height: 34px;
+      display: inline-flex;
+      align-items: center;
       border-radius: 0.45rem;
     }}
 
     .mode-select {{
-      padding: 0.22rem 0.45rem;
-      font-size: 0.75rem;
+      padding: 0.3rem 0.7rem;
+      min-height: 34px;
+      font-size: 0.85rem;
     }}
 
     .stat-badge {{
       display: inline-flex;
       align-items: center;
       gap: 0.25rem;
-      padding: 0.18rem 0.5rem;
+      padding: 0.24rem 0.6rem;
       border-radius: 9999px;
-      font-size: 0.75rem;
+      font-size: 0.82rem;
       font-weight: 700;
     }}
 
@@ -269,25 +270,31 @@ html_content = f'''<!DOCTYPE html>
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.65rem;
-      padding: 0.15rem 0;
+      gap: 0.75rem;
+      padding: 0.2rem 0;
+      min-height: 50px;
+      min-width: 0;
     }}
 
     .target-word {{
-      font-size: clamp(1.35rem, 3vw, 1.95rem);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
       font-weight: 800;
       color: var(--text-main);
       letter-spacing: -0.02em;
       text-align: center;
       line-height: 1.2;
+      overflow-wrap: break-word;
+      max-width: 100%;
+      min-width: 0;
     }}
 
     .btn-audio {{
       background: #f1f5f9;
       border: 1px solid var(--border);
-      border-radius: 0.45rem;
-      padding: 0.3rem 0.55rem;
-      font-size: 0.75rem;
+      border-radius: 0.55rem;
+      padding: 0.45rem 0.9rem;
+      min-height: 38px;
+      font-size: 0.9rem;
       font-weight: 700;
       color: #334155;
       cursor: pointer;
@@ -302,29 +309,35 @@ html_content = f'''<!DOCTYPE html>
       color: #0f172a;
     }}
 
-    /* 常時2列 10択グリッド */
+    /* 常時2列 10択グリッド (5行均等伸縮) */
     .choices-grid {{
-      flex-shrink: 0;
+      flex: 1;
+      min-height: 0;
+      max-height: 460px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 0.45rem 0.6rem;
+      grid-template-rows: repeat(5, minmax(0, 1fr));
+      gap: 0.6rem 0.8rem;
     }}
 
     .choice-btn {{
-      min-height: 40px;
+      height: 100%;
+      width: 100%;
+      min-height: 46px;
       background: var(--card-bg);
       border: 1.5px solid var(--border);
-      border-radius: 0.6rem;
-      padding: 0.45rem 0.7rem;
+      border-radius: 0.7rem;
+      padding: 0.45rem 0.9rem;
       text-align: left;
-      font-size: 0.9rem;
-      font-weight: 500;
+      font-size: 1.25rem;
+      font-weight: 600;
       color: var(--text-main);
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.75rem;
       min-width: 0;
+      overflow: hidden;
       transition: all 0.12s ease;
     }}
 
@@ -337,20 +350,24 @@ html_content = f'''<!DOCTYPE html>
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 24px;
-      height: 24px;
-      border-radius: 5px;
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
       background: #f1f5f9;
-      font-size: 0.75rem;
-      font-weight: 700;
+      font-size: 0.95rem;
+      font-weight: 800;
       color: #475569;
       flex-shrink: 0;
       border: 1px solid #cbd5e1;
     }}
 
     .choice-text {{
-      overflow-wrap: anywhere;
-      line-height: 1.25;
+      flex: 1;
+      min-width: 0;
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: break-word;
+      line-height: 1.22;
     }}
 
     .choice-btn:hover:not(:disabled) .choice-key {{
@@ -393,14 +410,14 @@ html_content = f'''<!DOCTYPE html>
       cursor: default;
     }}
 
-    /* 固定位置フィードバックパネル (レイアウトシフトなし) */
+    /* 固定高さフィードバックパネル (レイアウトシフトなし・選択肢に縦幅を譲る) */
     .feedback-panel {{
-      flex: 1;
-      min-height: 118px;
+      flex: 0 0 auto;
+      height: clamp(136px, 22dvh, 176px);
       border-radius: 0.75rem;
       border: 1px solid var(--border);
       background: #f8fafc;
-      padding: 0.6rem 0.85rem;
+      padding: 0.65rem 0.95rem;
       display: flex;
       flex-direction: column;
       gap: 0.35rem;
@@ -422,7 +439,7 @@ html_content = f'''<!DOCTYPE html>
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.82rem;
+      font-size: 0.92rem;
       color: var(--text-muted);
       text-align: center;
     }}
@@ -444,7 +461,7 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .result-status {{
-      font-size: 0.88rem;
+      font-size: 1rem;
       font-weight: 800;
       line-height: 1.3;
     }}
@@ -459,14 +476,19 @@ html_content = f'''<!DOCTYPE html>
       background: var(--primary);
       color: #ffffff;
       border: none;
-      padding: 0.45rem 1rem;
-      font-size: 0.84rem;
+      padding: 0.55rem 1.45rem;
+      min-height: 42px;
+      min-width: 170px;
+      font-size: 0.98rem;
       font-weight: 700;
-      border-radius: 0.55rem;
+      border-radius: 0.6rem;
       cursor: pointer;
       transition: background 0.15s;
       flex-shrink: 0;
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }}
     .btn-next:hover {{
       background: var(--primary-dark);
@@ -489,18 +511,18 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .example-en {{
-      font-size: 0.9rem;
+      font-size: 0.98rem;
       font-weight: 600;
       color: #1e293b;
       line-height: 1.35;
     }}
 
     .btn-audio-sm {{
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       border: 1px solid var(--border);
       cursor: pointer;
-      font-size: 0.72rem;
-      padding: 0.12rem 0.4rem;
+      font-size: 0.8rem;
+      padding: 0.22rem 0.6rem;
       border-radius: 4px;
       color: var(--primary);
       font-weight: 700;
@@ -511,13 +533,13 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .example-ja {{
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       color: #475569;
       line-height: 1.35;
     }}
 
     .notes-text {{
-      font-size: 0.76rem;
+      font-size: 0.82rem;
       color: #64748b;
       background: rgba(255, 255, 255, 0.75);
       padding: 0.28rem 0.5rem;
@@ -660,14 +682,27 @@ html_content = f'''<!DOCTYPE html>
     .grid-num-btn.answered-wrong {{ background: var(--danger-light); color: var(--danger); border-color: var(--danger); }}
     .grid-num-btn.current {{ outline: 2px solid var(--primary); border-color: var(--primary); }}
 
+    @media (max-width: 768px) {{
+      .choice-btn {{
+        font-size: 1.1rem;
+        padding: 0.4rem 0.7rem;
+        gap: 0.55rem;
+      }}
+      .choice-key {{
+        width: 28px;
+        height: 28px;
+        font-size: 0.86rem;
+      }}
+    }}
+
     @media (max-width: 640px) {{
       .container {{
         padding: 0.35rem 0.45rem;
         gap: 0.35rem;
       }}
       header {{
-        padding: 0.38rem 0.6rem;
-        gap: 0.35rem;
+        padding: 0.35rem 0.55rem;
+        gap: 0.3rem;
       }}
       .title-group h1 {{
         font-size: 0.9rem;
@@ -675,35 +710,99 @@ html_content = f'''<!DOCTYPE html>
       .range-sub {{
         font-size: 0.72rem;
       }}
+      .controls {{
+        gap: 0.28rem;
+      }}
       select, button.control-btn, a.control-btn {{
-        padding: 0.26rem 0.48rem;
-        font-size: 0.72rem;
+        padding: 0.28rem 0.5rem;
+        min-height: 30px;
+        font-size: 0.74rem;
+        white-space: nowrap;
       }}
       .quiz-body {{
-        padding: 0.5rem 0.65rem 0.6rem 0.65rem;
+        padding: 0.5rem 0.6rem 0.55rem 0.6rem;
         gap: 0.4rem;
       }}
+      .q-number, .mode-select, .pos-tag {{
+        font-size: 0.76rem;
+        padding: 0.22rem 0.5rem;
+        min-height: 28px;
+      }}
+      .stat-badge {{
+        font-size: 0.74rem;
+        padding: 0.18rem 0.45rem;
+      }}
+      .target-wrapper {{
+        min-height: 38px;
+        padding: 0.1rem 0;
+        gap: 0.5rem;
+      }}
+      .target-word {{
+        font-size: 1.55rem;
+      }}
+      .btn-audio {{
+        padding: 0.3rem 0.65rem;
+        min-height: 32px;
+        font-size: 0.8rem;
+      }}
       .choices-grid {{
-        gap: 0.35rem 0.4rem;
+        max-height: none;
+        gap: 0.4rem 0.45rem;
       }}
       .choice-btn {{
-        min-height: 36px;
-        padding: 0.35rem 0.45rem;
-        font-size: 0.78rem;
-        gap: 0.35rem;
+        min-height: 44px;
+        padding: 0.35rem 0.55rem;
+        font-size: 1.05rem;
+        gap: 0.45rem;
+        border-radius: 0.6rem;
       }}
       .choice-key {{
-        width: 20px;
-        height: 20px;
-        font-size: 0.7rem;
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+        border-radius: 5px;
       }}
       .feedback-panel {{
-        min-height: 105px;
+        height: clamp(122px, 22dvh, 152px);
         padding: 0.5rem 0.65rem;
+        gap: 0.28rem;
       }}
       .btn-next {{
-        padding: 0.4rem 0.75rem;
+        padding: 0.45rem 0.95rem;
+        min-height: 38px;
+        min-width: 132px;
+        font-size: 0.88rem;
+      }}
+      .result-status {{
+        font-size: 0.88rem;
+      }}
+      .example-en {{
+        font-size: 0.86rem;
+      }}
+      .example-ja {{
         font-size: 0.78rem;
+      }}
+      .notes-text {{
+        font-size: 0.74rem;
+      }}
+    }}
+
+    @media (max-height: 520px) {{
+      body {{
+        height: auto;
+        min-height: 100dvh;
+        overflow-y: auto;
+      }}
+      .container {{
+        max-height: none;
+      }}
+      .choices-grid {{
+        flex: none;
+        grid-template-rows: auto;
+      }}
+      .feedback-panel {{
+        height: auto;
+        min-height: 115px;
       }}
     }}
   </style>
@@ -746,7 +845,7 @@ html_content = f'''<!DOCTYPE html>
             </div>
           </div>
 
-          <div class="target-wrapper">
+          <div class="target-wrapper" id="targetWrapper">
             <div class="target-word" id="targetWord">aim</div>
             <button class="btn-audio" id="btnSpeakWord" title="単語の発音を聞く" onclick="speakTargetWord()">発音</button>
           </div>
@@ -831,6 +930,80 @@ html_content = f'''<!DOCTYPE html>
     let isAnswered = false;
     let answerHistory = {{}};
     let currentChoicesData = null;
+    let fitRafId = null;
+
+    function fitButtonText(btn, textEl) {{
+      if (!btn || !textEl || btn.clientHeight === 0 || btn.clientWidth === 0) return;
+
+      textEl.style.fontSize = "";
+      textEl.style.lineHeight = "";
+      textEl.style.overflowWrap = "break-word";
+
+      let size = parseFloat(window.getComputedStyle(btn).fontSize) || 18;
+      const minSize = 11;
+
+      while (
+        (btn.scrollHeight > btn.clientHeight + 1 ||
+         btn.scrollWidth > btn.clientWidth + 1 ||
+         textEl.scrollWidth > textEl.clientWidth + 1) &&
+        size > minSize
+      ) {{
+        size -= 1;
+        textEl.style.fontSize = `${{size}}px`;
+        if (size <= 14) {{
+          textEl.style.lineHeight = "1.15";
+        }}
+      }}
+
+      if (btn.scrollWidth > btn.clientWidth + 1 || textEl.scrollWidth > textEl.clientWidth + 1) {{
+        textEl.style.overflowWrap = "anywhere";
+        while (
+          (btn.scrollHeight > btn.clientHeight + 1 ||
+           btn.scrollWidth > btn.clientWidth + 1 ||
+           textEl.scrollWidth > textEl.clientWidth + 1) &&
+          size > minSize
+        ) {{
+          size -= 1;
+          textEl.style.fontSize = `${{size}}px`;
+          if (size <= 14) {{
+            textEl.style.lineHeight = "1.15";
+          }}
+        }}
+      }}
+    }}
+
+    function fitTargetWord() {{
+      const wrapper = document.getElementById("targetWrapper");
+      const targetEl = document.getElementById("targetWord");
+      if (!wrapper || !targetEl || wrapper.clientWidth === 0) return;
+
+      targetEl.style.fontSize = "";
+      let size = parseFloat(window.getComputedStyle(targetEl).fontSize) || 28;
+      const minSize = 18;
+
+      while (
+        (wrapper.scrollWidth > wrapper.clientWidth + 1 ||
+         targetEl.scrollWidth > targetEl.clientWidth + 1) &&
+        size > minSize
+      ) {{
+        size -= 1;
+        targetEl.style.fontSize = `${{size}}px`;
+      }}
+    }}
+
+    function fitAllTexts() {{
+      if (fitRafId !== null) {{
+        cancelAnimationFrame(fitRafId);
+      }}
+      fitRafId = requestAnimationFrame(() => {{
+        fitRafId = null;
+        fitTargetWord();
+        document.querySelectorAll(".choice-btn").forEach((btn) => {{
+          const textEl = btn.querySelector(".choice-text");
+          fitButtonText(btn, textEl);
+        }});
+      }});
+    }}
 
     function generateDynamicChoices(targetItem, mode) {{
       const isEnJa = (mode === "en_ja");
@@ -933,6 +1106,8 @@ html_content = f'''<!DOCTYPE html>
       feedbackPanel.classList.remove("is-correct", "is-wrong");
       document.getElementById("feedbackIdle").style.display = "flex";
       document.getElementById("feedbackAnswered").style.display = "none";
+
+      fitAllTexts();
     }}
 
     function handleAnswer(selectedKey, clickedBtn, q) {{
@@ -1012,7 +1187,7 @@ html_content = f'''<!DOCTYPE html>
       if (wrongQuestions.length === 0) {{
         btnRetry.style.display = "none";
       }} else {{
-        btnRetry.style.display = "inline-block";
+        btnRetry.style.display = "inline-flex";
         btnRetry.textContent = `間違えた${{wrongQuestions.length}}問のみ復習`;
       }}
     }}
@@ -1072,6 +1247,7 @@ html_content = f'''<!DOCTYPE html>
       document.getElementById("wordbookArea").style.display = "none";
       document.getElementById("btnQuizTab").classList.add("btn-tab-active");
       document.getElementById("btnWordbookTab").classList.remove("btn-tab-active");
+      fitAllTexts();
     }}
 
     function showWordbookTab() {{
@@ -1176,6 +1352,11 @@ html_content = f'''<!DOCTYPE html>
     function speakSentence() {{
       const q = questionsList[currentIndex];
       speakText(q.example_en);
+    }}
+
+    window.addEventListener("resize", fitAllTexts);
+    if (document.fonts && document.fonts.ready) {{
+      document.fonts.ready.then(fitAllTexts);
     }}
 
     window.addEventListener("keydown", (e) => {{
