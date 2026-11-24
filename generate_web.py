@@ -2,8 +2,9 @@
 """
 Web公開用 index.html 生成スクリプト
 - 出題順: No.501 〜 No.600 (番号順で固定)
-- 10択の選択肢: 毎回出題時/リセット時に完全にランダム生成！
+- 10択の選択肢: 毎回出題時/リセット時に完全にランダム生成
 - 選択肢記号: 1〜0
+- スクロール不要の1画面完結レイアウト (100dvh)
 - 単語帳一覧モード（検索・発音・全項目表示）
 - Web Speech API ネイティブ発音再生
 - 問題一覧ジャンプモーダル
@@ -40,7 +41,7 @@ html_content = f'''<!DOCTYPE html>
       --success-light: #dcfce7;
       --danger: #dc2626;
       --danger-light: #fee2e2;
-      --bg: #f8fafc;
+      --bg: #f1f5f9;
       --card-bg: #ffffff;
       --text-main: #0f172a;
       --text-muted: #64748b;
@@ -58,72 +59,91 @@ html_content = f'''<!DOCTYPE html>
       -webkit-tap-highlight-color: transparent;
     }}
 
+    html, body {{
+      height: 100%;
+    }}
+
     body {{
       background: var(--bg);
       color: var(--text-main);
-      min-height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      padding: 1rem 0.75rem 3rem 0.75rem;
+    }}
+
+    @media (max-height: 520px) {{
+      body {{
+        height: auto;
+        min-height: 100dvh;
+        overflow-y: auto;
+      }}
     }}
 
     .container {{
-      max-width: 860px;
-      margin: 0 auto;
+      max-width: 920px;
       width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      min-height: 0;
     }}
 
     header {{
+      flex-shrink: 0;
       background: var(--card-bg);
-      padding: 1.1rem 1.25rem;
-      border-radius: 1rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 0.75rem;
       box-shadow: var(--shadow-sm);
-      margin-bottom: 1rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
-      gap: 0.75rem;
+      gap: 0.5rem;
       border: 1px solid var(--border);
     }}
 
     .title-group h1 {{
-      font-size: 1.25rem;
+      font-size: 1rem;
       font-weight: 800;
       color: #1e3a8a;
       display: flex;
-      align-items: center;
-      gap: 0.5rem;
+      align-items: baseline;
+      gap: 0.25rem;
       letter-spacing: -0.01em;
     }}
 
-    .title-group p {{
+    .range-sub {{
       font-size: 0.8rem;
+      font-weight: 600;
       color: var(--text-muted);
-      margin-top: 0.15rem;
+      margin-left: 0.25rem;
     }}
 
     .controls {{
       display: flex;
-      gap: 0.5rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
       align-items: center;
     }}
 
     select, button.control-btn, a.control-btn {{
-      padding: 0.45rem 0.8rem;
+      padding: 0.32rem 0.65rem;
       border-radius: 0.5rem;
       border: 1px solid var(--border);
       background: var(--card-bg);
       color: var(--text-main);
-      font-size: 0.825rem;
+      font-size: 0.78rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s ease;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
+      gap: 0.25rem;
       user-select: none;
     }}
 
@@ -143,78 +163,72 @@ html_content = f'''<!DOCTYPE html>
       border-color: #1e3a8a !important;
     }}
 
-    /* ダッシュボード */
-    .dashboard {{
-      background: var(--card-bg);
-      border-radius: 1rem;
-      padding: 0.9rem 1.25rem;
-      margin-bottom: 1rem;
-      box-shadow: var(--shadow-sm);
-      border: 1px solid var(--border);
+    /* クイズエリア */
+    #quizArea {{
+      flex: 1;
+      min-height: 0;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
     }}
 
-    .stats-row {{
+    .quiz-card {{
+      flex: 1;
+      min-height: 0;
+      background: var(--card-bg);
+      border-radius: 0.9rem;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      overflow: hidden;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.875rem;
-      font-weight: 600;
+      flex-direction: column;
     }}
-
-    .stat-badge {{
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 9999px;
-      font-size: 0.8rem;
-    }}
-
-    .badge-correct {{ background: var(--success-light); color: var(--success); }}
-    .badge-wrong {{ background: var(--danger-light); color: var(--danger); }}
-    .badge-accuracy {{ background: var(--primary-light); color: var(--primary); }}
 
     .progress-bar-bg {{
-      height: 8px;
+      height: 4px;
+      width: 100%;
       background: var(--border);
-      border-radius: 9999px;
-      overflow: hidden;
+      flex-shrink: 0;
     }}
 
     .progress-bar-fill {{
       height: 100%;
       background: linear-gradient(90deg, #2563eb, #3b82f6);
       width: 1%;
-      transition: width 0.3s ease;
+      transition: width 0.25s ease;
     }}
 
-    /* クイズカード */
-    .quiz-card {{
-      background: var(--card-bg);
-      border-radius: 1.25rem;
-      padding: 1.75rem 1.5rem;
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      position: relative;
+    .quiz-body {{
+      flex: 1;
+      min-height: 0;
+      padding: 0.7rem 1rem 0.8rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
     }}
 
     .question-header {{
+      flex-shrink: 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.75rem;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }}
+
+    .header-left, .header-right {{
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      flex-wrap: wrap;
     }}
 
     .q-number {{
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 700;
       color: var(--primary);
       background: var(--primary-light);
-      padding: 0.3rem 0.75rem;
-      border-radius: 0.5rem;
+      padding: 0.24rem 0.6rem;
+      border-radius: 0.45rem;
       cursor: pointer;
       transition: background 0.15s;
     }}
@@ -223,95 +237,109 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .pos-tag {{
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 700;
       color: #475569;
       background: #f1f5f9;
-      padding: 0.3rem 0.7rem;
-      border-radius: 0.5rem;
+      padding: 0.24rem 0.55rem;
+      border-radius: 0.45rem;
     }}
 
+    .mode-select {{
+      padding: 0.22rem 0.45rem;
+      font-size: 0.75rem;
+    }}
+
+    .stat-badge {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      padding: 0.18rem 0.5rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }}
+
+    .badge-correct {{ background: var(--success-light); color: var(--success); }}
+    .badge-wrong {{ background: var(--danger-light); color: var(--danger); }}
+    .badge-accuracy {{ background: var(--primary-light); color: var(--primary); }}
+
     .target-wrapper {{
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.75rem;
-      margin: 1rem 0 1.5rem 0;
+      gap: 0.65rem;
+      padding: 0.15rem 0;
     }}
 
     .target-word {{
-      font-size: 2.2rem;
+      font-size: clamp(1.35rem, 3vw, 1.95rem);
       font-weight: 800;
       color: var(--text-main);
       letter-spacing: -0.02em;
       text-align: center;
+      line-height: 1.2;
     }}
 
     .btn-audio {{
       background: #f1f5f9;
       border: 1px solid var(--border);
-      border-radius: 0.5rem;
-      padding: 0.4rem 0.65rem;
-      font-size: 0.8rem;
+      border-radius: 0.45rem;
+      padding: 0.3rem 0.55rem;
+      font-size: 0.75rem;
       font-weight: 700;
       color: #334155;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.25rem;
+      gap: 0.2rem;
       transition: all 0.15s ease;
+      flex-shrink: 0;
     }}
     .btn-audio:hover {{
       background: #e2e8f0;
       color: #0f172a;
     }}
 
-    /* 10択グリッド */
+    /* 常時2列 10択グリッド */
     .choices-grid {{
+      flex-shrink: 0;
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.6rem;
-      margin-bottom: 1.5rem;
-    }}
-
-    @media (min-width: 641px) {{
-      .choices-grid {{
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem;
-      }}
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.45rem 0.6rem;
     }}
 
     .choice-btn {{
+      min-height: 40px;
       background: var(--card-bg);
       border: 1.5px solid var(--border);
-      border-radius: 0.75rem;
-      padding: 0.85rem 1rem;
+      border-radius: 0.6rem;
+      padding: 0.45rem 0.7rem;
       text-align: left;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       font-weight: 500;
       color: var(--text-main);
       cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      transition: all 0.15s ease;
-      position: relative;
+      gap: 0.55rem;
+      min-width: 0;
+      transition: all 0.12s ease;
     }}
 
     .choice-btn:hover:not(:disabled) {{
       border-color: var(--primary);
       background: var(--primary-light);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow-sm);
     }}
 
     .choice-key {{
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 26px;
-      height: 26px;
-      border-radius: 6px;
+      width: 24px;
+      height: 24px;
+      border-radius: 5px;
       background: #f1f5f9;
       font-size: 0.75rem;
       font-weight: 700;
@@ -320,10 +348,19 @@ html_content = f'''<!DOCTYPE html>
       border: 1px solid #cbd5e1;
     }}
 
+    .choice-text {{
+      overflow-wrap: anywhere;
+      line-height: 1.25;
+    }}
+
     .choice-btn:hover:not(:disabled) .choice-key {{
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
+    }}
+
+    .choice-btn.dimmed {{
+      opacity: 0.5;
     }}
 
     .choice-btn.correct {{
@@ -331,6 +368,7 @@ html_content = f'''<!DOCTYPE html>
       border-color: var(--success) !important;
       color: var(--success) !important;
       font-weight: 700;
+      opacity: 1 !important;
     }}
     .choice-btn.correct .choice-key {{
       background: var(--success);
@@ -343,6 +381,7 @@ html_content = f'''<!DOCTYPE html>
       border-color: var(--danger) !important;
       color: var(--danger) !important;
       font-weight: 700;
+      opacity: 1 !important;
     }}
     .choice-btn.wrong .choice-key {{
       background: var(--danger);
@@ -354,54 +393,117 @@ html_content = f'''<!DOCTYPE html>
       cursor: default;
     }}
 
-    /* 解説エリア */
-    .explanation-card {{
-      display: none;
-      background: #f8fafc;
+    /* 固定位置フィードバックパネル (レイアウトシフトなし) */
+    .feedback-panel {{
+      flex: 1;
+      min-height: 118px;
+      border-radius: 0.75rem;
       border: 1px solid var(--border);
-      border-radius: 0.875rem;
-      padding: 1.1rem 1.25rem;
-      margin-top: 1.25rem;
-      animation: fadeIn 0.2s ease-in-out;
+      background: #f8fafc;
+      padding: 0.6rem 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      overflow: hidden;
     }}
 
-    @keyframes fadeIn {{
-      from {{ opacity: 0; transform: translateY(4px); }}
-      to {{ opacity: 1; transform: translateY(0); }}
+    .feedback-panel.is-correct {{
+      background: #f0fdf4;
+      border-color: #86efac;
     }}
 
-    .explanation-title {{
-      font-size: 0.8rem;
-      font-weight: 700;
+    .feedback-panel.is-wrong {{
+      background: #fef2f2;
+      border-color: #fca5a5;
+    }}
+
+    .feedback-idle {{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
       color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
+      text-align: center;
+    }}
+
+    .feedback-answered {{
+      display: none;
+      flex: 1;
+      min-height: 0;
+      flex-direction: column;
+      gap: 0.35rem;
+    }}
+
+    .feedback-header {{
+      flex-shrink: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }}
+
+    .result-status {{
+      font-size: 0.88rem;
+      font-weight: 800;
+      line-height: 1.3;
+    }}
+    .result-status.correct {{
+      color: var(--success);
+    }}
+    .result-status.wrong {{
+      color: var(--danger);
+    }}
+
+    .btn-next {{
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 0.45rem 1rem;
+      font-size: 0.84rem;
+      font-weight: 700;
+      border-radius: 0.55rem;
+      cursor: pointer;
+      transition: background 0.15s;
+      flex-shrink: 0;
+      white-space: nowrap;
+    }}
+    .btn-next:hover {{
+      background: var(--primary-dark);
+    }}
+
+    .explanation-body {{
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
     }}
 
     .example-en-row {{
       display: flex;
       align-items: center;
-      gap: 0.5rem;
-      margin-bottom: 0.35rem;
+      gap: 0.45rem;
+      flex-wrap: wrap;
     }}
 
     .example-en {{
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 600;
       color: #1e293b;
-      line-height: 1.4;
+      line-height: 1.35;
     }}
 
     .btn-audio-sm {{
-      background: transparent;
-      border: none;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--border);
       cursor: pointer;
-      font-size: 0.85rem;
-      padding: 0.2rem 0.4rem;
+      font-size: 0.72rem;
+      padding: 0.12rem 0.4rem;
       border-radius: 4px;
       color: var(--primary);
-      font-weight: 600;
+      font-weight: 700;
       flex-shrink: 0;
     }}
     .btn-audio-sm:hover {{
@@ -409,99 +511,98 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .example-ja {{
-      font-size: 0.875rem;
+      font-size: 0.82rem;
       color: #475569;
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
+      line-height: 1.35;
     }}
 
     .notes-text {{
-      font-size: 0.8rem;
+      font-size: 0.76rem;
       color: #64748b;
-      background: #ffffff;
-      padding: 0.4rem 0.6rem;
-      border-radius: 0.5rem;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 0.28rem 0.5rem;
+      border-radius: 0.4rem;
       border: 1px dashed var(--border);
-      line-height: 1.4;
-    }}
-
-    /* アクションボタン */
-    .action-row {{
-      display: flex;
-      justify-content: flex-end;
-      gap: 0.75rem;
-      margin-top: 1.25rem;
-    }}
-
-    .btn-next {{
-      background: var(--primary);
-      color: #ffffff;
-      border: none;
-      padding: 0.75rem 1.75rem;
-      font-size: 0.95rem;
-      font-weight: 700;
-      border-radius: 0.75rem;
-      cursor: pointer;
-      display: none;
-      transition: background 0.2s;
-      width: 100%;
-    }}
-
-    @media (min-width: 641px) {{
-      .btn-next {{
-        width: auto;
-      }}
-    }}
-
-    .btn-next:hover {{
-      background: var(--primary-dark);
+      line-height: 1.35;
     }}
 
     /* リザルト画面 */
     .result-view {{
+      flex: 1;
+      min-height: 0;
       display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 3rem 1.5rem;
+      padding: 1.5rem;
     }}
 
     .result-score {{
-      font-size: 4rem;
+      font-size: 3.5rem;
       font-weight: 800;
       color: var(--primary);
-      margin: 1rem 0;
+      margin: 0.75rem 0;
     }}
 
     .result-actions {{
       display: flex;
       justify-content: center;
       gap: 0.75rem;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       flex-wrap: wrap;
     }}
 
     /* 単語帳一覧ビュー */
     .wordbook-view {{
+      flex: 1;
+      min-height: 0;
       display: none;
+      flex-direction: column;
     }}
+
+    .wordbook-card {{
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+      padding: 0.9rem 1rem;
+      border-radius: 0.9rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-sm);
+    }}
+
+    .wordbook-top {{
+      flex-shrink: 0;
+    }}
+
     .search-box {{
       width: 100%;
-      padding: 0.75rem 1rem;
-      border-radius: 0.75rem;
+      padding: 0.6rem 0.85rem;
+      border-radius: 0.65rem;
       border: 1px solid var(--border);
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      margin-bottom: 0.65rem;
       outline: none;
     }}
     .search-box:focus {{
       border-color: var(--primary);
     }}
+
+    #wordListContainer {{
+      flex: 1;
+      min-height: 0;
+      overflow-y: auto;
+      padding-right: 0.2rem;
+    }}
+
     .word-card {{
       background: #ffffff;
       border: 1px solid var(--border);
-      border-radius: 0.75rem;
-      padding: 1rem;
-      margin-bottom: 0.75rem;
-      transition: transform 0.15s;
+      border-radius: 0.65rem;
+      padding: 0.8rem 0.9rem;
+      margin-bottom: 0.55rem;
     }}
     .word-card:hover {{
       box-shadow: var(--shadow-sm);
@@ -510,7 +611,8 @@ html_content = f'''<!DOCTYPE html>
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.3rem;
+      gap: 0.5rem;
     }}
 
     /* モーダル */
@@ -531,17 +633,17 @@ html_content = f'''<!DOCTYPE html>
       width: 100%;
       max-height: 80vh;
       overflow-y: auto;
-      padding: 1.5rem;
+      padding: 1.25rem;
       box-shadow: var(--shadow-lg);
     }}
     .modal-grid {{
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
-      gap: 0.5rem;
-      margin-top: 1rem;
+      gap: 0.45rem;
+      margin-top: 0.85rem;
     }}
     .grid-num-btn {{
-      height: 40px;
+      height: 38px;
       border-radius: 6px;
       border: 1px solid var(--border);
       background: #f8fafc;
@@ -557,6 +659,53 @@ html_content = f'''<!DOCTYPE html>
     .grid-num-btn.answered-correct {{ background: var(--success-light); color: var(--success); border-color: var(--success); }}
     .grid-num-btn.answered-wrong {{ background: var(--danger-light); color: var(--danger); border-color: var(--danger); }}
     .grid-num-btn.current {{ outline: 2px solid var(--primary); border-color: var(--primary); }}
+
+    @media (max-width: 640px) {{
+      .container {{
+        padding: 0.35rem 0.45rem;
+        gap: 0.35rem;
+      }}
+      header {{
+        padding: 0.38rem 0.6rem;
+        gap: 0.35rem;
+      }}
+      .title-group h1 {{
+        font-size: 0.9rem;
+      }}
+      .range-sub {{
+        font-size: 0.72rem;
+      }}
+      select, button.control-btn, a.control-btn {{
+        padding: 0.26rem 0.48rem;
+        font-size: 0.72rem;
+      }}
+      .quiz-body {{
+        padding: 0.5rem 0.65rem 0.6rem 0.65rem;
+        gap: 0.4rem;
+      }}
+      .choices-grid {{
+        gap: 0.35rem 0.4rem;
+      }}
+      .choice-btn {{
+        min-height: 36px;
+        padding: 0.35rem 0.45rem;
+        font-size: 0.78rem;
+        gap: 0.35rem;
+      }}
+      .choice-key {{
+        width: 20px;
+        height: 20px;
+        font-size: 0.7rem;
+      }}
+      .feedback-panel {{
+        min-height: 105px;
+        padding: 0.5rem 0.65rem;
+      }}
+      .btn-next {{
+        padding: 0.4rem 0.75rem;
+        font-size: 0.78rem;
+      }}
+    }}
   </style>
 </head>
 <body>
@@ -564,8 +713,7 @@ html_content = f'''<!DOCTYPE html>
   <div class="container">
     <header>
       <div class="title-group">
-        <h1>単語帳 100問10択クイズ</h1>
-        <p>No. 501 〜 600 (出題順: 番号順)</p>
+        <h1>単語帳<span class="range-sub">No.501-600</span></h1>
       </div>
       <div class="controls">
         <button class="control-btn btn-tab-active" id="btnQuizTab" onclick="showQuizTab()">クイズ</button>
@@ -577,84 +725,82 @@ html_content = f'''<!DOCTYPE html>
 
     <!-- クイズ画面エリア -->
     <div id="quizArea">
-      <div class="dashboard" id="dashboard">
-        <div class="stats-row">
-          <div>
-            <span>進捗: </span>
-            <span id="progressText" style="font-weight: 700;">1 / 100</span>
-            <span style="font-size: 0.75rem; color: var(--text-muted); margin-left: 0.3rem;">(番号順に出題)</span>
-          </div>
-          <div style="display: flex; gap: 0.4rem;">
-            <span class="stat-badge badge-correct">○ <span id="correctCount">0</span></span>
-            <span class="stat-badge badge-wrong">× <span id="wrongCount">0</span></span>
-            <span class="stat-badge badge-accuracy">正答率: <span id="accuracyText">0.0%</span></span>
-          </div>
-        </div>
+      <div class="quiz-card" id="quizCard">
         <div class="progress-bar-bg">
           <div class="progress-bar-fill" id="progressBar"></div>
         </div>
-      </div>
-
-      <div class="quiz-card" id="quizCard">
-        <div class="question-header">
-          <span class="q-number" id="qNumberBadge" onclick="openJumpModal()" title="クリックして問題一覧を開く">Q1 / 100 [No. 501]</span>
-          <div style="display: flex; gap: 0.4rem; align-items: center;">
-            <select id="modeSelect" onchange="changeMode()" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
-              <option value="en_ja">英 → 日 (10択)</option>
-              <option value="ja_en">日 → 英 (10択)</option>
-            </select>
-            <span class="pos-tag" id="posTag">動詞</span>
+        <div class="quiz-body">
+          <div class="question-header">
+            <div class="header-left">
+              <span class="q-number" id="qNumberBadge" onclick="openJumpModal()" title="クリックして問題一覧を開く">Q1 / 100 [No. 501]</span>
+              <select id="modeSelect" class="mode-select" onchange="changeMode()">
+                <option value="en_ja">英 → 日</option>
+                <option value="ja_en">日 → 英</option>
+              </select>
+              <span class="pos-tag" id="posTag">動詞</span>
+            </div>
+            <div class="header-right">
+              <span class="stat-badge badge-correct">○ <span id="correctCount">0</span></span>
+              <span class="stat-badge badge-wrong">× <span id="wrongCount">0</span></span>
+              <span class="stat-badge badge-accuracy"><span id="accuracyText">0.0%</span></span>
+            </div>
           </div>
-        </div>
 
-        <div class="target-wrapper">
-          <div class="target-word" id="targetWord">aim</div>
-          <button class="btn-audio" id="btnSpeakWord" title="単語の発音を聞く" onclick="speakTargetWord()">発音</button>
-        </div>
-
-        <div class="choices-grid" id="choicesGrid"></div>
-
-        <div class="explanation-card" id="explanationCard">
-          <div class="explanation-title">単語解説・例文</div>
-          <div class="example-en-row">
-            <div class="example-en" id="expEn">Our campaign is aimed at young adults.</div>
-            <button class="btn-audio-sm" id="btnSpeakSentence" title="例文の発音を聞く" onclick="speakSentence()">例文音声</button>
+          <div class="target-wrapper">
+            <div class="target-word" id="targetWord">aim</div>
+            <button class="btn-audio" id="btnSpeakWord" title="単語の発音を聞く" onclick="speakTargetWord()">発音</button>
           </div>
-          <div class="example-ja" id="expJa">当社のキャンペーンはヤングアダルトに向けられている。</div>
-          <div class="notes-text" id="expNotes">「目指す、目的とする」という意味もある（同: target「目標とする」） 名 aim「目的、目標」(=purpose, goal, target, objective)</div>
-        </div>
 
-        <div class="action-row">
-          <button class="btn-next" id="btnNext" onclick="nextQuestion()">次の問題へ (Enter)</button>
+          <div class="choices-grid" id="choicesGrid"></div>
+
+          <div class="feedback-panel" id="feedbackPanel">
+            <div class="feedback-idle" id="feedbackIdle">
+              数字キー (1〜0) または選択肢をクリックして回答
+            </div>
+            <div class="feedback-answered" id="feedbackAnswered">
+              <div class="feedback-header">
+                <div id="resultStatus" class="result-status"></div>
+                <button class="btn-next" id="btnNext" onclick="nextQuestion()">次の問題へ (Enter)</button>
+              </div>
+              <div class="explanation-body">
+                <div class="example-en-row">
+                  <span class="example-en" id="expEn"></span>
+                  <button class="btn-audio-sm" id="btnSpeakSentence" title="例文の発音を聞く" onclick="speakSentence()">例文音声</button>
+                </div>
+                <div class="example-ja" id="expJa"></div>
+                <div class="notes-text" id="expNotes"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="quiz-card result-view" id="resultView">
         <h2>お疲れ様でした！クイズ終了</h2>
-        <p style="color: var(--text-muted); margin-top: 0.5rem;">全100問の挑戦が完了しました！</p>
-        
+        <p style="color: var(--text-muted); margin-top: 0.5rem;">全100問の挑戦が完了しました。</p>
         <div class="result-score" id="finalScore">95 / 100</div>
-        <p id="finalAccuracy" style="font-size: 1.25rem; font-weight: 600; color: #334155;">正答率: 95.0%</p>
-
+        <p id="finalAccuracy" style="font-size: 1.15rem; font-weight: 600; color: #334155;">正答率: 95.0%</p>
         <div class="result-actions">
-          <button class="btn-next" style="display: inline-block; width: auto;" onclick="retryWrongOnly()" id="btnRetryWrong">間違えた問題のみ復習</button>
-          <button class="control-btn" style="padding: 0.75rem 1.5rem;" onclick="resetQuiz()">もう一度最初から</button>
+          <button class="btn-next" style="padding: 0.7rem 1.4rem; font-size: 0.95rem;" onclick="retryWrongOnly()" id="btnRetryWrong">間違えた問題のみ復習</button>
+          <button class="control-btn" style="padding: 0.7rem 1.4rem; font-size: 0.95rem;" onclick="resetQuiz()">もう一度最初から</button>
         </div>
       </div>
     </div>
 
     <!-- 素の単語帳一覧エリア -->
     <div id="wordbookArea" class="wordbook-view">
-      <div style="background: #ffffff; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--border); margin-bottom: 1rem;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="font-size: 1.15rem; font-weight: 800; color: #1e3a8a;">単語帳一覧 (No.501 〜 600 全100語)</h2>
-          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-            <a class="control-btn" href="https://docs.google.com/spreadsheets/d/1BaAIXt7jKJIoEdopA-uozzmqyQw_e2ePdSPwFk4MSac/edit?usp=sharing" target="_blank" rel="noopener">単語帳(スプレットシート)</a>
-            <a class="control-btn" href="TOEIC_Words_501-600_List.csv" download>CSV保存</a>
-            <a class="control-btn" href="TOEIC_Words_501-600_100Quiz.xlsx" download>Excel保存</a>
+      <div class="wordbook-card">
+        <div class="wordbook-top">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
+            <h2 style="font-size: 1.05rem; font-weight: 800; color: #1e3a8a;">単語帳一覧 (No.501 〜 600 全100語)</h2>
+            <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+              <a class="control-btn" href="https://docs.google.com/spreadsheets/d/1BaAIXt7jKJIoEdopA-uozzmqyQw_e2ePdSPwFk4MSac/edit?usp=sharing" target="_blank" rel="noopener">単語帳(スプレットシート)</a>
+              <a class="control-btn" href="TOEIC_Words_501-600_List.csv" download>CSV保存</a>
+              <a class="control-btn" href="TOEIC_Words_501-600_100Quiz.xlsx" download>Excel保存</a>
+            </div>
           </div>
+          <input type="text" id="searchInput" class="search-box" placeholder="単語・意味・例文を検索..." oninput="filterWordList()">
         </div>
-        <input type="text" id="searchInput" class="search-box" placeholder="単語・意味・例文を検索..." oninput="filterWordList()">
         <div id="wordListContainer"></div>
       </div>
     </div>
@@ -664,10 +810,10 @@ html_content = f'''<!DOCTYPE html>
   <div class="modal-overlay" id="jumpModal" onclick="closeJumpModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="font-size: 1.1rem; font-weight: 700;">問題一覧 (No.501 〜 600)</h3>
+        <h3 style="font-size: 1.05rem; font-weight: 700;">問題一覧 (No.501 〜 600)</h3>
         <button class="control-btn" onclick="document.getElementById('jumpModal').style.display='none'">閉じる</button>
       </div>
-      <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">番号をクリックするとその問題に直接ジャンプします。（出題順: 番号順）</p>
+      <p style="font-size: 0.82rem; color: var(--text-muted); margin-top: 0.3rem;">番号をクリックするとその問題に直接ジャンプします。（出題順: 番号順）</p>
       <div class="modal-grid" id="jumpGrid"></div>
     </div>
   </div>
@@ -686,16 +832,13 @@ html_content = f'''<!DOCTYPE html>
     let answerHistory = {{}};
     let currentChoicesData = null;
 
-    // 出題のたびに毎回ランダムで10択を生成する関数
     function generateDynamicChoices(targetItem, mode) {{
       const isEnJa = (mode === "en_ja");
       const correctAnswer = isEnJa ? targetItem.meaning : targetItem.word;
-      
-      // 他の単語99語からランダムにサンプリング
+
       const others = ALL_WORDS.filter(w => w.no !== targetItem.no);
-      // シャッフル
       const shuffledOthers = [...others].sort(() => Math.random() - 0.5);
-      
+
       const dummyAnswers = [];
       for (const item of shuffledOthers) {{
         const ans = isEnJa ? item.meaning : item.word;
@@ -704,14 +847,12 @@ html_content = f'''<!DOCTYPE html>
         }}
         if (dummyAnswers.length === 9) break;
       }}
-      
-      // 正解1つ + ダミー9つ
+
       const choices = [correctAnswer, ...dummyAnswers];
-      // 選択肢の並び順をランダムシャッフル！
       choices.sort(() => Math.random() - 0.5);
-      
+
       const correctLetter = CHOICE_KEYS[choices.indexOf(correctAnswer)];
-      
+
       return {{
         choices: choices,
         correctLetter: correctLetter
@@ -719,7 +860,6 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     function init() {{
-      // 出題順は番号順 (501〜600)
       questionsList = [...ALL_WORDS];
       currentIndex = 0;
       correctTotal = 0;
@@ -727,15 +867,21 @@ html_content = f'''<!DOCTYPE html>
       wrongQuestions = [];
       isAnswered = false;
       answerHistory = {{}};
-      
-      document.getElementById("quizCard").style.display = "block";
+
+      document.getElementById("correctCount").textContent = "0";
+      document.getElementById("wrongCount").textContent = "0";
+      document.getElementById("accuracyText").textContent = "0.0%";
+
+      document.getElementById("quizCard").style.display = "flex";
       document.getElementById("resultView").style.display = "none";
-      
+
       renderQuestion();
     }}
 
     function changeMode() {{
-      currentMode = document.getElementById("modeSelect").value;
+      const modeSelect = document.getElementById("modeSelect");
+      currentMode = modeSelect.value;
+      modeSelect.blur();
       init();
     }}
 
@@ -746,45 +892,56 @@ html_content = f'''<!DOCTYPE html>
     function renderQuestion() {{
       isAnswered = false;
       const q = questionsList[currentIndex];
-      
-      document.getElementById("progressText").textContent = `${{currentIndex + 1}} / ${{questionsList.length}}`;
+
       document.getElementById("qNumberBadge").textContent = `Q${{currentIndex + 1}} / ${{questionsList.length}} [No. ${{q.no}}]`;
       document.getElementById("posTag").textContent = q.pos;
-      
-      const pct = ((currentIndex) / questionsList.length) * 100;
-      document.getElementById("progressBar").style.width = `${{Math.max(pct, 2)}}%`;
-      
+
+      const pct = (currentIndex / questionsList.length) * 100;
+      document.getElementById("progressBar").style.width = `${{Math.max(pct, 1)}}%`;
+
       const target = currentMode === "en_ja" ? q.word : q.meaning;
       document.getElementById("targetWord").textContent = target;
 
       const audioBtn = document.getElementById("btnSpeakWord");
-      if (currentMode === "en_ja") {{
-        audioBtn.style.display = "inline-flex";
-      }} else {{
-        audioBtn.style.display = "none";
-      }}
+      audioBtn.style.display = (currentMode === "en_ja") ? "inline-flex" : "none";
 
-      // 毎回ランダムに10択を生成
       currentChoicesData = generateDynamicChoices(q, currentMode);
 
       const grid = document.getElementById("choicesGrid");
       grid.innerHTML = "";
-      
+
       currentChoicesData.choices.forEach((choice, idx) => {{
         const btn = document.createElement("button");
+        btn.type = "button";
         btn.className = "choice-btn";
-        btn.innerHTML = `<span class="choice-key">${{CHOICE_KEYS[idx]}}</span><span>${{choice}}</span>`;
-        btn.onclick = () => handleAnswer(CHOICE_KEYS[idx], btn, q);
+
+        const keySpan = document.createElement("span");
+        keySpan.className = "choice-key";
+        keySpan.textContent = CHOICE_KEYS[idx];
+
+        const textSpan = document.createElement("span");
+        textSpan.className = "choice-text";
+        textSpan.textContent = choice;
+
+        btn.appendChild(keySpan);
+        btn.appendChild(textSpan);
+        btn.addEventListener("click", () => handleAnswer(CHOICE_KEYS[idx], btn, q));
         grid.appendChild(btn);
       }});
 
-      document.getElementById("explanationCard").style.display = "none";
-      document.getElementById("btnNext").style.display = "none";
+      const feedbackPanel = document.getElementById("feedbackPanel");
+      feedbackPanel.classList.remove("is-correct", "is-wrong");
+      document.getElementById("feedbackIdle").style.display = "flex";
+      document.getElementById("feedbackAnswered").style.display = "none";
     }}
 
     function handleAnswer(selectedKey, clickedBtn, q) {{
       if (isAnswered) return;
       isAnswered = true;
+
+      if (document.activeElement && document.activeElement !== document.body) {{
+        document.activeElement.blur();
+      }}
 
       const isCorrect = (selectedKey === currentChoicesData.correctLetter);
       answerHistory[q.no] = isCorrect ? 'correct' : 'wrong';
@@ -794,17 +951,30 @@ html_content = f'''<!DOCTYPE html>
         btn.disabled = true;
         if (CHOICE_KEYS[idx] === currentChoicesData.correctLetter) {{
           btn.classList.add("correct");
+        }} else if (btn !== clickedBtn) {{
+          btn.classList.add("dimmed");
         }}
       }});
+
+      const feedbackPanel = document.getElementById("feedbackPanel");
+      const statusEl = document.getElementById("resultStatus");
+      feedbackPanel.classList.remove("is-correct", "is-wrong");
 
       if (isCorrect) {{
         correctTotal++;
         document.getElementById("correctCount").textContent = correctTotal;
+        feedbackPanel.classList.add("is-correct");
+        statusEl.className = "result-status correct";
+        statusEl.textContent = "正解";
       }} else {{
         wrongTotal++;
         document.getElementById("wrongCount").textContent = wrongTotal;
         clickedBtn.classList.add("wrong");
         wrongQuestions.push(q);
+        feedbackPanel.classList.add("is-wrong");
+        const correctAns = currentMode === "en_ja" ? q.meaning : q.word;
+        statusEl.className = "result-status wrong";
+        statusEl.textContent = `不正解 — 正解: [${{currentChoicesData.correctLetter}}] ${{correctAns}}`;
       }}
 
       const answeredCount = correctTotal + wrongTotal;
@@ -814,11 +984,9 @@ html_content = f'''<!DOCTYPE html>
       document.getElementById("expEn").textContent = q.example_en;
       document.getElementById("expJa").textContent = q.example_ja;
       document.getElementById("expNotes").textContent = q.notes;
-      document.getElementById("explanationCard").style.display = "block";
 
-      const nextBtn = document.getElementById("btnNext");
-      nextBtn.style.display = "inline-block";
-      nextBtn.focus();
+      document.getElementById("feedbackIdle").style.display = "none";
+      document.getElementById("feedbackAnswered").style.display = "flex";
     }}
 
     function nextQuestion() {{
@@ -833,15 +1001,13 @@ html_content = f'''<!DOCTYPE html>
     function showResult() {{
       document.getElementById("quizCard").style.display = "none";
       const resView = document.getElementById("resultView");
-      resView.style.display = "block";
-      
+      resView.style.display = "flex";
+
       document.getElementById("progressBar").style.width = "100%";
-      document.getElementById("progressText").textContent = `${{questionsList.length}} / ${{questionsList.length}}`;
-      
       document.getElementById("finalScore").textContent = `${{correctTotal}} / ${{questionsList.length}}`;
       const acc = ((correctTotal / questionsList.length) * 100).toFixed(1);
       document.getElementById("finalAccuracy").textContent = `正答率: ${{acc}}%`;
-      
+
       const btnRetry = document.getElementById("btnRetryWrong");
       if (wrongQuestions.length === 0) {{
         btnRetry.style.display = "none";
@@ -859,14 +1025,14 @@ html_content = f'''<!DOCTYPE html>
       wrongTotal = 0;
       wrongQuestions = [];
       isAnswered = false;
-      
+
       document.getElementById("correctCount").textContent = "0";
       document.getElementById("wrongCount").textContent = "0";
       document.getElementById("accuracyText").textContent = "0.0%";
-      
-      document.getElementById("quizCard").style.display = "block";
+
+      document.getElementById("quizCard").style.display = "flex";
       document.getElementById("resultView").style.display = "none";
-      
+
       renderQuestion();
     }}
 
@@ -875,6 +1041,7 @@ html_content = f'''<!DOCTYPE html>
       grid.innerHTML = "";
       questionsList.forEach((q, idx) => {{
         const btn = document.createElement("button");
+        btn.type = "button";
         btn.className = "grid-num-btn";
         btn.textContent = q.no;
         if (idx === currentIndex) btn.classList.add("current");
@@ -883,6 +1050,9 @@ html_content = f'''<!DOCTYPE html>
         btn.onclick = () => {{
           currentIndex = idx;
           document.getElementById("jumpModal").style.display = "none";
+          showQuizTab();
+          document.getElementById("quizCard").style.display = "flex";
+          document.getElementById("resultView").style.display = "none";
           renderQuestion();
         }};
         grid.appendChild(btn);
@@ -898,7 +1068,7 @@ html_content = f'''<!DOCTYPE html>
 
     /* タブ切り替え */
     function showQuizTab() {{
-      document.getElementById("quizArea").style.display = "block";
+      document.getElementById("quizArea").style.display = "flex";
       document.getElementById("wordbookArea").style.display = "none";
       document.getElementById("btnQuizTab").classList.add("btn-tab-active");
       document.getElementById("btnWordbookTab").classList.remove("btn-tab-active");
@@ -906,10 +1076,10 @@ html_content = f'''<!DOCTYPE html>
 
     function showWordbookTab() {{
       document.getElementById("quizArea").style.display = "none";
-      document.getElementById("wordbookArea").style.display = "block";
+      document.getElementById("wordbookArea").style.display = "flex";
       document.getElementById("btnQuizTab").classList.remove("btn-tab-active");
       document.getElementById("btnWordbookTab").classList.add("btn-tab-active");
-      renderWordbookList(ALL_WORDS);
+      filterWordList();
     }}
 
     function renderWordbookList(words) {{
@@ -918,27 +1088,64 @@ html_content = f'''<!DOCTYPE html>
       words.forEach(w => {{
         const card = document.createElement("div");
         card.className = "word-card";
-        card.innerHTML = `
-          <div class="word-header">
-            <div>
-              <span style="font-weight: 800; color: #1e3a8a; font-size: 0.9rem; margin-right: 0.5rem;">No.${{w.no}}</span>
-              <strong style="font-size: 1.2rem; color: #0f172a;">${{w.word}}</strong>
-              <span style="font-size: 0.8rem; background: #f1f5f9; padding: 0.2rem 0.5rem; border-radius: 4px; margin-left: 0.5rem; color: #475569;">${{w.pos}}</span>
-            </div>
-            <button class="btn-audio-sm" onclick="speakDirect('${{w.word}}')">発音</button>
-          </div>
-          <div style="font-size: 1rem; font-weight: 700; color: #2563eb; margin-bottom: 0.4rem;">${{w.meaning}}</div>
-          <div style="font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 0.2rem;">${{w.example_en}}</div>
-          <div style="font-size: 0.85rem; color: #64748b; margin-bottom: 0.4rem;">${{w.example_ja}}</div>
-          <div style="font-size: 0.8rem; background: #f8fafc; padding: 0.35rem 0.6rem; border-radius: 4px; color: #475569;">${{w.notes}}</div>
-        `;
+
+        const header = document.createElement("div");
+        header.className = "word-header";
+
+        const leftInfo = document.createElement("div");
+        const noSpan = document.createElement("span");
+        noSpan.style.cssText = "font-weight: 800; color: #1e3a8a; font-size: 0.85rem; margin-right: 0.45rem;";
+        noSpan.textContent = `No.${{w.no}}`;
+
+        const wordStrong = document.createElement("strong");
+        wordStrong.style.cssText = "font-size: 1.1rem; color: #0f172a;";
+        wordStrong.textContent = w.word;
+
+        const posSpan = document.createElement("span");
+        posSpan.style.cssText = "font-size: 0.78rem; background: #f1f5f9; padding: 0.15rem 0.45rem; border-radius: 4px; margin-left: 0.45rem; color: #475569;";
+        posSpan.textContent = w.pos;
+
+        leftInfo.appendChild(noSpan);
+        leftInfo.appendChild(wordStrong);
+        leftInfo.appendChild(posSpan);
+
+        const speakBtn = document.createElement("button");
+        speakBtn.type = "button";
+        speakBtn.className = "btn-audio-sm";
+        speakBtn.textContent = "発音";
+        speakBtn.addEventListener("click", () => speakDirect(w.word));
+
+        header.appendChild(leftInfo);
+        header.appendChild(speakBtn);
+
+        const meaningDiv = document.createElement("div");
+        meaningDiv.style.cssText = "font-size: 0.95rem; font-weight: 700; color: #2563eb; margin-bottom: 0.3rem;";
+        meaningDiv.textContent = w.meaning;
+
+        const exEnDiv = document.createElement("div");
+        exEnDiv.style.cssText = "font-size: 0.88rem; font-weight: 600; color: #334155; margin-bottom: 0.15rem;";
+        exEnDiv.textContent = w.example_en;
+
+        const exJaDiv = document.createElement("div");
+        exJaDiv.style.cssText = "font-size: 0.82rem; color: #64748b; margin-bottom: 0.3rem;";
+        exJaDiv.textContent = w.example_ja;
+
+        const notesDiv = document.createElement("div");
+        notesDiv.style.cssText = "font-size: 0.78rem; background: #f8fafc; padding: 0.3rem 0.55rem; border-radius: 4px; color: #475569;";
+        notesDiv.textContent = w.notes;
+
+        card.appendChild(header);
+        card.appendChild(meaningDiv);
+        card.appendChild(exEnDiv);
+        card.appendChild(exJaDiv);
+        card.appendChild(notesDiv);
         container.appendChild(card);
       }});
     }}
 
     function filterWordList() {{
       const q = document.getElementById("searchInput").value.toLowerCase();
-      const filtered = ALL_WORDS.filter(w => 
+      const filtered = ALL_WORDS.filter(w =>
         w.word.toLowerCase().includes(q) ||
         w.meaning.toLowerCase().includes(q) ||
         w.no.toString().includes(q) ||
@@ -972,7 +1179,19 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     window.addEventListener("keydown", (e) => {{
-      if (document.getElementById("wordbookArea").style.display === "block") return;
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+
+      const jumpModal = document.getElementById("jumpModal");
+      if (jumpModal.style.display === "flex") {{
+        if (e.key === "Escape") {{
+          jumpModal.style.display = "none";
+        }}
+        return;
+      }}
+
+      if (document.getElementById("wordbookArea").style.display === "flex") return;
+      if (document.getElementById("resultView").style.display === "flex") return;
+
       if (!isAnswered) {{
         const fullToHalf = {{'１':'1','２':'2','３':'3','４':'4','５':'5','６':'6','７':'7','８':'8','９':'9','０':'0'}};
         const normalizedKey = fullToHalf[e.key] || e.key;
@@ -982,7 +1201,7 @@ html_content = f'''<!DOCTYPE html>
           if (btns[index]) btns[index].click();
         }}
       }} else {{
-        if (e.key === "Enter" || e.key === " ") {{
+        if (e.key === "Enter" || e.key === " " || e.key === "ArrowRight") {{
           e.preventDefault();
           nextQuestion();
         }}
@@ -1000,7 +1219,6 @@ with open(index_path, mode="w", encoding="utf-8") as f:
     f.write(html_content)
 print("Saved updated index.html:", index_path)
 
-# HTMLアプリの別名保存
 for app_name in ["TOEIC_100Quiz_App.html", "TOEIC_100問10択クイズ_学習アプリ.html"]:
     shutil.copyfile(index_path, os.path.join(OUTPUT_DIR, app_name))
     print(f"Copied to {app_name}")
