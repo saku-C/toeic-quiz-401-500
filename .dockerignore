@@ -1,0 +1,7 @@
+*.jpg
+__pycache__
+*.pyc
+.git
+.gitignore
+build_all.py
+generate_quiz.py

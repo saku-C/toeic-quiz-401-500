@@ -1,0 +1,101 @@
+﻿問題番号,単語No.,出題(英単語),品詞,選択肢1,選択肢2,選択肢3,選択肢4,選択肢5,選択肢6,選択肢7,選択肢8,選択肢9,選択肢0,正解番号,正解の意味,例文,例文和訳,補足
+Q1,501,aim,動詞,突然に,接続する,向ける,緊急事態,卒業する,内密の,まったく,与えられた仕事,能力がある,〜の価値がある,3,向ける,Our campaign is aimed at young adults.,当社のキャンペーンはヤングアダルトに向けられている。,"「目指す、目的とする」という意味もある（同: target「目標とする」） 名: aim「目的、目標」(=purpose, goal, target, objective)"
+Q2,502,cooperate,動詞,可能性,手すり,さっと見る,突然に,好ましい,見逃す,主要な,協力する,封をする,最適な,8,協力する,The team members have to cooperate with each other.,部員はお互いに協力しなければならない。,名: cooperation「協力」、形: cooperative「協力的な」
+Q3,503,quantity,名詞,〜のおかげである,積み込む,与えられた仕事,量,利点,多くない,関連のある,ヒント,最適な,能力がある,4,量,We get discounts when we buy materials in large quantities.,資材を大量に買うと割引が受けられる。,動: quantify「数値で表す」、形: quantitative「量的な」、反: quality「質」
+Q4,504,by accident,熟語,協力する,偶然に,明らかな,〜の価値がある,主要な,海外で,〜かどうか,ヒント,定員,専門誌,2,偶然に,We met at the conference by accident.,私たちは会議で偶然に会った。,"反: deliberately, intentionally, on purpose「わざと」、名: accident「事故」、形: accidental「偶然の」、副: accidentally「偶然に」"
+Q5,505,launch,動詞,材料,計算する,残り,協力する,空いている,税金,有効な,可能性,始める,同僚,9,始める,We launched an advertising campaign for our new products.,当社は新製品のための広告キャンペーンを開始した。,「発売を開始する」という意味も重要。名: launch「開始」
+Q6,506,obvious,形容詞,職業,明らかな,利点,解雇する,規則,〜の価値がある,卒業する,困難,封をする,時間を守る,2,明らかな,It is obvious that the company is not doing well.,会社の業績がよくないことは明らかだ。,副: obviously「明らかに」
+Q7,507,optimistic,形容詞,ヒント,(共同で作業をする)チーム,意見,関連のある,楽観的な,同僚,まったく,〜していただけませんか,電化器具,専門誌,5,楽観的な,I'm optimistic about the company's future.,私は会社の将来について楽観的だ。,反: pessimistic「悲観的な」、名: optimist「楽観的な人」（反: pessimist「悲観的な人」）
+Q8,508,owe,動詞,基準,可能にする,〜のおかげである,困難,好意的な,解雇する,したい,規則,手すり,却下する,3,〜のおかげである,I owe my success to my colleagues.,私の成功は同僚のおかげである。,"「借りがある」という意味もある。owing to 〜「〜のおかげで」(=because of, due to, thanks to)"
+Q9,509,vision,名詞,規則,考え,持ち物,関連のある,手すり,どれだけ〜であろうと,まったく,好ましい,結論,候補者,2,考え,The company needs a clear vision for the future.,その会社は将来に対する明確な考えが必要である。,「視力、視界、展望」などの意味もある
+Q10,510,withdraw,動詞,困難,考え,〜のおかげである,さまざまな,材料,税金,監督する,分析,協力する,引き出す,0,引き出す,I just withdrew three hundred dollars from my account.,私は口座から300ドル下ろしたばかりです。,過去: withdrew、過去分詞: withdrawn「手を引く、撤退する、取り消す」という意味もある。名: withdrawal「（預金の）引き出し、撤退、撤回」
+Q11,511,deliberately,副詞,作成する,職業,見逃す,わざと,〜のおかげである,機械的な,偶然に,うまく,どれだけ〜であろうと,潜在的な,4,わざと,I deliberately misplaced the folder.,私はわざとそのホルダーを違う場所に置いた。,"同: intentionally, on purpose「わざと」、形: deliberate「故意の」(=intentional)、動: deliberate「熟考する」、名: deliberation「熟考」、after long deliberation「長い熟考のあと」"
+Q12,512,dismiss,動詞,与えられた仕事,もたれかかる,可能にする,基準,監督する,どれだけ〜であろうと,困難,入場料,解雇する,積み込む,9,解雇する,She was unfairly dismissed from her post.,彼女は職を不当に解雇された。,同: fire「解雇する」、名: dismissal「解雇」
+Q13,513,glance,動詞,協力する,さっと見る,与えられた仕事,内密の,理想的な,〜のおかげである,記念日,(功績があると)認める,中旬,入場料,2,さっと見る,He's glancing at a magazine.,彼は雑誌にさっと目を通している。,後ろに続く前置詞はat。名: glance「さっと見ること」、at a glance「一見して」
+Q14,514,ingredient,名詞,典型的な,テーマ,話を持ちかける,分析,計算する,〜以外に,わざと,材料,始める,ちょうどに,8,材料,What are the ingredients in this salad?,このサラダの材料はなんですか。,"「〜の材料」と言うとき、後ろに続く前置詞はin, of, forが可能"
+Q15,515,capable,形容詞,有効な,どれだけ〜であろうと,テーマ,残り,規則,見逃す,封をする,時間を守る,可能にする,能力がある,0,能力がある,Lucy Hill is quite capable of learning new skills.,ルーシー・ヒルは新しいスキルを習得する能力がある。,be capable of 〜の形で使われる。名: capability「能力」
+Q16,516,conclusion,名詞,環境,材料,もたれかかる,分析,結論,引き出す,大まかな,〜以外に,積み込む,海外で,5,結論,We haven't reached a conclusion yet.,私達はまだ結論に達していない。,reach a conclusion「結論に達する」、動: conclude「結論を出す、終える」、形: conclusive「決定的な、最終的な」、conclusive evidence「決定的な証拠」
+Q17,517,emergency,名詞,緊急事態,接続する,強く望んでいる,がっかりした,話を持ちかける,職業,メディア,好意的な,与えられた仕事,(共同で作業をする)チーム,1,緊急事態,The emergency exit is down the hallway.,非常口は廊下の先です。,emergency room (略: ER)「（病院の）緊急治療室」、the state of emergency「非常事態」
+Q18,518,load,動詞,つながり,うまく,オリエンテーション,積み込む,潜在的な,メディア,税金,量,記念日,ちょうどに,4,積み込む,They're loading the truck with boxes.,彼らはトラックに箱を積み込んでいる。,反: unload「荷物を降ろす」、名: load「荷物、積載量、仕事量」、形: loaded「荷物を積んだ」
+Q19,519,punctual,形容詞,量,結論,入場料,時間を守る,意見,主要な,内密の,ちょうどに,大まかな,却下する,4,時間を守る,Please try to be punctual.,時間を守るようにしてください。,名: punctuality「時間を守ること」、副: punctually「時間通りに」
+Q20,520,possibility,名詞,入場料,つながり,好意的な,可能性,中旬,〜以外に,内密の,革新的な,オリエンテーション,接続する,4,可能性,The two banks are discussing the possibility of a merger.,その2つの銀行は合併の可能性について話し合っている。,"「可能性がある事柄」という意味もある。形: possible「可能な」、副: possibly「もしかしたら、多分」(=maybe, perhaps)（probablyより可能性が低い）"
+Q21,521,journal,名詞,典型的な,手すり,専門誌,内密の,多くない,突然に,入場料,候補者,別の,徒歩で,3,専門誌,Mr. Johnson contributes to this trade journal.,ジョンソンさんはこの業界誌に寄稿している。,専門性の高い雑誌・新聞を指す語。「日記」という意味もある。関: magazine「雑誌」、newspaper「新聞」、periodical「定期刊行物」
+Q22,522,policy,名詞,〜することになっている,規則,持ち物,候補者,うまく,別の,ヒント,却下する,積み込む,同僚,2,規則,We have a strict non-smoking policy.,当社には厳格な禁煙の規則があります。,「方針、政策、（保険の）契約」などの意味もある。insurance policy「保険契約」
+Q23,523,appliance,名詞,まったく,税金,珍しい,テーマ,突然に,基準,海外で,候補者,可能性,電化器具,0,電化器具,The store carries a wide range of domestic appliances.,その店は多様な家電製品を取り扱っている。,appliance store「電器店」
+Q24,524,approach,動詞,入場料,話を持ちかける,規則,計算する,同僚,強く望んでいる,監督する,与えられた仕事,持ち物,作成する,2,話を持ちかける,Several companies have approached us.,数社が私達に話を持ちかけてきた。,「近づく、取り組む」などの意味もある。名: approach「手法、申し入れ、近づくこと」、形: approachable「親しみやすい」
+Q25,525,standard,名詞,つながり,突然に,意見,時間を守る,偶然に,基準,作成する,したい,ちょうどに,有効な,6,基準,We have high safety standards.,当社は高い安全基準を持っています。,「規範」という意味もある。通常、standardsとsをつける。形: standard「標準の、基準となる」
+Q26,526,valid,形容詞,封をする,明らかな,農業,始める,さっと見る,有効な,〜を代表して,わざと,〜していただけませんか,テーマ,6,有効な,You need a valid driver's license.,あなたは有効な運転免許証が必要です。,「正当な」という意味もある。反: invalid「無効な」、動: validate「証明する」
+Q27,527,eager,形容詞,中旬,(共同で作業をする)チーム,可能性,潜在的な,(功績があると)認める,強く望んでいる,職業,監督する,規則,大まかな,6,強く望んでいる,Our chef is eager to meet your catering needs.,私たちのシェフはあなたの食事のご要望を満たすことを強く望んでいます。,「熱心な」という意味もある。副: eagerly「熱心に」
+Q28,528,opinion,名詞,監督する,接続する,偶然に,機械的な,作成する,意見,却下する,ヒント,確信している,多くない,6,意見,We would like to know your opinions about our service.,私たちは当社のサービスに対するあなたのご意見をお聞きしたいと存じます。,同: view「意見、見方」、in my opinion「私の考えでは」
+Q29,529,belongings,名詞,理想的な,さまざまな,意見,能力がある,始める,最適な,規則,持ち物,好ましい,潜在的な,8,持ち物,She packed her personal belongings in a bag.,彼女は私物をかばんに詰めた。,この意味では常に複数形
+Q30,530,assignment,名詞,楽観的な,革新的な,同僚,〜にもかかわらず,どれだけ〜であろうと,手すり,解雇する,(共同で作業をする)チーム,与えられた仕事,テーマ,9,与えられた仕事,Marta has to complete the assignment by the end of October.,マータはその仕事を10月末までに仕上げなければならない。,「（学生に与えられた）課題」という意味もある。動: assign「割り当てる」
+Q31,531,innovative,形容詞,同僚,中旬,能力がある,候補者,可能性,大まかな,つながり,電化器具,革新的な,職業,9,革新的な,We develop innovative products and services.,当社は革新的な製品とサービスを開発しています。,動: innovate「（新しい技術・考えなどを）取り入れる」、名: innovation「革新、新しく取り入れたもの」、名: innovator「革新者」
+Q32,532,supervise,動詞,機械的な,電化器具,さっと見る,潜在的な,偶然に,主要な,監督する,(功績があると)認める,オリエンテーション,〜していただけませんか,7,監督する,Dr. Hall supervises the research team.,ホール博士が研究チームを監督する。,同: oversee「監督する」、名: supervision「監督」、名: supervisor「監督者」、形: supervisory「監督の」
+Q33,533,credit,動詞,機械的な,多くない,典型的な,(功績があると)認める,〜を代表して,フォーマルに,まったく,〜以外に,空いている,さまざまな,4,(功績があると)認める,He is credited with developing popular video games.,彼は人気のビデオゲームを開発した功績を認められている。,同: attribute「〜のおかげだと考える」、名: credit「クレジット、功績、履修単位」
+Q34,534,various,形容詞,手すり,職業,分析,さまざまな,環境,典型的な,強く望んでいる,つながり,もたれかかる,テーマ,4,さまざまな,We offer various training programs.,当社はさまざまな研修プログラムをご提供しております。,動: vary「変化する」、名: variety「種類、多様さ」、名: variation「変化、差」
+Q35,535,analysis,名詞,持ち物,見逃す,分析,税金,理想的な,職業,内密の,環境,手すり,利点,3,分析,I'm doing a cost analysis of the project.,私はそのプロジェクトの費用分析をしている。,複数形はanalyses。動: analyze「分析する」、名: analyst「評論家、専門家」、形: analytical「分析的な」
+Q36,536,reject,動詞,テーマ,基準,内密の,専門誌,計算する,却下する,偶然に,作成する,わざと,中旬,6,却下する,The board of directors rejected my proposal.,取締役会は私の提案を却下した。,"「拒否する、不合格にする、受け付けない」などの意味もある。同: turn down, refuse「却下する」、名: rejection「拒絶」"
+Q37,537,on behalf of,熟語,話を持ちかける,解雇する,〜の価値がある,結論,〜を代表して,可能性,フォーマルに,好意的な,オリエンテーション,革新的な,5,〜を代表して,Mr. Robinson made a speech on behalf of the association.,ロビンソンさんは協会を代表してスピーチをした。,「〜の代わりに」という意味もある
+Q38,538,overlook,動詞,規則,規則,さまざまな,協力する,申し込む,見逃す,材料,好意的な,したい,時間を守る,6,見逃す,I overlooked errors in the report.,私は報告書の間違いを見逃した。,「大目にみる、（建物から）見える」などの意味もある
+Q39,539,seal,動詞,機械的な,封をする,見逃す,〜していただけませんか,〜以外に,さまざまな,最適な,強く望んでいる,税金,多くない,2,封をする,I sealed the box with tape.,私はテープで箱に封をした。,「密閉する、（建物・エリアなどを）封鎖する」などの意味もある。名: seal「封印、印鑑」
+Q40,540,typical,形容詞,確信している,作成する,記念日,空いている,計算する,材料,典型的な,珍しい,候補者,大まかな,7,典型的な,These temperatures are not typical for this time of year.,これらの気温はこの時期としては普通ではありません。,typical of 〜「典型的な〜」、副: typically「典型的に、通常は」
+Q41,541,code,名詞,さまざまな,向ける,潜在的な,〜のおかげである,意見,革新的な,話を持ちかける,引き出す,持ち物,規則,0,規則,The company has a strict dress code.,その会社は厳しい服装規則がある。,「法律、記号、番号」などの意味もある。area code「市外局番」、a code of conduct「行動規範」
+Q42,542,connect,動詞,基準,好ましい,分析,フォーマルに,典型的な,接続する,楽観的な,困難,記念日,可能性,6,接続する,You should connect the printer to the computer.,プリンターをコンピュータに接続しなくてはなりません。,「電話をつなぐ」という意味もある。名: connection「接続、関係、乗り継ぎ」
+Q43,543,general,形容詞,偶然に,見逃す,(共同で作業をする)チーム,引き出す,職業,大まかな,可能にする,がっかりした,基準,材料,6,大まかな,This map will give you a general overview of the area.,この地図はその地区の大まかな概観を示します。,「一般的な、全体的な、普通の」などの意味もある。副: generally「一般的に」
+Q44,544,nicely,副詞,結論,可能にする,〜していただけませんか,つながり,うまく,中旬,突然に,(功績があると)認める,〜かどうか,候補者,5,うまく,He might say yes if you ask him nicely.,もし彼にうまく頼めば、彼は受け入れてくれるかもしれない。,形: nice「よい」
+Q45,545,orientation,名詞,引き出す,困難,徒歩で,規則,〜を代表して,記念日,封をする,結論,オリエンテーション,さまざまな,9,オリエンテーション,We will hold an orientation for new employees next week.,当社では来週、新入社員のオリエンテーションを行います。,「信条、方針」などの意味もある。動: orient「向かわせる、位置を見定める」
+Q46,546,positive,形容詞,職業,好意的な,記念日,したい,海外で,関連のある,同僚,潜在的な,〜のおかげである,候補者,2,好意的な,We received positive reviews for our new fax machine.,当社は新しいファックス機に対して好意的な批評を得た。,「積極的な、肯定的な、陽性の」などの意味もある。反: negative「否定的な、悲観的な、陰性の」、副: positively「肯定的に、確実に」
+Q47,547,however,副詞,さまざまな,突然に,意見,監督する,したい,持ち物,却下する,結論,どれだけ〜であろうと,強く望んでいる,9,どれだけ〜であろうと,"We must handle customer complaints properly, however minor they may be.",お客様からの苦情はたとえ小さなものであっても適切に対応しなければならない。,"「しかし」(=but, nevertheless)という意味もある。同: no matter how「たとえ〜でも」"
+Q48,548,whether,接続詞,〜の価値がある,テーマ,計算する,〜かどうか,もたれかかる,〜にもかかわらず,関連のある,申し込む,意見,機械的な,4,〜かどうか,I'll ask him whether he can finish it before lunch.,昼休み前に終わるかどうか彼に聞いてみます。,「〜であろうとなかろうと」という意味もある
+Q49,549,calculate,動詞,却下する,うまく,想像する,農業,(共同で作業をする)チーム,可能にする,計算する,内密の,考え,がっかりした,7,計算する,We calculated the cost of construction.,私たちは建設費用を計算した。,名: calculation「計算」、名: calculator「計算器」、形: calculated「計算された」
+Q50,550,lean against,熟語,引き出す,分析,緊急事態,珍しい,つながり,潜在的な,ヒント,もたれかかる,多くない,機械的な,8,もたれかかる,The bicycle is leaning against the fence.,自転車がフェンスに立てかけられている。,lean overは「身を乗り出す」、同: be leaning against = be propped up against「〜に立てかけられている」
+Q51,551,enable,動詞,有効な,同僚,楽観的な,多くない,〜の価値がある,フォーマルに,持ち物,可能性,珍しい,可能にする,0,可能にする,The new funds will enable us to continue our research.,新しい資金は私たちが調査を続けることを可能にします。,enable 〈人〉 to 〈不定詞〉の形で使う。形: able to 〜「〜できる」、名: ability「能力」、en-は動詞を作る接頭辞
+Q52,552,despite,前置詞,楽観的な,典型的な,革新的な,始める,理想的な,偶然に,監督する,向ける,〜にもかかわらず,内密の,9,〜にもかかわらず,Mike didn't meet the sales target despite his efforts.,マイクは努力したにもかかわらずセールス目標を達成できなかった。,同: in spite of 〜「〜にもかかわらず」
+Q53,553,media,名詞,確信している,電化器具,申し込む,中旬,メディア,別の,同僚,うまく,量,最適な,5,メディア,The event was reported in the media.,その行事はメディアで報道された。,"television, radio, newspaper, magazine, Internetを含む。関: press「報道機関（主に印刷媒体）」"
+Q54,554,tax,名詞,中旬,うまく,量,さまざまな,税金,利点,テーマ,〜にもかかわらず,〜のおかげである,規則,5,税金,You can get your taxes back.,あなたは税金の払い戻しが受けられる。,動: tax「課税する、負担をかける」、名: taxation「課税」
+Q55,555,trouble,名詞,規則,可能にする,関連のある,偶然に,残り,ヒント,可能性,困難,メディア,入場料,8,困難,I had trouble finding a good place to eat.,私は食事をするよい場所を探すのに苦労した。,同: problem「困難」、動: trouble「面倒をかける、困らせる、わざわざ〜する」、形: troublesome「面倒な、厄介な」
+Q56,556,wish,動詞,結論,したい,残り,材料,与えられた仕事,手すり,(共同で作業をする)チーム,理想的な,楽観的な,規則,2,したい,I wish to speak with the manager.,マネージャーと話がしたいです。,wish to 〜「〜したい」。「望む、願う」という意味もある。名: wish「望み、願い」、wishful thinking「希望的観測、甘い考え」
+Q57,557,draw up,句動詞,作成する,緊急事態,主要な,明らかな,意見,〜のおかげである,〜にもかかわらず,量,テーマ,規則,1,作成する,He's drawing up a plan.,彼は計画を作成している。,同: make「作る」、write「書く」
+Q58,558,formally,副詞,結論,革新的な,理想的な,フォーマルに,持ち物,規則,突然に,分析,引き出す,がっかりした,4,フォーマルに,We dressed formally for the ceremony.,私たちはそのセレモニーのためにフォーマルな服装をした。,形: formal「フォーマルな、格式ばった」、反: casually「カジュアルな、くつろいだ」
+Q59,559,empty,形容詞,潜在的な,向ける,空いている,手すり,わざと,分析,結論,好意的な,〜かどうか,専門誌,3,空いている,The filing cabinets are almost empty.,書類整理用キャビネットはほとんど空いています。,動: empty「空にする」
+Q60,560,core,形容詞,協力する,主要な,強く望んでいる,明らかな,潜在的な,手すり,見逃す,海外で,(共同で作業をする)チーム,可能にする,2,主要な,Our core business is fresh fruit and vegetables.,当社の主要事業は新鮮な果物と野菜です。,同: main「主要な」、名: core「（りんごなどの）芯、中心」、core curriculum「中核教科課程」
+Q61,561,crew,名詞,環境,与えられた仕事,却下する,主要な,解雇する,残り,別の,可能にする,持ち物,(共同で作業をする)チーム,0,(共同で作業をする)チーム,Our repair crew will be there in half an hour.,当社の修理スタッフが30分後にはお伺いします。,集団を指す語。「（船や飛行機の）乗組員・乗務員」という意味でも使われる
+Q62,562,middle,名詞,〜にもかかわらず,材料,珍しい,協力する,主要な,中旬,〜を代表して,(功績があると)認める,〜の価値がある,まったく,6,中旬,A friend of mine will visit me in the middle of September.,私の友人が9月中旬に私のところに来ます。,「真ん中、中間」というのが元の意味。mid-という接頭辞をつけて同じ意味を表すことができる。例: mid-September「9月中旬」、形: middle「中間の」
+Q63,563,on foot,熟語,監督する,関連のある,同僚,農業,入場料,明らかな,電化器具,徒歩で,したい,好ましい,8,徒歩で,It takes about fifteen minutes on foot.,徒歩で約15分です。,関: by car「車で」、by bus「バスで」、by train「電車で」
+Q64,564,overseas,副詞,理想的な,困難,海外で,解雇する,同僚,規則,協力する,量,環境,時間を守る,3,海外で,Eddy worked overseas before joining this company.,エディーはこの会社に入る前、外国で働いていた。,同: abroad「外国で」、形: overseas「海外の」
+Q65,565,co-worker,名詞,フォーマルに,同僚,作成する,〜を代表して,解雇する,わざと,〜かどうか,想像する,専門誌,〜の価値がある,2,同僚,One of my co-workers is leaving the company.,私の同僚の一人が会社を辞める。,co-は「一緒に」という意味を表す接頭辞(co-worker=「一緒に働いている人」)、同: colleague「同僚」
+Q66,566,graduate,動詞,多くない,農業,持ち物,基準,卒業する,規則,解雇する,主要な,専門誌,〜していただけませんか,5,卒業する,I recently graduated from university.,私は最近、大学を卒業した。,名: graduate「卒業生」、形: graduate「学士号を受けた」、名: graduation「卒業」、同: commencement〈加米〉「卒業式」
+Q67,567,private,形容詞,意見,〜にもかかわらず,〜することになっている,想像する,徒歩で,内密の,基準,同僚,さっと見る,(共同で作業をする)チーム,6,内密の,I had a private conversation with my supervisor.,私は上司と密談をした。,「私有の、民間の、個人の、内輪だけの」などの意味もある。in private「内密に」、副: privately「内密に、個人として」、名: privacy「プライバシー」
+Q68,568,tip,名詞,強く望んでいる,能力がある,接続する,革新的な,向ける,内密の,ヒント,テーマ,〜を代表して,潜在的な,7,ヒント,Here are some tips on how to stay healthy.,健康でいるためのヒントを以下に挙げます。,通常、tipsとsを付けて使われる。「先端、（レストラン等で渡す）チップ」などの意味もある。動: tip「チップを渡す」
+Q69,569,agriculture,名詞,残り,利点,好意的な,徒歩で,まったく,監督する,オリエンテーション,農業,どれだけ〜であろうと,材料,8,農業,About fifty percent of the land is used for agriculture.,土地の約50パーセントは農業に使われている。,形: agricultural「農業の」、関: horticulture「園芸」
+Q70,570,railing,名詞,手すり,突然に,珍しい,意見,作成する,規則,与えられた仕事,計算する,〜することになっている,理想的な,1,手すり,He's holding onto the railing.,彼は手すりにつかまっている。,「柵、フェンス」を指すこともある。パート1で頻出
+Q71,571,theme,名詞,引き出す,農業,税金,内密の,最適な,分析,したい,テーマ,多くない,接続する,8,テーマ,What is the theme of the conference?,その会議のテーマは何ですか。,"同: topic, subject「主題」"
+Q72,572,tie,名詞,却下する,つながり,わざと,分析,持ち物,職業,環境,偶然に,空いている,徒歩で,2,つながり,We have strong ties with local businesses.,私たちは地元の企業と強いつながりがある。,「ネクタイ、引き分け」という意味もある。同: link「つながり」、動: tie「結ぶ」
+Q73,573,fond,形容詞,確信している,却下する,〜にもかかわらず,どれだけ〜であろうと,分析,基準,候補者,好ましい,〜以外に,材料,8,好ましい,I have fond memories of San Francisco.,私はサンフランシスコのよい思い出がある。,be fond of 〜「〜が好き」
+Q74,574,be supposed to,熟語,〜することになっている,環境,量,記念日,〜かどうか,専門誌,理想的な,テーマ,がっかりした,主要な,1,〜することになっている,Mr. Brown was supposed to arrive an hour ago.,ブラウンさんは1時間前に来ることになっていた。,suppose は「思う、考える」という意味の動詞
+Q75,575,related,形容詞,どれだけ〜であろうと,ヒント,利点,がっかりした,見逃す,想像する,突然に,関連のある,別の,基準,8,関連のある,Applicants must have a degree in business or a related field.,応募者は経営学または関連分野での学位を持っていなければなりません。,related to 〜「〜に関係がある」、動: relate「関係がある」、同: relating to 〜「〜に関連のある」、名: relation「関係」、名: relationship「関係」
+Q76,576,confident,形容詞,楽観的な,解雇する,協力する,環境,規則,確信している,引き出す,積み込む,作成する,好ましい,6,確信している,I'm confident sales will pick up soon.,私は売り上げがもうすぐ回復することを確信しています。,「自信がある」という意味もある。名: confidence「自信、信頼、秘密」、形: confidential「秘密の、内密の」
+Q77,577,I wonder if you,熟語,積み込む,〜以外に,結論,フォーマルに,多くない,〜していただけませんか,規則,却下する,解雇する,中旬,6,〜していただけませんか,I wonder if you can help me.,手伝ってもらえませんか。,"人に頼みごとをするときの表現。I was wondering if, I'm wondering if も同じ。wonderは「不思議に思う、知りたい」という意味"
+Q78,578,worth,前置詞,多くない,中旬,〜の価値がある,〜かどうか,テーマ,徒歩で,積み込む,珍しい,分析,規則,3,〜の価値がある,The museum is worth a visit.,その博物館には行く価値がある。,worth 〜ing「〜する価値がある」、名: worth「価値」、形: worthless「価値のない」、形: worthy「尊敬すべき」
+Q79,579,enroll,動詞,ちょうどに,見逃す,卒業する,強く望んでいる,大まかな,がっかりした,申し込む,環境,さっと見る,想像する,7,申し込む,I'd like to enroll in the drawing class.,デッサンのクラスに申し込みたいと思います。,"綴り: enrol〈英〉。後ろに続く前置詞はin〈加米〉、on/in〈英〉。同: sign up for 〜, apply for 〜「〜に申し込む」、同: register for 〜「〜に登録する」、名: enrollment「登録、入会」"
+Q80,580,environment,名詞,電化器具,残り,革新的な,手すり,〜のおかげである,うまく,好意的な,環境,まったく,申し込む,8,環境,We're trying to improve our work environment.,私たちは職場環境を向上させるように努めています。,「自然環境」という意味もある。形: environmental「環境に関する」、名: environmentalist「環境保護論者」
+Q81,581,exactly,副詞,分析,想像する,多くない,農業,規則,フォーマルに,強く望んでいる,まったく,電化器具,内密の,8,まったく,He told me exactly the same thing.,彼は私にまったく同じことを言いました。,「正確に、ちょうどに」という意味もある。同: precisely「まったく」、形: exact「正確な」
+Q82,582,ideal,形容詞,理想的な,大まかな,能力がある,接続する,作成する,申し込む,〜かどうか,緊急事態,与えられた仕事,時間を守る,1,理想的な,The island is an ideal place for a family vacation.,その島は家族旅行に理想的な場所です。,同: perfect「完璧な」、名: ideal「理想」、副: ideally「理想的に」
+Q83,583,precisely,副詞,フォーマルに,職業,監督する,協力する,意見,作成する,どれだけ〜であろうと,ちょうどに,定員,つながり,8,ちょうどに,I arrived here at precisely six o'clock.,私はここに6時ちょうどに着いた。,"「正確に、まったく」という意味もある。同: exactly, sharp「ちょうどに」、形: precise「正確な」、名: precision「正確さ」"
+Q84,584,suddenly,副詞,職業,接続する,始める,革新的な,〜以外に,機械的な,空いている,基準,(共同で作業をする)チーム,突然に,0,突然に,The finance minister suddenly resigned.,財務大臣は突然、辞任した。,形: sudden「突然の」
+Q85,585,capacity,名詞,候補者,解雇する,大まかな,規則,積み込む,〜にもかかわらず,定員,専門誌,却下する,徒歩で,7,定員,The hall was filled to capacity.,ホールは定員いっぱいだった。,「能力、任務、最大生産量」などの意味もある。filled to capacity「定員いっぱい、満席」という意味
+Q86,586,admission,名詞,うまく,(共同で作業をする)チーム,フォーマルに,さっと見る,〜の価値がある,始める,解雇する,海外で,持ち物,入場料,0,入場料,Admission is free for members.,会員は入場無料です。,「入ること、入場許可、入学許可、告白」という意味もある。動: admit「認める、入場を許可する」、関: admission fee「入場料」
+Q87,587,advantage,名詞,計算する,想像する,税金,もたれかかる,緊急事態,規則,最適な,〜することになっている,基準,利点,0,利点,What are the advantages of this system?,このシステムの利点は何ですか。,「有利な点、優位性、長所」などの意味もある。take advantage of 〜「〜を利用する」、反: disadvantage「不利な点、短所」、形: advantageous「有利な」
+Q88,588,anniversary,名詞,基準,典型的な,(功績があると)認める,可能にする,さっと見る,記念日,解雇する,協力する,つながり,候補者,6,記念日,Tomorrow is our wedding anniversary.,明日は私たちの結婚記念日です。,the twentieth anniversary「20周年記念」
+Q89,589,candidate,名詞,与えられた仕事,職業,有効な,空いている,定員,さまざまな,候補者,ちょうどに,わざと,機械的な,7,候補者,There are five candidates for the position.,その職には5人の候補者がいます。,職の話をしているときはapplicant「応募者」とほぼ同じ意味になる
+Q90,590,career,名詞,作成する,電化器具,定員,職業,税金,話を持ちかける,もたれかかる,強く望んでいる,〜していただけませんか,主要な,4,職業,I was interested in a career in journalism.,私は報道関係の職業に興味があった。,「職歴」という意味もある
+Q91,591,imagine,動詞,機械的な,封をする,協力する,想像する,積み込む,明らかな,ちょうどに,専門誌,環境,好意的な,4,想像する,The garden was more beautiful than I had imagined.,その庭園は私が想像していたより美しかった。,名: imagination「想像、想像力」、形: imaginative「想像力のある」
+Q92,592,perfect,形容詞,中旬,農業,オリエンテーション,困難,規則,意見,したい,監督する,最適な,明らかな,9,最適な,Kate is the perfect candidate for the job.,ケイトはその仕事に最適な候補者です。,「完璧な、最高の」などの意味もある。同: ideal「理想的な」、副: perfectly「完璧に」、動: perfect「完全にする」、名: perfection「完璧」
+Q93,593,potential,形容詞,潜在的な,話を持ちかける,テーマ,〜を代表して,フォーマルに,定員,好ましい,能力がある,ちょうどに,偶然に,1,潜在的な,How can we reach our potential customers more effectively?,私たちはどうやったらもっと効果的に潜在的な顧客に知ってもらうことができるでしょうか。,「可能性がある」という意味もある。形容詞として使われるときは、常に名詞の前に来る。名: potential「可能性」、副: potentially「潜在的に」
+Q94,594,separate,形容詞,有効な,〜を代表して,可能性,作成する,別の,テーマ,〜にもかかわらず,解雇する,強く望んでいる,わざと,5,別の,We'll send your order in two separate shipments.,ご注文の品はふたつの別の便でお送りします。,「関係のない」という意味もある。同: different「別の」、動: separate「分ける」、副: separately「別々に」
+Q95,595,apart from,前置詞,話を持ちかける,職業,申し込む,別の,まったく,〜以外に,フォーマルに,空いている,〜かどうか,徒歩で,6,〜以外に,"Apart from baseball, what sports do you like?",野球以外にスポーツは何が好きですか。,"「〜に加えて」(=besides, in addition to)という意味もある。同: except for 〜「〜以外に」"
+Q96,596,mechanical,形容詞,ちょうどに,候補者,専門誌,始める,電化器具,機械的な,困難,農業,徒歩で,想像する,6,機械的な,The flight was canceled due to mechanical failure.,機械的な故障により、その便は運行が中止された。,名: machine(可算名詞)「機械」、名: machinery(不可算名詞)「機械」、副: mechanically「機械的に」
+Q97,597,rest,名詞,大まかな,能力がある,ちょうどに,接続する,多くない,残り,好ましい,理想的な,時間を守る,協力する,6,残り,There's not much work for the rest of the day.,今日、これから残りの時間はあまり仕事がない。,「休息、休止」という意味もある。同: remainder「残り」、動: rest「休む、もたれかかる」
+Q98,598,unique,形容詞,想像する,定員,電化器具,珍しい,明らかな,最適な,規則,もたれかかる,強く望んでいる,がっかりした,4,珍しい,The gift shop carries unique jewelry made of seashells.,そのギフトショップでは貝殻でできた珍しいジュエリーを販売している。,「独特の、唯一の」などの意味もある
+Q99,599,disappointed,形容詞,与えられた仕事,結論,がっかりした,テーマ,可能性,(共同で作業をする)チーム,協力する,材料,別の,規則,3,がっかりした,We are disappointed with the results.,私たちはその結果にがっかりした。,動: disappoint「がっかりさせる」、形: disappointing「がっかりさせるような」、名: disappointment「失望」
+Q100,600,modest,形容詞,多くない,話を持ちかける,困難,主要な,引き出す,メディア,接続する,能力がある,材料,想像する,1,多くない,I've saved a modest amount of money.,私は少額のお金を貯めた。,「謙虚な、控えめな」などの意味もある。名: modesty「謙遜」

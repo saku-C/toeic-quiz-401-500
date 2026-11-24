@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 """
 Web公開用 index.html 生成スクリプト
-- 出題順: No.401 〜 No.500 (番号順で固定)
+- 出題順: No.501 〜 No.600 (番号順で固定)
 - 10択の選択肢: 毎回出題時/リセット時に完全にランダム生成！
+- 選択肢記号: 1〜0
 - 単語帳一覧モード（検索・発音・全項目表示）
 - Web Speech API ネイティブ発音再生
 - 問題一覧ジャンプモーダル
 - Googleスプレッドシート用CSV & Excel ダウンロード
+- 絵文字なし / 効果音なし
 """
 
 import os
+import shutil
 import json
 from quiz_data import words_data
 
@@ -22,8 +25,8 @@ html_content = f'''<!DOCTYPE html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>TOEIC 100問10択クイズ (No.401-500)</title>
-  <meta name="description" content="単語帳 No.401〜500。出題は番号順。単語帳閲覧機能、ネイティブ音声・解説付き。">
+  <title>単語帳 100問10択クイズ (No.501-600)</title>
+  <meta name="description" content="単語帳 No.501〜600。出題は番号順。単語帳閲覧機能、ネイティブ音声・解説付き。">
   <meta name="theme-color" content="#1e3a8a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -98,17 +101,6 @@ html_content = f'''<!DOCTYPE html>
       font-size: 0.8rem;
       color: var(--text-muted);
       margin-top: 0.15rem;
-    }}
-
-    .top-badge {{
-      display: inline-block;
-      font-size: 0.7rem;
-      background: #e0f2fe;
-      color: #0369a1;
-      padding: 0.15rem 0.5rem;
-      border-radius: 9999px;
-      font-weight: 700;
-      margin-left: 0.25rem;
     }}
 
     .controls {{
@@ -248,73 +240,61 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .target-word {{
-      font-size: 2.25rem;
+      font-size: 2.2rem;
       font-weight: 800;
       color: var(--text-main);
-      text-align: center;
       letter-spacing: -0.02em;
+      text-align: center;
     }}
 
     .btn-audio {{
       background: #f1f5f9;
       border: 1px solid var(--border);
-      padding: 0.35rem 0.85rem;
-      height: 36px;
-      border-radius: 18px;
+      border-radius: 0.5rem;
+      padding: 0.4rem 0.65rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #334155;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--primary);
-      transition: all 0.2s;
-      flex-shrink: 0;
+      gap: 0.25rem;
+      transition: all 0.15s ease;
     }}
-
     .btn-audio:hover {{
-      background: var(--primary-light);
-      border-color: var(--primary);
+      background: #e2e8f0;
+      color: #0f172a;
     }}
 
     /* 10択グリッド */
     .choices-grid {{
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.65rem;
-      margin-bottom: 1.25rem;
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+      margin-bottom: 1.5rem;
     }}
 
-    @media (max-width: 640px) {{
-      body {{
-        padding: 0.5rem 0.5rem 2rem 0.5rem;
-      }}
-      .quiz-card {{
-        padding: 1.25rem 1rem;
-      }}
+    @media (min-width: 641px) {{
       .choices-grid {{
-        grid-template-columns: 1fr;
-        gap: 0.5rem;
-      }}
-      .target-word {{
-        font-size: 1.85rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
       }}
     }}
 
     .choice-btn {{
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 0.85rem 1rem;
+      text-align: left;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-main);
+      cursor: pointer;
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      background: #ffffff;
-      border: 2px solid var(--border);
-      padding: 0.85rem 1rem;
-      border-radius: 0.75rem;
-      cursor: pointer;
-      font-size: 0.95rem;
-      font-weight: 500;
-      text-align: left;
       transition: all 0.15s ease;
-      color: var(--text-main);
       position: relative;
     }}
 
@@ -322,52 +302,67 @@ html_content = f'''<!DOCTYPE html>
       border-color: var(--primary);
       background: var(--primary-light);
       transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
     }}
 
     .choice-key {{
-      display: inline-flex;
+      display: flex;
       align-items: center;
       justify-content: center;
-      width: 28px;
-      height: 28px;
-      background: #f1f5f9;
-      color: #475569;
+      width: 26px;
+      height: 26px;
       border-radius: 6px;
-      font-size: 0.85rem;
+      background: #f1f5f9;
+      font-size: 0.75rem;
       font-weight: 700;
+      color: #475569;
       flex-shrink: 0;
+      border: 1px solid #cbd5e1;
+    }}
+
+    .choice-btn:hover:not(:disabled) .choice-key {{
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
     }}
 
     .choice-btn.correct {{
-      border-color: var(--success) !important;
       background: var(--success-light) !important;
+      border-color: var(--success) !important;
       color: var(--success) !important;
       font-weight: 700;
     }}
     .choice-btn.correct .choice-key {{
       background: var(--success);
-      color: #fff;
+      color: #ffffff;
+      border-color: var(--success);
     }}
 
     .choice-btn.wrong {{
-      border-color: var(--danger) !important;
       background: var(--danger-light) !important;
+      border-color: var(--danger) !important;
       color: var(--danger) !important;
+      font-weight: 700;
     }}
     .choice-btn.wrong .choice-key {{
       background: var(--danger);
-      color: #fff;
+      color: #ffffff;
+      border-color: var(--danger);
+    }}
+
+    .choice-btn:disabled {{
+      cursor: default;
     }}
 
     /* 解説エリア */
     .explanation-card {{
-      background: #f8fafc;
-      border-left: 4px solid var(--primary);
-      padding: 1.1rem;
-      border-radius: 0.5rem;
-      margin-top: 1rem;
       display: none;
-      animation: fadeIn 0.2s ease;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 0.875rem;
+      padding: 1.1rem 1.25rem;
+      margin-top: 1.25rem;
+      animation: fadeIn 0.2s ease-in-out;
     }}
 
     @keyframes fadeIn {{
@@ -376,77 +371,75 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     .explanation-title {{
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 0.4rem;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
     }}
 
     .example-en-row {{
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.35rem;
     }}
 
     .example-en {{
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
       color: #1e293b;
+      line-height: 1.4;
     }}
 
     .btn-audio-sm {{
-      background: #f1f5f9;
-      border: 1px solid var(--border);
-      padding: 0.25rem 0.6rem;
-      border-radius: 6px;
+      background: transparent;
+      border: none;
       cursor: pointer;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
       color: var(--primary);
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      font-weight: 600;
       flex-shrink: 0;
     }}
     .btn-audio-sm:hover {{
-      background: var(--primary-light);
-      border-color: var(--primary);
+      background: #e2e8f0;
     }}
 
     .example-ja {{
       font-size: 0.875rem;
-      color: #64748b;
+      color: #475569;
+      line-height: 1.4;
       margin-bottom: 0.5rem;
     }}
 
     .notes-text {{
-      font-size: 0.825rem;
-      background: #f1f5f9;
-      padding: 0.45rem 0.7rem;
-      border-radius: 0.4rem;
-      color: #334155;
+      font-size: 0.8rem;
+      color: #64748b;
+      background: #ffffff;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.5rem;
+      border: 1px dashed var(--border);
+      line-height: 1.4;
     }}
 
+    /* アクションボタン */
     .action-row {{
       display: flex;
       justify-content: flex-end;
-      align-items: center;
-      margin-top: 1.25rem;
       gap: 0.75rem;
+      margin-top: 1.25rem;
     }}
 
     .btn-next {{
       background: var(--primary);
       color: #ffffff;
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-      font-weight: 700;
       border: none;
+      padding: 0.75rem 1.75rem;
+      font-size: 0.95rem;
+      font-weight: 700;
       border-radius: 0.75rem;
       cursor: pointer;
       display: none;
@@ -571,8 +564,8 @@ html_content = f'''<!DOCTYPE html>
   <div class="container">
     <header>
       <div class="title-group">
-        <h1>TOEIC 100問10択クイズ</h1>
-        <p>No. 401 〜 500 (出題順: 番号順)</p>
+        <h1>単語帳 100問10択クイズ</h1>
+        <p>No. 501 〜 600 (出題順: 番号順)</p>
       </div>
       <div class="controls">
         <button class="control-btn btn-tab-active" id="btnQuizTab" onclick="showQuizTab()">クイズ</button>
@@ -604,7 +597,7 @@ html_content = f'''<!DOCTYPE html>
 
       <div class="quiz-card" id="quizCard">
         <div class="question-header">
-          <span class="q-number" id="qNumberBadge" onclick="openJumpModal()" title="クリックして問題一覧を開く">Q1 / 100 [No. 401]</span>
+          <span class="q-number" id="qNumberBadge" onclick="openJumpModal()" title="クリックして問題一覧を開く">Q1 / 100 [No. 501]</span>
           <div style="display: flex; gap: 0.4rem; align-items: center;">
             <select id="modeSelect" onchange="changeMode()" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">
               <option value="en_ja">英 → 日 (10択)</option>
@@ -615,7 +608,7 @@ html_content = f'''<!DOCTYPE html>
         </div>
 
         <div class="target-wrapper">
-          <div class="target-word" id="targetWord">cause</div>
+          <div class="target-word" id="targetWord">aim</div>
           <button class="btn-audio" id="btnSpeakWord" title="単語の発音を聞く" onclick="speakTargetWord()">発音</button>
         </div>
 
@@ -624,11 +617,11 @@ html_content = f'''<!DOCTYPE html>
         <div class="explanation-card" id="explanationCard">
           <div class="explanation-title">単語解説・例文</div>
           <div class="example-en-row">
-            <div class="example-en" id="expEn">Heavy traffic is causing delays on Highway 18.</div>
+            <div class="example-en" id="expEn">Our campaign is aimed at young adults.</div>
             <button class="btn-audio-sm" id="btnSpeakSentence" title="例文の発音を聞く" onclick="speakSentence()">例文音声</button>
           </div>
-          <div class="example-ja" id="expJa">18号線では交通渋滞により遅れが生じています。</div>
-          <div class="notes-text" id="expNotes">名: cause「原因、理由、大義」</div>
+          <div class="example-ja" id="expJa">当社のキャンペーンはヤングアダルトに向けられている。</div>
+          <div class="notes-text" id="expNotes">「目指す、目的とする」という意味もある（同: target「目標とする」） 名 aim「目的、目標」(=purpose, goal, target, objective)</div>
         </div>
 
         <div class="action-row">
@@ -654,11 +647,11 @@ html_content = f'''<!DOCTYPE html>
     <div id="wordbookArea" class="wordbook-view">
       <div style="background: #ffffff; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--border); margin-bottom: 1rem;">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
-          <h2 style="font-size: 1.15rem; font-weight: 800; color: #1e3a8a;">単語帳一覧 (No.401 〜 500 全100語)</h2>
+          <h2 style="font-size: 1.15rem; font-weight: 800; color: #1e3a8a;">単語帳一覧 (No.501 〜 600 全100語)</h2>
           <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
             <a class="control-btn" href="https://docs.google.com/spreadsheets/d/1BaAIXt7jKJIoEdopA-uozzmqyQw_e2ePdSPwFk4MSac/edit?usp=sharing" target="_blank" rel="noopener">単語帳(スプレットシート)</a>
-            <a class="control-btn" href="TOEIC_Words_401-500_List.csv" download>CSV保存</a>
-            <a class="control-btn" href="TOEIC_Words_401-500_100Quiz.xlsx" download>Excel保存</a>
+            <a class="control-btn" href="TOEIC_Words_501-600_List.csv" download>CSV保存</a>
+            <a class="control-btn" href="TOEIC_Words_501-600_100Quiz.xlsx" download>Excel保存</a>
           </div>
         </div>
         <input type="text" id="searchInput" class="search-box" placeholder="単語・意味・例文を検索..." oninput="filterWordList()">
@@ -671,7 +664,7 @@ html_content = f'''<!DOCTYPE html>
   <div class="modal-overlay" id="jumpModal" onclick="closeJumpModal(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h3 style="font-size: 1.1rem; font-weight: 700;">問題一覧 (No.401 〜 500)</h3>
+        <h3 style="font-size: 1.1rem; font-weight: 700;">問題一覧 (No.501 〜 600)</h3>
         <button class="control-btn" onclick="document.getElementById('jumpModal').style.display='none'">閉じる</button>
       </div>
       <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.3rem;">番号をクリックするとその問題に直接ジャンプします。（出題順: 番号順）</p>
@@ -726,7 +719,7 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     function init() {{
-      // 出題順は番号順 (401〜500)
+      // 出題順は番号順 (501〜600)
       questionsList = [...ALL_WORDS];
       currentIndex = 0;
       correctTotal = 0;
@@ -1005,5 +998,9 @@ html_content = f'''<!DOCTYPE html>
 index_path = os.path.join(OUTPUT_DIR, "index.html")
 with open(index_path, mode="w", encoding="utf-8") as f:
     f.write(html_content)
-
 print("Saved updated index.html:", index_path)
+
+# HTMLアプリの別名保存
+for app_name in ["TOEIC_100Quiz_App.html", "TOEIC_100問10択クイズ_学習アプリ.html"]:
+    shutil.copyfile(index_path, os.path.join(OUTPUT_DIR, app_name))
+    print(f"Copied to {app_name}")
