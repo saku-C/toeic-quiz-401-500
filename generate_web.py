@@ -19,6 +19,9 @@ from quiz_data import words_data
 
 OUTPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 
+ANALYTICS_ENDPOINT = "https://script.google.com/macros/s/AKfycbyxBICpBW-BySN4UzQLT-U8QiXZH3o6cM8BA2pkg9WHRJ5td4gy2gEnYLRP-BRxKR7BUA/exec"  # Google Apps Script ウェブアプリURL (/exec)
+analytics_endpoint_json = json.dumps(ANALYTICS_ENDPOINT)
+
 all_words_json = json.dumps(words_data, ensure_ascii=False)
 
 html_content = f'''<!DOCTYPE html>
@@ -818,7 +821,7 @@ html_content = f'''<!DOCTYPE html>
         <button class="control-btn btn-tab-active" id="btnQuizTab" onclick="showQuizTab()">クイズ</button>
         <button class="control-btn" id="btnWordbookTab" onclick="showWordbookTab()">単語帳一覧</button>
         <button class="control-btn" onclick="openJumpModal()">進捗一覧</button>
-        <a class="control-btn" href="https://docs.google.com/spreadsheets/d/1BaAIXt7jKJIoEdopA-uozzmqyQw_e2ePdSPwFk4MSac/edit?usp=sharing" target="_blank" rel="noopener">単語帳(スプレットシート)</a>
+        <a class="control-btn sheet-link" href="https://docs.google.com/spreadsheets/d/1BaAIXt7jKJIoEdopA-uozzmqyQw_e2ePdSPwFk4MSac/edit?usp=sharing" target="_blank" rel="noopener">単語帳(スプレットシート)</a>
       </div>
     </header>
 
@@ -893,7 +896,7 @@ html_content = f'''<!DOCTYPE html>
           <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.6rem; flex-wrap: wrap; gap: 0.5rem;">
             <h2 style="font-size: 1.05rem; font-weight: 800; color: #1e3a8a;">単語帳一覧 (No.501 〜 600 全100語)</h2>
             <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-              <a class="control-btn" href="https://docs.google.com/spreadsheets/d/1BaAIXt7jKJIoEdopA-uozzmqyQw_e2ePdSPwFk4MSac/edit?usp=sharing" target="_blank" rel="noopener">単語帳(スプレットシート)</a>
+              <a class="control-btn sheet-link" href="https://docs.google.com/spreadsheets/d/1BaAIXt7jKJIoEdopA-uozzmqyQw_e2ePdSPwFk4MSac/edit?usp=sharing" target="_blank" rel="noopener">単語帳(スプレットシート)</a>
               <a class="control-btn" href="TOEIC_Words_501-600_List.csv" download>CSV保存</a>
               <a class="control-btn" href="TOEIC_Words_501-600_100Quiz.xlsx" download>Excel保存</a>
             </div>
@@ -920,6 +923,7 @@ html_content = f'''<!DOCTYPE html>
   <script>
     const ALL_WORDS = {all_words_json};
     const CHOICE_KEYS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+    const ANALYTICS_ENDPOINT = {analytics_endpoint_json};
 
     let currentMode = "en_ja";
     let questionsList = [];
@@ -931,6 +935,113 @@ html_content = f'''<!DOCTYPE html>
     let answerHistory = {{}};
     let currentChoicesData = null;
     let fitRafId = null;
+
+    let sessionAnswered = 0;
+    let sessionCorrect = 0;
+    let lastSentAnswered = 0;
+    let lastSentCorrect = 0;
+
+    function getDeviceId() {{
+      const key = "wordbook_device_id";
+      try {{
+        let id = localStorage.getItem(key);
+        if (!id) {{
+          const arr = new Uint8Array(4);
+          if (window.crypto && window.crypto.getRandomValues) {{
+            window.crypto.getRandomValues(arr);
+          }} else {{
+            for (let i = 0; i < arr.length; i++) {{
+              arr[i] = Math.floor(Math.random() * 256);
+            }}
+          }}
+          const hex = Array.from(arr, b => b.toString(16).padStart(2, "0")).join("");
+          id = `dev_${{hex}}`;
+          localStorage.setItem(key, id);
+        }}
+        return id;
+      }} catch (_) {{
+        return "dev_anonymous";
+      }}
+    }}
+
+    function incrementVisitCount() {{
+      const key = "wordbook_visit_count";
+      try {{
+        const prev = parseInt(localStorage.getItem(key) || "0", 10);
+        const next = (isNaN(prev) || prev < 0 ? 0 : prev) + 1;
+        localStorage.setItem(key, String(next));
+        return next;
+      }} catch (_) {{
+        return 1;
+      }}
+    }}
+
+    function detectDeviceType() {{
+      const ua = navigator.userAgent || "";
+      if (/iPhone/i.test(ua)) return "iPhone";
+      if (/iPad/i.test(ua) || (/Macintosh/i.test(ua) && navigator.maxTouchPoints > 1)) return "iPad";
+      if (/Android/i.test(ua)) return "Android";
+      if (/Windows/i.test(ua)) return "Windows";
+      if (/Macintosh|Mac OS X/i.test(ua)) return "Mac";
+      if (/Linux/i.test(ua)) return "Linux";
+      return "Other";
+    }}
+
+    function detectBrowser() {{
+      const ua = navigator.userAgent || "";
+      if (/Line\\//i.test(ua)) return "LINE";
+      if (/Instagram/i.test(ua)) return "Instagram";
+      if (/Edg\\//i.test(ua)) return "Edge";
+      if (/Chrome|CriOS/i.test(ua)) return "Chrome";
+      if (/Safari/i.test(ua)) return "Safari";
+      if (/Firefox|FxiOS/i.test(ua)) return "Firefox";
+      return "Other";
+    }}
+
+    const DEVICE_ID = getDeviceId();
+    const VISIT_COUNT = incrementVisitCount();
+    const DEVICE_TYPE = detectDeviceType();
+    const BROWSER_NAME = detectBrowser();
+
+    function sendAnalyticsEvent(eventName, extra = {{}}, useBeacon = false) {{
+      if (!ANALYTICS_ENDPOINT) return;
+      try {{
+        const payload = JSON.stringify({{
+          event: eventName,
+          deviceId: DEVICE_ID,
+          visitCount: VISIT_COUNT,
+          deviceType: DEVICE_TYPE,
+          browser: BROWSER_NAME,
+          screen: `${{window.screen.width}}x${{window.screen.height}}`,
+          mode: currentMode,
+          answered: extra.answered || 0,
+          correct: extra.correct || 0,
+          referrer: document.referrer || "direct"
+        }});
+
+        if (useBeacon && navigator.sendBeacon) {{
+          const blob = new Blob([payload], {{ type: "text/plain;charset=utf-8" }});
+          if (navigator.sendBeacon(ANALYTICS_ENDPOINT, blob)) return;
+        }}
+
+        fetch(ANALYTICS_ENDPOINT, {{
+          method: "POST",
+          mode: "no-cors",
+          headers: {{ "Content-Type": "text/plain;charset=utf-8" }},
+          body: payload,
+          keepalive: true
+        }}).catch(() => {{}});
+      }} catch (_) {{}}
+    }}
+
+    function flushSessionProgress(eventName = "session_summary", useBeacon = true) {{
+      const deltaAnswered = sessionAnswered - lastSentAnswered;
+      const deltaCorrect = sessionCorrect - lastSentCorrect;
+      if (deltaAnswered <= 0) return;
+      lastSentAnswered = sessionAnswered;
+      lastSentCorrect = sessionCorrect;
+      sendAnalyticsEvent(eventName, {{ answered: deltaAnswered, correct: deltaCorrect }}, useBeacon);
+    }}
 
     function fitButtonText(btn, textEl) {{
       if (!btn || !textEl || btn.clientHeight === 0 || btn.clientWidth === 0) return;
@@ -1055,11 +1166,41 @@ html_content = f'''<!DOCTYPE html>
       const modeSelect = document.getElementById("modeSelect");
       currentMode = modeSelect.value;
       modeSelect.blur();
-      init();
+      document.querySelectorAll(".sheet-link").forEach((link) => {{
+      link.addEventListener("click", () => sendAnalyticsEvent("sheet_click", {{}}, true));
+    }});
+
+    document.addEventListener("visibilitychange", () => {{
+      if (document.visibilityState === "hidden") {{
+        flushSessionProgress("session_summary", true);
+      }}
+    }});
+
+    window.addEventListener("pagehide", () => {{
+      flushSessionProgress("session_summary", true);
+    }});
+
+    sendAnalyticsEvent("page_view", {{}}, false);
+    init();
     }}
 
     function resetQuiz() {{
-      init();
+      document.querySelectorAll(".sheet-link").forEach((link) => {{
+      link.addEventListener("click", () => sendAnalyticsEvent("sheet_click", {{}}, true));
+    }});
+
+    document.addEventListener("visibilitychange", () => {{
+      if (document.visibilityState === "hidden") {{
+        flushSessionProgress("session_summary", true);
+      }}
+    }});
+
+    window.addEventListener("pagehide", () => {{
+      flushSessionProgress("session_summary", true);
+    }});
+
+    sendAnalyticsEvent("page_view", {{}}, false);
+    init();
     }}
 
     function renderQuestion() {{
@@ -1137,12 +1278,15 @@ html_content = f'''<!DOCTYPE html>
 
       if (isCorrect) {{
         correctTotal++;
+        sessionAnswered++;
+        sessionCorrect++;
         document.getElementById("correctCount").textContent = correctTotal;
         feedbackPanel.classList.add("is-correct");
         statusEl.className = "result-status correct";
         statusEl.textContent = "正解";
       }} else {{
         wrongTotal++;
+        sessionAnswered++;
         document.getElementById("wrongCount").textContent = wrongTotal;
         clickedBtn.classList.add("wrong");
         wrongQuestions.push(q);
@@ -1174,6 +1318,7 @@ html_content = f'''<!DOCTYPE html>
     }}
 
     function showResult() {{
+      flushSessionProgress("quiz_complete", false);
       document.getElementById("quizCard").style.display = "none";
       const resView = document.getElementById("resultView");
       resView.style.display = "flex";
@@ -1389,6 +1534,21 @@ html_content = f'''<!DOCTYPE html>
       }}
     }});
 
+    document.querySelectorAll(".sheet-link").forEach((link) => {{
+      link.addEventListener("click", () => sendAnalyticsEvent("sheet_click", {{}}, true));
+    }});
+
+    document.addEventListener("visibilitychange", () => {{
+      if (document.visibilityState === "hidden") {{
+        flushSessionProgress("session_summary", true);
+      }}
+    }});
+
+    window.addEventListener("pagehide", () => {{
+      flushSessionProgress("session_summary", true);
+    }});
+
+    sendAnalyticsEvent("page_view", {{}}, false);
     init();
   </script>
 </body>
